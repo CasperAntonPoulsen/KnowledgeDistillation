@@ -1,0 +1,19 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.158096858892884e-06 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.724251930338833e-06 MB/s).
+Processed 1000 documents. 979 instances. (1621.288440479177 docs/s, 0.006190909305266022 MB/s).
+Processed 2000 documents. 1921 instances. (2961.7977670906257 docs/s, 0.01130401102437657 MB/s).
+Processed 3000 documents. 2913 instances. (3300.8740307566068 docs/s, 0.012596032417679566 MB/s).
+Processed 4000 documents. 3891 instances. (4280.890358615956 docs/s, 0.016334383320639075 MB/s).
+Processed 5000 documents. 4864 instances. (5237.845121377076 docs/s, 0.019984789620976835 MB/s).
+Processed 6000 documents. 5818 instances. (6144.972153797768 docs/s, 0.023445115340512853 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.0000253750919845e-06 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.439130477234168e-06 MB/s).
+Processed 1000 documents. 977 instances. (1266.7055449232616 docs/s, 0.004836930276749363 MB/s).
+Processed 2000 documents. 1935 instances. (2136.22570435842 docs/s, 0.008153128880350491 MB/s).
+Processed 3000 documents. 2908 instances. (3094.641655550178 docs/s, 0.011809056101870325 MB/s).
+Processed 4000 documents. 3893 instances. (3999.378300988139 docs/s, 0.015260231573346657 MB/s).
+Processed 5000 documents. 4854 instances. (4844.286085525366 docs/s, 0.01848318078133572 MB/s).
+Processed 6000 documents. 5817 instances. (5641.597556650635 docs/s, 0.02152457360424071 MB/s).

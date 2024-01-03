@@ -1,0 +1,16 @@
+Loaded module: cuda/12.1
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.430352059368513e-05 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 6.834394088249113e-05 MB/s).
+Processed 1000 documents. 947 instances. (3595.8224954948314 docs/s, 0.013730691215478234 MB/s).
+Processed 2000 documents. 1879 instances. (4682.229803347205 docs/s, 0.017870219872470394 MB/s).
+Processed 3000 documents. 2833 instances. (6647.453737455703 docs/s, 0.025366476270172834 MB/s).
+Processed 4000 documents. 3787 instances. (8489.127761827804 docs/s, 0.03239154832370094 MB/s).
+Processed 6000 documents. 5673 instances. (11697.412058467948 docs/s, 0.04462952280862564 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.475308122856689e-05 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.536220961998606e-05 MB/s).
+Processed 1000 documents. 946 instances. (2472.259241860084 docs/s, 0.009440351490409638 MB/s).
+Processed 2000 documents. 1879 instances. (4355.229738850527 docs/s, 0.016622189917449768 MB/s).
+Processed 3000 documents. 2836 instances. (6075.678285683935 docs/s, 0.023184598967663433 MB/s).
+Processed 4000 documents. 3787 instances. (7537.835159098077 docs/s, 0.02876174780993596 MB/s).
+Processed 5000 documents. 4736 instances. (8847.144903789527 docs/s, 0.033755929308968674 MB/s).
+Processed 6000 documents. 5676 instances. (9999.516828359632 docs/s, 0.03815148702429845 MB/s).

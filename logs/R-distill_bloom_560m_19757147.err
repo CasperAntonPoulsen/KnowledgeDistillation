@@ -1,0 +1,11 @@
+Loaded module: cuda/12.1
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/runpy.py", line 188, in _run_module_as_main
+    mod_name, mod_spec, code = _get_module_details(mod_name, _Error)
+  File "/usr/lib64/python3.9/runpy.py", line 111, in _get_module_details
+    __import__(pkg_name)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/__init__.py", line 19, in <module>
+    if is_available() and not torch._C._c10d_init():
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/__init__.py", line 16, in is_available
+    return hasattr(torch._C, "_c10d_init")
+AttributeError: module 'torch' has no attribute '_C'

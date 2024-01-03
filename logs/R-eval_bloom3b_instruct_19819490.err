@@ -1,0 +1,26 @@
+Loaded module: cuda/12.1
+  0%|          | 0/11810 [00:00<?, ?it/s]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/tokenization_utils_base.py:3862: UserWarning: `as_target_tokenizer` is deprecated and will be removed in v5 of Transformers. You can tokenize your labels by using the argument `text_target` of the regular `__call__` method (either in the same call as your input texts if you use the same keyword arguments, or in a separate call.
+  warnings.warn(
+/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 959, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  0%|          | 0/11810 [01:23<?, ?it/s]
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/Tk-Instruct/src/run_bloom.py", line 86, in <module>
+    fout.write(json.dumps(example) + "\n")
+  File "/usr/lib64/python3.9/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python3.9/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python3.9/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib64/python3.9/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Tensor is not JSON serializable
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/Tk-Instruct/src/compute_metrics.py", line 140, in <module>
+    results = compute_metrics(predictions, references, xlingual=args.track == "xlingual")
+  File "/dtu/p1/johlau/Tk-Instruct/src/compute_metrics.py", line 90, in compute_metrics
+    exact_match = 100.0 * exact_match / len(references)
+ZeroDivisionError: float division by zero
+/dtu/p1/johlau/Tk-Instruct/scripts/run_bloom.sh: line 23: syntax error near unexpected token `done'
+/dtu/p1/johlau/Tk-Instruct/scripts/run_bloom.sh: line 23: `done'

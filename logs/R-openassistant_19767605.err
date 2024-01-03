@@ -1,0 +1,34 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Processed 0 documents. 1 instances. (0.0 docs/s, 6.623561083101267e-06 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 8.538292373543887e-06 MB/s).
+Processed 1000 documents. 980 instances. (1666.453044513003 docs/s, 0.006363370886068405 MB/s).
+Processed 2000 documents. 1976 instances. (2962.950613651544 docs/s, 0.0113084109838805 MB/s).
+Processed 3000 documents. 2962 instances. (3030.2103221008706 docs/s, 0.011563188141663504 MB/s).
+Processed 4000 documents. 3939 instances. (3376.662144918669 docs/s, 0.012884164087123484 MB/s).
+Processed 5000 documents. 4907 instances. (4085.952706138616 docs/s, 0.015589789950103164 MB/s).
+Processed 6000 documents. 5876 instances. (4834.870329238797 docs/s, 0.01844664055236945 MB/s).
+Processed 7000 documents. 6840 instances. (5560.926253840404 docs/s, 0.021216280639177958 MB/s).
+Processed 8000 documents. 7831 instances. (6268.119009413079 docs/s, 0.023913965317875884 MB/s).
+Processed 9000 documents. 8809 instances. (6955.141062353684 docs/s, 0.0265347055656626 MB/s).
+Processed 10000 documents. 9795 instances. (7617.3747097153355 docs/s, 0.029060884274239758 MB/s).
+Processed 11000 documents. 10775 instances. (8263.030962539127 docs/s, 0.031523827160538045 MB/s).
+Processed 12000 documents. 11747 instances. (8892.45289919278 docs/s, 0.03392484259389641 MB/s).
+Processed 13000 documents. 12702 instances. (9505.90087780515 docs/s, 0.036264923480795276 MB/s).
+Processed 14000 documents. 13671 instances. (10101.757908091951 docs/s, 0.0385379007805948 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.275587901606768e-06 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 8.719792730526795e-06 MB/s).
+Processed 1000 documents. 980 instances. (1696.0916292177315 docs/s, 0.006476546176326558 MB/s).
+Processed 2000 documents. 1973 instances. (2249.630251203913 docs/s, 0.008585949197118815 MB/s).
+Processed 3000 documents. 2962 instances. (2583.001705864602 docs/s, 0.009856654000981232 MB/s).
+Processed 4000 documents. 3939 instances. (3239.3638362903707 docs/s, 0.012360281666753552 MB/s).
+Processed 5000 documents. 4909 instances. (3955.295014954345 docs/s, 0.01509127072890219 MB/s).
+Processed 6000 documents. 5867 instances. (4646.974284506648 docs/s, 0.017729754563219954 MB/s).
+Processed 7000 documents. 6842 instances. (5315.9371136072 docs/s, 0.020281587727336344 MB/s).
+Processed 8000 documents. 7833 instances. (5956.114470807444 docs/s, 0.022723613682236847 MB/s).
+Processed 9000 documents. 8809 instances. (6576.026992054151 docs/s, 0.025088339468841304 MB/s).
+Processed 10000 documents. 9795 instances. (7156.690995491133 docs/s, 0.02730333963238023 MB/s).
+Processed 11000 documents. 10771 instances. (7720.356408498972 docs/s, 0.02945349982864976 MB/s).
+Processed 12000 documents. 11751 instances. (8264.630281152433 docs/s, 0.031529689790125 MB/s).
+Processed 14000 documents. 13671 instances. (9286.383741055253 docs/s, 0.03542727300330968 MB/s).

@@ -1,0 +1,34 @@
+Loaded module: cuda/12.1
+Traceback (most recent call last):
+[2023-12-13 16:05:32,399] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGINT death signal, shutting down workers
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 7, in <module>
+[2023-12-13 16:05:32,399] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 2377031 closing signal SIGINT
+    from transformers import (
+  File "<frozen importlib._bootstrap>", line 1055, in _handle_fromlist
+
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib64/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 736, in run
+    result = self._invoke_run(role)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 877, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 62, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 2377028 got signal: 2

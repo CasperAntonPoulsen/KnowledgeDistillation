@@ -1,0 +1,7 @@
+Loaded module: cuda/12.1
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/Tk-Instruct/src/run_s2s.py", line 582, in <module>
+    main()
+  File "/dtu/p1/johlau/Tk-Instruct/src/run_s2s.py", line 357, in main
+    raise ValueError("Make sure that `config.decoder_start_token_id` is correctly defined")
+ValueError: Make sure that `config.decoder_start_token_id` is correctly defined

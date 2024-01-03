@@ -1,0 +1,107 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:16<00:16, 16.11s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:22<00:00, 10.48s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:22<00:00, 11.32s/it]
+Traceback (most recent call last):
+[2023-12-12 23:54:43,171] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGINT death signal, shutting down workers
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 93, in <module>
+[2023-12-12 23:54:43,172] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 2071478 closing signal SIGINT
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 79, in main
+    train(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/__init__.py", line 37, in train
+    sampler.run_sample(args.num_rollouts_per_device)
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/sampler.py", line 84, in run_sample
+    s_gen_out = self.trainer.generate(**batch, return_dict_in_generate=True, mode=mode, output_scores=True)
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/trainer.py", line 614, in generate
+    gen = model.generate(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/model.py", line 21, in generate
+    return self.base_model.generate(**x)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py", line 1805, in generate
+    return self.sample(
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py", line 2916, in sample
+    outputs = self(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 873, in forward
+    transformer_outputs = self.transformer(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 722, in forward
+    outputs = block(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 410, in forward
+    attn_outputs = self.self_attention(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 304, in forward
+    attention_probs = F.softmax(attn_weights, dim=-1, dtype=torch.float32).to(input_dtype)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/functional.py", line 1858, in softmax
+    ret = input.softmax(dim, dtype=dtype)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib64/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 736, in run
+    result = self._invoke_run(role)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 877, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 62, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 2071287 got signal: 2
+/dtu/p1/johlau/LMOps/minillm/scripts/bloom/minillm/train_3b_7b_en.sh: line 104: _PATH}: command not found
+[2023-12-12 23:54:52,181] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGTERM death signal, shutting down workers
+[2023-12-12 23:54:52,182] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 2071531 closing signal SIGTERM
+Terminated
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib64/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 736, in run
+    result = self._invoke_run(role)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 877, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 62, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 2071529 got signal: 15

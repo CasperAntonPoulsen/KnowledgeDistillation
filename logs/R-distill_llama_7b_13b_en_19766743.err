@@ -1,0 +1,61 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 93, in <module>
+    main()
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 79, in main
+    train(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/__init__.py", line 22, in train
+    trainer = PPOTrainer(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/trainer.py", line 82, in __init__
+    self.model, self.opt, self.scheduler = self.setup_ds(self.model, self.opt, self.scheduler)
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/trainer.py", line 134, in setup_ds
+    model, optimizer, _, scheduler = deepspeed.initialize(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/__init__.py", line 171, in initialize
+    engine = DeepSpeedEngine(args=args,
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 304, in __init__
+    self._configure_optimizer(optimizer, model_parameters)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 1219, in _configure_optimizer
+    self.optimizer = self._configure_zero_optimizer(basic_optimizer)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/engine.py", line 1480, in _configure_zero_optimizer
+    optimizer = DeepSpeedZeroOptimizer(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 510, in __init__
+    self.initialize_optimizer_states()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 633, in initialize_optimizer_states
+    single_grad_partition = torch.zeros(int(self.partition_size[i]),
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 25.10 GiB. GPU 0 has a total capacty of 79.11 GiB of which 16.27 GiB is free. Including non-PyTorch memory, this process has 62.82 GiB memory in use. Of the allocated memory 62.09 GiB is allocated by PyTorch, and 5.67 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+[2023-12-13 12:18:33,898] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 0 (pid: 1690962) of binary: /bin/python3
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib64/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/dtu/p1/johlau/LMOps/minillm/train_minillm.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2023-12-13_12:18:33
+  host      : n-62-12-85.hpccluster.dtu.dk
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 1690962)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

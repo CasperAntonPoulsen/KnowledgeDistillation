@@ -1,0 +1,7 @@
+Loaded module: cuda/12.1
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/tools/convert_mp.py", line 74, in <module>
+    main()
+  File "/dtu/p1/johlau/LMOps/minillm/tools/convert_mp.py", line 49, in main
+    assert args.exist_ok or not os.path.exists(os.path.join(args.save_path, "pytorch_model.bin"))
+AssertionError

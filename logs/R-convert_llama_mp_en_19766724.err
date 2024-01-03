@@ -1,0 +1,23 @@
+Loaded module: cuda/12.1
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/tools/convert_mp.py", line 74, in <module>
+    main()
+  File "/dtu/p1/johlau/LMOps/minillm/tools/convert_mp.py", line 42, in main
+    model_hf = AutoModelForCausalLM.from_pretrained(args.input_path, torch_dtype=torch.float16).state_dict()
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/auto/auto_factory.py", line 566, in from_pretrained
+    return model_class.from_pretrained(
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/modeling_utils.py", line 3236, in from_pretrained
+    model = cls(config, *model_args, **model_kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/llama/modeling_llama.py", line 991, in __init__
+    self.model = LlamaModel(config)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/llama/modeling_llama.py", line 848, in __init__
+    self.embed_tokens = nn.Embedding(config.vocab_size, config.hidden_size, self.padding_idx)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/sparse.py", line 144, in __init__
+    self.reset_parameters()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/sparse.py", line 153, in reset_parameters
+    init.normal_(self.weight)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/init.py", line 155, in normal_
+    return _no_grad_normal_(tensor, mean, std)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/init.py", line 19, in _no_grad_normal_
+    return tensor.normal_(mean, std)
+KeyboardInterrupt

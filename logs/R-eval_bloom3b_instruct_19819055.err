@@ -1,0 +1,18 @@
+Loaded module: cuda/12.1
+  0%|          | 0/11810 [00:00<?, ?it/s]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/tokenization_utils_base.py:3862: UserWarning: `as_target_tokenizer` is deprecated and will be removed in v5 of Transformers. You can tokenize your labels by using the argument `text_target` of the regular `__call__` method (either in the same call as your input texts if you use the same keyword arguments, or in a separate call.
+  warnings.warn(
+  0%|          | 0/11810 [01:26<?, ?it/s]
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/Tk-Instruct/src/run_bloom.py", line 82, in <module>
+    example["prediction"] = example["bloom_response"]["choices"][0]["text"].strip().split(".")[0]
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/utils/generic.py", line 401, in __getitem__
+    return inner_dict[k]
+KeyError: 'choices'
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/Tk-Instruct/src/compute_metrics.py", line 140, in <module>
+    results = compute_metrics(predictions, references, xlingual=args.track == "xlingual")
+  File "/dtu/p1/johlau/Tk-Instruct/src/compute_metrics.py", line 90, in compute_metrics
+    exact_match = 100.0 * exact_match / len(references)
+ZeroDivisionError: float division by zero
+/dtu/p1/johlau/Tk-Instruct/scripts/run_bloom.sh: line 23: syntax error near unexpected token `done'
+/dtu/p1/johlau/Tk-Instruct/scripts/run_bloom.sh: line 23: `done'

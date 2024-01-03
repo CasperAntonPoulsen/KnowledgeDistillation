@@ -1,0 +1,49 @@
+Loaded module: cuda/12.1
+Downloading readme:   0%|          | 0.00/10.2k [00:00<?, ?B/s]Downloading readme: 100%|██████████| 10.2k/10.2k [00:00<00:00, 10.1MB/s]
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Downloading data files:   0%|          | 0/2 [00:00<?, ?it/s]
+Downloading data:   0%|          | 0.00/39.5M [00:00<?, ?B/s][A
+Downloading data:  11%|█         | 4.19M/39.5M [00:01<00:08, 4.07MB/s][A
+Downloading data:  32%|███▏      | 12.6M/39.5M [00:01<00:03, 8.46MB/s][A
+Downloading data:  53%|█████▎    | 21.0M/39.5M [00:02<00:01, 10.4MB/s][A
+Downloading data:  74%|███████▍  | 29.4M/39.5M [00:02<00:00, 14.2MB/s][A
+Downloading data:  96%|█████████▌| 37.7M/39.5M [00:03<00:00, 14.0MB/s][ADownloading data: 100%|██████████| 39.5M/39.5M [00:03<00:00, 11.7MB/s]
+Downloading data files:  50%|█████     | 1/2 [00:03<00:03,  3.38s/it]
+Downloading data:   0%|          | 0.00/2.08M [00:00<?, ?B/s][A
+Downloading data: 100%|██████████| 2.08M/2.08M [00:00<00:00, 12.2MB/s][ADownloading data: 100%|██████████| 2.08M/2.08M [00:00<00:00, 11.9MB/s]
+Downloading data files: 100%|██████████| 2/2 [00:03<00:00,  1.50s/it]Downloading data files: 100%|██████████| 2/2 [00:03<00:00,  1.78s/it]
+Extracting data files:   0%|          | 0/2 [00:00<?, ?it/s]Extracting data files: 100%|██████████| 2/2 [00:00<00:00, 175.95it/s]
+Generating train split:   0%|          | 0/84437 [00:00<?, ? examples/s]Generating train split:  36%|███▌      | 30000/84437 [00:00<00:00, 183719.50 examples/s]Generating train split:  83%|████████▎ | 70000/84437 [00:00<00:00, 218623.83 examples/s]Generating train split: 100%|██████████| 84437/84437 [00:00<00:00, 127406.56 examples/s]
+Generating validation split:   0%|          | 0/4401 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 4401/4401 [00:00<00:00, 80785.36 examples/s]
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.674354131152794e-06 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.694334853605662e-06 MB/s).
+Processed 1000 documents. 980 instances. (1697.5771412752115 docs/s, 0.006482218621889063 MB/s).
+Processed 2000 documents. 1976 instances. (2975.6703020327664 docs/s, 0.011356957005248193 MB/s).
+Processed 3000 documents. 2953 instances. (4198.907402148556 docs/s, 0.01602289977245053 MB/s).
+Processed 4000 documents. 3939 instances. (3857.334934768494 docs/s, 0.014718243669518226 MB/s).
+Processed 5000 documents. 4907 instances. (4068.619462461218 docs/s, 0.01552365564862713 MB/s).
+Processed 6000 documents. 5867 instances. (4593.442789918156 docs/s, 0.017525514082780747 MB/s).
+Processed 7000 documents. 6843 instances. (5287.87128628169 docs/s, 0.020174509797918107 MB/s).
+Processed 9000 documents. 8809 instances. (6621.883575845647 docs/s, 0.025263287890195496 MB/s).
+Processed 10000 documents. 9795 instances. (7257.826948846584 docs/s, 0.027689181257406114 MB/s).
+Processed 11000 documents. 10774 instances. (7877.818821592135 docs/s, 0.030054225871809205 MB/s).
+Processed 12000 documents. 11750 instances. (8482.373571184806 docs/s, 0.03236038374194745 MB/s).
+Processed 13000 documents. 12715 instances. (9070.364505010446 docs/s, 0.03460335626738352 MB/s).
+Processed 14000 documents. 13676 instances. (9646.933308799913 docs/s, 0.03680275869546824 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.120418288972386e-06 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.78790042585213e-06 MB/s).
+Processed 1000 documents. 980 instances. (1264.9177244832504 docs/s, 0.004830103463011679 MB/s).
+Processed 2000 documents. 1976 instances. (2181.936033955414 docs/s, 0.008327587135209624 MB/s).
+Processed 3000 documents. 2957 instances. (2583.4774140735726 docs/s, 0.009858469288679493 MB/s).
+Processed 4000 documents. 3939 instances. (3091.5867797439087 docs/s, 0.01179641600204027 MB/s).
+Processed 5000 documents. 4909 instances. (3777.7966323663272 docs/s, 0.014414032713671877 MB/s).
+Processed 6000 documents. 5869 instances. (4441.471128029662 docs/s, 0.016945691578741713 MB/s).
+Processed 7000 documents. 6842 instances. (5082.901132810295 docs/s, 0.0193924990140669 MB/s).
+Processed 8000 documents. 7833 instances. (5701.234294367075 docs/s, 0.021751201433768734 MB/s).
+Processed 9000 documents. 8806 instances. (6298.991693729598 docs/s, 0.024031416250974918 MB/s).
+Processed 10000 documents. 9792 instances. (6860.024428683488 docs/s, 0.026171533321862624 MB/s).
+Processed 11000 documents. 10771 instances. (7402.33323295059 docs/s, 0.028240227403012862 MB/s).
+Processed 12000 documents. 11750 instances. (7930.401308024317 docs/s, 0.03025460119171137 MB/s).
+Processed 13000 documents. 12712 instances. (8434.931345266457 docs/s, 0.03217918467002552 MB/s).
+Processed 14000 documents. 13674 instances. (8923.899167673742 docs/s, 0.03404440532319207 MB/s).

@@ -1,0 +1,152 @@
+Loaded module: cuda/12.1
+ERROR: transformers/ is not a valid editable requirement. It should either be a path to a local project or a VCS URL (beginning with bzr+http, bzr+https, bzr+ssh, bzr+sftp, bzr+ftp, bzr+lp, bzr+file, git+http, git+https, git+ssh, git+git, git+file, hg+file, hg+http, hg+https, hg+ssh, hg+static-http, svn+ssh, svn+http, svn+https, svn+svn, svn+file).
+  WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+  distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+  sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+  WARNING: Additional context:
+  user = True
+  home = None
+  root = None
+  prefix = None
+  WARNING: The scripts convert-caffe2-to-onnx, convert-onnx-to-caffe2 and torchrun are installed in '/zhome/4e/b/208805/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+torchvision 0.15.2 requires torch==2.0.1, but you have torch 2.1.1 which is incompatible.
+    ERROR: Command errored out with exit status 1:
+     command: /usr/bin/python3 -c 'import io, os, sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/setup.py'"'"'; __file__='"'"'/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/setup.py'"'"';f = getattr(tokenize, '"'"'open'"'"', open)(__file__) if os.path.exists(__file__) else io.StringIO('"'"'from setuptools import setup; setup()'"'"');code = f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' egg_info --egg-base /tmp/pip-pip-egg-info-zqt3hg71
+         cwd: /tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/
+    Complete output (40 lines):
+    [2023-12-12 13:43:36,165] [INFO] [real_accelerator.py:133:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+    /zhome/4e/b/208805/.local/lib/python3.9/site-packages/pydantic/_internal/_config.py:321: UserWarning: Valid config keys have changed in V2:
+    * 'allow_population_by_field_name' has been renamed to 'populate_by_name'
+    * 'validate_all' has been renamed to 'validate_default'
+      warnings.warn(message, UserWarning)
+    /zhome/4e/b/208805/.local/lib/python3.9/site-packages/pydantic/_internal/_fields.py:149: UserWarning: Field "model_persistence_threshold" has conflict with protected namespace "model_".
+    
+    You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+      warnings.warn(
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/setup.py", line 36, in <module>
+        from op_builder import get_default_compute_capabilities, OpBuilder
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/op_builder/__init__.py", line 18, in <module>
+        import deepspeed.ops.op_builder  # noqa: F401
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/__init__.py", line 22, in <module>
+        from . import module_inject
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/module_inject/__init__.py", line 6, in <module>
+        from .replace_module import replace_transformer_layer, revert_transformer_layer, ReplaceWithTensorSlicing, GroupQuantizer, generic_injection
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/module_inject/replace_module.py", line 778, in <module>
+        from ..pipe import PipelineModule
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/pipe/__init__.py", line 6, in <module>
+        from ..runtime.pipe import PipelineModule, LayerSpec, TiedLayerSpec
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/runtime/pipe/__init__.py", line 6, in <module>
+        from .module import PipelineModule, LayerSpec, TiedLayerSpec
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/runtime/pipe/module.py", line 19, in <module>
+        from ..activation_checkpointing import checkpointing
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/runtime/activation_checkpointing/checkpointing.py", line 25, in <module>
+        from deepspeed.runtime.config import DeepSpeedConfig
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/runtime/config.py", line 29, in <module>
+        from .zero.config import get_zero_config, ZeroStageEnum
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/runtime/zero/__init__.py", line 6, in <module>
+        from .partition_parameters import ZeroParamType
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/runtime/zero/partition_parameters.py", line 681, in <module>
+        class Init(InsertPostInitMethodToModuleSubClasses):
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/runtime/zero/partition_parameters.py", line 683, in Init
+        param_persistence_threshold = get_config_default(DeepSpeedZeroConfig, "param_persistence_threshold")
+      File "/tmp/pip-install-2lro_0qi/deepspeed_a7cd9d0487a44a2aa2929de4feee574a/deepspeed/runtime/config_utils.py", line 115, in get_config_default
+        assert not config.__fields__.get(
+    AttributeError: 'FieldInfo' object has no attribute 'required'
+    ----------------------------------------
+WARNING: Discarding https://files.pythonhosted.org/packages/c5/1d/74dde2835ac5087cf5727e73b8868299d863910947988ddca986443f714a/deepspeed-0.10.0.tar.gz#sha256=afb06a97fde2a33d0cbd60a8357a70087c037b9f647ca48377728330c35eff3e (from https://pypi.org/simple/deepspeed/). Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+ERROR: Could not find a version that satisfies the requirement deepspeed==0.10.0 (from versions: 0.3.1.dev1, 0.3.1.dev2, 0.3.1.dev3, 0.3.1.dev4, 0.3.1.dev5, 0.3.1.dev6, 0.3.1.dev7, 0.3.1.dev8, 0.3.1, 0.3.2, 0.3.3, 0.3.4, 0.3.5, 0.3.6, 0.3.7, 0.3.8, 0.3.9, 0.3.10, 0.3.11, 0.3.12, 0.3.13, 0.3.14, 0.3.15, 0.3.16, 0.4.0, 0.4.1, 0.4.2, 0.4.3, 0.4.4, 0.4.5, 0.5.0, 0.5.1, 0.5.2, 0.5.3, 0.5.4, 0.5.5, 0.5.6, 0.5.7, 0.5.8, 0.5.9, 0.5.10, 0.6.0, 0.6.1, 0.6.3, 0.6.4, 0.6.5, 0.6.6, 0.6.7, 0.7.0, 0.7.1, 0.7.2, 0.7.3, 0.7.4, 0.7.5, 0.7.6, 0.7.7, 0.8.0, 0.8.1, 0.8.2, 0.8.3, 0.9.0, 0.9.1, 0.9.2, 0.9.3, 0.9.4, 0.9.5, 0.10.0, 0.10.1, 0.10.2, 0.10.3, 0.11.0, 0.11.1, 0.11.2, 0.12.0, 0.12.1, 0.12.2, 0.12.3, 0.12.4)
+ERROR: No matching distribution found for deepspeed==0.10.0
+  WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+  distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+  sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+  WARNING: Additional context:
+  user = True
+  home = None
+  root = None
+  prefix = None
+  WARNING: The scripts convert-caffe2-to-onnx, convert-onnx-to-caffe2 and torchrun are installed in '/zhome/4e/b/208805/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None

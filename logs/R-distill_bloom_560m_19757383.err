@@ -1,0 +1,2 @@
+Loaded module: cuda/12.1
+LMOps/minillm/scripts/bloom/minillm/train_560m_1b1.sh: line 103: torchrun: command not found

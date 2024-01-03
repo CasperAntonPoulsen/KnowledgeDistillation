@@ -1,0 +1,108 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:17<00:17, 17.36s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:24<00:00, 11.25s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:24<00:00, 12.17s/it]
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 93, in <module>
+    main()
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 79, in main
+    train(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/__init__.py", line 44, in train
+    lm_pipeline = LMPipeline(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/pipelines.py", line 122, in __init__
+    self.lm_ctx = DistributedMMapIndexedDataset(lm_data_path, f"{split}", get_rank(), get_world_size())
+  File "/dtu/p1/johlau/LMOps/minillm/data_utils/distributed_indexed.py", line 130, in __init__
+    self._do_init(self._path, self._name, self._cache, self._state)
+  File "/dtu/p1/johlau/LMOps/minillm/data_utils/distributed_indexed.py", line 167, in _do_init
+    self._bin_buffer_mmap = np.memmap(data_file_path(source_file), mode='r', order='C')
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/numpy/core/memmap.py", line 268, in __new__
+    mm = mmap.mmap(fid.fileno(), bytes, access=acc, offset=start)
+ValueError: cannot mmap an empty file
+[2023-12-12 23:54:46,637] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 0 (pid: 2068942) of binary: /bin/python3
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib64/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/dtu/p1/johlau/LMOps/minillm/train_minillm.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2023-12-12_23:54:46
+  host      : n-62-12-86.hpccluster.dtu.dk
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 2068942)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+/dtu/p1/johlau/LMOps/minillm/scripts/bloom/minillm/train_3b_7b.sh: line 104: _PATH}: command not found
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 93, in <module>
+    main()
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 74, in main
+    teacher_model = get_teacher_model(args, device)
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 29, in get_teacher_model
+    model = AutoModelForCausalLM.from_pretrained(args.teacher_model_path, config=config, device_map={"": device}, torch_dtype=torch.float16)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/auto/auto_factory.py", line 566, in from_pretrained
+[2023-12-12 23:54:54,429] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGINT death signal, shutting down workers
+[2023-12-12 23:54:54,429] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 2069011 closing signal SIGINT
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/modeling_utils.py", line 3236, in from_pretrained
+    model = cls(config, *model_args, **model_kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 768, in __init__
+    self.transformer = BloomModel(config)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 596, in __init__
+    self.h = nn.ModuleList([BloomBlock(config) for _ in range(config.num_hidden_layers)])
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 596, in <listcomp>
+    self.h = nn.ModuleList([BloomBlock(config) for _ in range(config.num_hidden_layers)])
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 383, in __init__
+    self.mlp = BloomMLP(config)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 349, in __init__
+    self.dense_h_to_4h = nn.Linear(hidden_size, 4 * hidden_size)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/linear.py", line 96, in __init__
+    self.weight = Parameter(torch.empty((out_features, in_features), **factory_kwargs))
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib64/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 736, in run
+    result = self._invoke_run(role)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 877, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 62, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 2069009 got signal: 2

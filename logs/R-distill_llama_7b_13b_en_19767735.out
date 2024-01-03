@@ -1,0 +1,552 @@
+Wed Dec 13 14:14:42 2023       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.104.12             Driver Version: 535.104.12   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA H100 PCIe               On  | 00000000:A1:00.0 Off |                    0 |
+| N/A   24C    P0              46W / 350W |      4MiB / 81559MiB |      0%   E. Process |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+python3 -m torch.distributed.run --nproc_per_node 1 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 3017 /dtu/p1/johlau/LMOps/minillm/train_minillm.py --base-path /dtu/p1/johlau/LMOps/minillm --model-path /dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_init/llama-7B --teacher-model-path /dtu/p1/johlau/LMOps/minillm/results/llama/train/sft/llama-13B --ckpt-name 7B-init --teacher-ckpt-name 13B-sft --n-gpu 1 --n-nodes 1 --model-type llama --teacher-model-fp16 --gradient-checkpointing --prompt-data-dir /dtu/p1/johlau/LMOps/minillm/processed_data/dolly_en/prompt/llama/ --lm-data-dir /dtu/p1/johlau/LMOps/minillm/processed_data/roberta_en/llama/256/20M/ --dev-num 1000 --num-workers 0 --epochs 10 --total-iters 5000 --kd-ratio 0.5 --batch-size 2 --eval-batch-size 4 --lr 5e-6 --lr-min 5e-6 --gradient-accumulation-steps 2 --max-length 256 --max-prompt-length 128 --warmup-iters 100 --scheduler-name cosine_trm --save /dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_en/ --seed 10 --seed-ppo 42 --seed-lm 7 --save-interval 500 --eval-interval 100 --log-interval 16 --mid-log-num 1 --type minillm --ppo-epochs 4 --num-rollouts 64 --chunk-size 2 --length-norm --single-step-reg --teacher-mixed-alpha 0.2 --reward-scaling 0.5 --cliprange-reward 100 --do-sample --top-k 0 --top-p 1.0 --temperature 1.0 --deepspeed --deepspeed_config /dtu/p1/johlau/LMOps/minillm/configs/deepspeed/ds_config_zero2_offload.json /dtu/p1/johlau/LMOps/minillm 3017
+PYTHONPATH=/dtu/p1/johlau/LMOps/minillm
+[2023-12-13 14:14:48,051] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 1
+[2023-12-13 14:14:49,709] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-12-13 14:14:49,709] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_path ................... /dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_init/llama-7B
+  ckpt_name .................... 7B-init
+  model_type ................... llama
+  teacher_model_type ........... None
+  n_gpu ........................ 1
+  n_nodes ...................... 1
+  teacher_model_path ........... /dtu/p1/johlau/LMOps/minillm/results/llama/train/sft/llama-13B
+  teacher_ckpt_name ............ 13B-sft
+  teacher_model_fp16 ........... True
+  model_parallel ............... False
+  model_parallel_size .......... None
+  no_value ..................... False
+  dropout_path_rate ............ None
+  fp32 ......................... False
+  type ......................... minillm
+  do_train ..................... False
+  do_valid ..................... False
+  do_eval ...................... False
+  base_path .................... /dtu/p1/johlau/LMOps/minillm
+  load ......................... None
+  save ......................... /dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_en/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+  log_interval ................. 16
+  mid_log_num .................. 1
+  save_interval ................ 500
+  eval_interval ................ 100
+  local_rank ................... 0
+  save_additional_suffix ....... 
+  save_rollout ................. False
+  eb_sample_times .............. 3
+  data_dir ..................... None
+  processed_data_dir ........... None
+  force_process ................ False
+  force_process_demo ........... False
+  data_process_workers ......... -1
+  train_num .................... -1
+  train_ratio .................. 1
+  dev_num ...................... 1000
+  dev_ratio .................... 1
+  gen_num ...................... -1
+  data_names ................... None
+  prompt_type .................. None
+  num_workers .................. 0
+  max_prompt_length ............ 128
+  min_prompt_length ............ 64
+  json_data .................... False
+  bin_data ..................... False
+  txt_data ..................... False
+  prompt_data_dir .............. /dtu/p1/johlau/LMOps/minillm/processed_data/dolly_en/prompt/llama/
+  lm_data_dir .................. /dtu/p1/johlau/LMOps/minillm/processed_data/roberta_en/llama/256/20M/
+  eval_ppl ..................... False
+  eval_rw ...................... False
+  eval_gen ..................... False
+  only_prompt .................. False
+  batch_size ................... 2
+  eval_batch_size .............. 4
+  clip_grad .................... 1.0
+  total_iters .................. 5000
+  train_iters_per_epoch ........ -1
+  max_length ................... 256
+  seed ......................... 10
+  seed_order ................... 42
+  seed_data .................... 42
+  seed_ppo ..................... 42
+  seed_lm ...................... 7
+  epochs ....................... 10
+  training_epochs .............. 10000
+  gradient_accumulation_steps .. 2
+  gradient_checkpointing ....... True
+  attn_dtype ................... None
+  lr ........................... 5e-06
+  lr_min ....................... 5e-06
+  weight_decay ................. 0.01
+  loss_scale ................... 65536
+  kd_ratio ..................... 0.5
+  warmup_iters ................. 100
+  lr_decay_iters ............... None
+  lr_decay_style ............... noam
+  scheduler_name ............... cosine_trm
+  reward_scaling ............... 0.5
+  cliprange_reward ............. 100.0
+  ppo_epochs ................... 4
+  num_rollouts ................. 64
+  num_rollouts_per_device ...... 64
+  cliprange .................... 0.2
+  chunk_size ................... 2
+  gamma ........................ 0.95
+  length_norm .................. True
+  single_step_reg .............. True
+  teacher_mixed_alpha .......... 0.2
+  lm_coef ...................... 1
+  top_k ........................ 0
+  top_p ........................ 1.0
+  do_sample .................... True
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  num_beams .................... 1
+  temperature .................. 1.0
+  peft ......................... None
+  peft_lora_r .................. 8
+  peft_lora_alpha .............. 32
+  peft_lora_dropout ............ 0.1
+  peft_name .................... None
+  peft_path .................... None
+  teacher_peft_name ............ None
+  teacher_peft_path ............ None
+  deepspeed .................... True
+  deepspeed_config ............. /dtu/p1/johlau/LMOps/minillm/configs/deepspeed/ds_config_zero2_offload.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  rank ......................... 0
+  world_size ................... 1
+ > number of parameters: 13015864320
+ > number of parameters: 6738415616
+Model load time: 7.359498500823975s
+ > number of parameters: 6738M
+[2023-12-13 14:15:12,354] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.12.1, git-hash=unknown, git-branch=unknown
+[2023-12-13 14:15:13,401] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-12-13 14:15:13,404] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2023-12-13 14:15:13,404] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2023-12-13 14:15:13,416] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
+[2023-12-13 14:15:13,416] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'torch.optim.adamw.AdamW'>
+[2023-12-13 14:15:13,416] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 2 optimizer
+[2023-12-13 14:15:13,416] [INFO] [stage_1_and_2.py:147:__init__] Reduce bucket size 200000000
+[2023-12-13 14:15:13,416] [INFO] [stage_1_and_2.py:148:__init__] Allgather bucket size 200000000
+[2023-12-13 14:15:13,416] [INFO] [stage_1_and_2.py:149:__init__] CPU Offload: True
+[2023-12-13 14:15:13,416] [INFO] [stage_1_and_2.py:150:__init__] Round robin gradient partitioning: False
+[2023-12-13 14:15:25,547] [INFO] [utils.py:802:see_memory_usage] Before initializing optimizer states
+[2023-12-13 14:15:25,548] [INFO] [utils.py:803:see_memory_usage] MA 37.23 GB         Max_MA 37.23 GB         CA 37.23 GB         Max_CA 37 GB 
+[2023-12-13 14:15:25,548] [INFO] [utils.py:810:see_memory_usage] CPU Virtual Memory:  used = 84.79 GB, percent = 11.2%
+[2023-12-13 14:16:15,335] [INFO] [utils.py:802:see_memory_usage] After initializing optimizer states
+[2023-12-13 14:16:15,337] [INFO] [utils.py:803:see_memory_usage] MA 37.23 GB         Max_MA 37.23 GB         CA 37.23 GB         Max_CA 37 GB 
+[2023-12-13 14:16:15,337] [INFO] [utils.py:810:see_memory_usage] CPU Virtual Memory:  used = 160.28 GB, percent = 21.2%
+[2023-12-13 14:16:15,337] [INFO] [stage_1_and_2.py:514:__init__] optimizer state initialized
+[2023-12-13 14:16:15,426] [INFO] [utils.py:802:see_memory_usage] After initializing ZeRO optimizer
+[2023-12-13 14:16:15,426] [INFO] [utils.py:803:see_memory_usage] MA 37.23 GB         Max_MA 37.23 GB         CA 37.23 GB         Max_CA 37 GB 
+[2023-12-13 14:16:15,427] [INFO] [utils.py:810:see_memory_usage] CPU Virtual Memory:  used = 160.28 GB, percent = 21.2%
+[2023-12-13 14:16:15,435] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = AdamW
+[2023-12-13 14:16:15,435] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2023-12-13 14:16:15,435] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.LambdaLR object at 0x7f733efb94f0>
+[2023-12-13 14:16:15,435] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0], mom=[[0.9, 0.95]]
+[2023-12-13 14:16:15,436] [INFO] [config.py:972:print] DeepSpeedEngine configuration:
+[2023-12-13 14:16:15,436] [INFO] [config.py:976:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-12-13 14:16:15,436] [INFO] [config.py:976:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-12-13 14:16:15,436] [INFO] [config.py:976:print]   amp_enabled .................. False
+[2023-12-13 14:16:15,436] [INFO] [config.py:976:print]   amp_params ................... False
+[2023-12-13 14:16:15,436] [INFO] [config.py:976:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   bfloat16_enabled ............. False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   checkpoint_parallel_write_pipeline  False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   checkpoint_tag_validation_enabled  True
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   checkpoint_tag_validation_fail  False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f733efb9460>
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   communication_data_type ...... None
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   curriculum_enabled_legacy .... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   curriculum_params_legacy ..... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   data_efficiency_enabled ...... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   dataloader_drop_last ......... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   disable_allgather ............ False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   dump_state ................... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 5000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   eigenvalue_enabled ........... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   eigenvalue_gas_boundary_resolution  1
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   eigenvalue_layer_num ......... 0
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   eigenvalue_max_iter .......... 100
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   eigenvalue_stability ......... 1e-06
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   eigenvalue_tol ............... 0.01
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   eigenvalue_verbose ........... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   elasticity_enabled ........... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   fp16_auto_cast ............... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   fp16_enabled ................. True
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   fp16_master_weights_and_gradients  False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   global_rank .................. 0
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   grad_accum_dtype ............. None
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   gradient_accumulation_steps .. 2
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   gradient_clipping ............ 1.0
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   gradient_predivide_factor .... 1.0
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   initial_dynamic_scale ........ 2048
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   load_universal_checkpoint .... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   loss_scale ................... 0
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   memory_breakdown ............. False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   mics_hierarchial_params_gather  False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   mics_shard_size .............. -1
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   optimizer_legacy_fusion ...... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   optimizer_name ............... None
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   optimizer_params ............. None
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   pld_enabled .................. False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   pld_params ................... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   prescale_gradients ........... False
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   scheduler_name ............... None
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   scheduler_params ............. None
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   seq_parallel_communication_data_type  torch.float32
+[2023-12-13 14:16:15,437] [INFO] [config.py:976:print]   sparse_attention ............. None
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   sparse_gradients_enabled ..... False
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   steps_per_print .............. 10000000
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   train_batch_size ............. 4
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   train_micro_batch_size_per_gpu  2
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   use_node_local_storage ....... False
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   wall_clock_breakdown ......... False
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   weight_quantization_config ... None
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   world_size ................... 1
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   zero_allow_untested_optimizer  True
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   zero_config .................. stage=2 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=200000000 allgather_partitions=True allgather_bucket_size=200000000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='cpu', nvme_path=None, buffer_count=4, pin_memory=False, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False) sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   zero_enabled ................. True
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   zero_force_ds_cpu_optimizer .. False
+[2023-12-13 14:16:15,438] [INFO] [config.py:976:print]   zero_optimization_stage ...... 2
+[2023-12-13 14:16:15,438] [INFO] [config.py:962:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 2, 
+    "gradient_accumulation_steps": 2, 
+    "zero_optimization": {
+        "stage": 2, 
+        "offload_optimizer": {
+            "device": "cpu"
+        }, 
+        "allgather_partitions": true, 
+        "allgather_bucket_size": 2.000000e+08, 
+        "overlap_comm": true, 
+        "reduce_scatter": true, 
+        "reduce_bucket_size": 2.000000e+08, 
+        "contiguous_gradients": true
+    }, 
+    "zero_force_ds_cpu_optimizer": false, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 5.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": 1.000000e+07
+}
+Probing Dataset
+Probing end. Max data state 1, total length 22065
+Num PPO instances: 22065
+Probing Dataset
+Probing end. Max data state 1, total length 975
+Num PPO instances: 975
+Probing Dataset
+Probing end. Max data state 1, total length 20000001
+Num LM instances: 20000001
+Probing Dataset
+Probing end. Max data state 1, total length 10000
+Num LM instances: 10000
+                                 Evaluation #0                                  
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ prompts                               ┃ samples                              ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Below is an instruction that          │ Below is an instruction that         │
+│ describes a task. Write a response    │ describes a task. Write a response   │
+│ that appropriately completes the      │ that appropriately completes the     │
+│ request.                              │ request.                             │
+│                                       │                                      │
+│ ### Instruction:                      │ ### Instruction:                     │
+│ Convert the above time to Pacific     │ Convert the above time to Pacific    │
+│ Standard Time.                        │ Standard Time.                       │
+│                                       │                                      │
+│ ### Response:                         │ ### Response:                        │
+│                                       │ 10:17:10 - 7:00:00 = 3:17:10         │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│ Below is an instruction that          │ Below is an instruction that         │
+│ describes a task. Write a response    │ describes a task. Write a response   │
+│ that appropriately completes the      │ that appropriately completes the     │
+│ request.                              │ request.                             │
+│                                       │                                      │
+│ ### Instruction:                      │ ### Instruction:                     │
+│ What about in unix 'epoch' time?      │ What about in unix 'epoch' time?     │
+│ (assume 0 seconds)?                   │ (assume 0 seconds)?                  │
+│                                       │                                      │
+│ ### Response:                         │ ### Response:                        │
+│                                       │ 1970-01-01 + 1731562139499 lol.      │
+│                                       │                                      │
+│                                       │ PS. There isn't a 1731562139499      │
+│                                       │ seconds since 1970 since it will     │
+│                                       │ round up to 1731568 years (plus, by  │
+│                                       │ the way, you'll miss the second).    │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│ Below is an instruction that          │ Below is an instruction that         │
+│ describes a task. Write a response    │ describes a task. Write a response   │
+│ that appropriately completes the      │ that appropriately completes the     │
+│ request.                              │ request.                             │
+│                                       │                                      │
+│ ### Instruction:                      │ ### Instruction:                     │
+│ What about in unix 'epoch' time?      │ What about in unix 'epoch' time?     │
+│ (assume 0 seconds)?                   │ (assume 0 seconds)?                  │
+│                                       │                                      │
+│ ### Response:                         │ ### Response:                        │
+│                                       │ 1693129600                           │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+eval | rougeL: 11.370 | exact_match: 0.103 | rev_kl: 2.162 | lens: 73.045 | pt_loss: 1.152 | lm_loss: 1.263 | kd_loss: 1.042 
+Total Steps: 5000 Data Epochs: 10
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  0/ 4 | global iter:      2/  5000| tot_loss: 4.1207 | rl_loss: 2.3742 | pt_loss: 1.7465 | pg_loss: 0.0598 | reg_loss: 2.3143 | reward: -0.6635 | rev_kl: 1.8517 | stu_lens: 113.0000 | mixed_lens: 127.5000 | lr: 5.0000e-08 | scale: 2048.00 | time: 26.182 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  0/ 4 | global iter:      3/  5000| tot_loss: 5.0926 | rl_loss: 3.0285 | pt_loss: 2.0640 | pg_loss: 0.6341 | reg_loss: 2.3944 | reward: -1.4391 | rev_kl: 2.5645 | stu_lens: 94.0000 | mixed_lens: 78.0000 | lr: 1.0000e-07 | scale: 2048.00 | time: 26.643 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  0/ 4 | global iter:      4/  5000| tot_loss: 4.5356 | rl_loss: 3.0207 | pt_loss: 1.5149 | pg_loss: 0.5538 | reg_loss: 2.4670 | reward: -4.1663 | rev_kl: 2.1518 | stu_lens: 128.0000 | mixed_lens: 67.0000 | lr: 1.5000e-07 | scale: 2048.00 | time: 26.594 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  0/ 4 | global iter:      5/  5000| tot_loss: 4.2396 | rl_loss: 2.3753 | pt_loss: 1.8642 | pg_loss: 0.0752 | reg_loss: 2.3001 | reward: -0.4234 | rev_kl: 2.0416 | stu_lens: 114.0000 | mixed_lens: 128.0000 | lr: 2.0000e-07 | scale: 2048.00 | time: 26.639 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  0/ 4 | global iter:      6/  5000| tot_loss: 4.0720 | rl_loss: 2.0833 | pt_loss: 1.9887 | pg_loss: 0.7402 | reg_loss: 1.3432 | reward: -1.2660 | rev_kl: 0.9118 | stu_lens: 57.0000 | mixed_lens: 52.0000 | lr: 2.5000e-07 | scale: 2048.00 | time: 26.555 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  0/ 4 | global iter:      7/  5000| tot_loss: 4.6055 | rl_loss: 2.5673 | pt_loss: 2.0382 | pg_loss: 0.1192 | reg_loss: 2.4481 | reward: -0.4293 | rev_kl: 1.7690 | stu_lens: 83.5000 | mixed_lens: 123.5000 | lr: 3.0000e-07 | scale: 2048.00 | time: 26.564 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  0/ 4 | global iter:      8/  5000| tot_loss: 4.3055 | rl_loss: 3.1675 | pt_loss: 1.1380 | pg_loss: 0.4292 | reg_loss: 2.7382 | reward: -1.4660 | rev_kl: 1.8188 | stu_lens: 60.0000 | mixed_lens: 77.0000 | lr: 3.5000e-07 | scale: 2048.00 | time: 26.553 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  0/ 4 | global iter:      9/  5000| tot_loss: 4.1459 | rl_loss: 2.1815 | pt_loss: 1.9644 | pg_loss: 0.3818 | reg_loss: 1.7997 | reward: -0.4351 | rev_kl: 1.9642 | stu_lens: 105.0000 | mixed_lens: 76.5000 | lr: 4.0000e-07 | scale: 2048.00 | time: 26.590 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  0/ 4 | global iter:     10/  5000| tot_loss: 4.8744 | rl_loss: 2.3421 | pt_loss: 2.5323 | pg_loss: 0.1240 | reg_loss: 2.2181 | reward: -0.5311 | rev_kl: 2.5727 | stu_lens: 89.5000 | mixed_lens: 118.5000 | lr: 4.5000e-07 | scale: 2048.00 | time: 26.556 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  0/ 4 | global iter:     11/  5000| tot_loss: 3.5822 | rl_loss: 1.7981 | pt_loss: 1.7841 | pg_loss: 0.3165 | reg_loss: 1.4816 | reward: -0.5343 | rev_kl: 1.7176 | stu_lens: 24.0000 | mixed_lens: 95.5000 | lr: 5.0000e-07 | scale: 2048.00 | time: 26.589 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  0/ 4 | global iter:     12/  5000| tot_loss: 4.4830 | rl_loss: 2.4479 | pt_loss: 2.0351 | pg_loss: 0.0940 | reg_loss: 2.3539 | reward: -0.5939 | rev_kl: 2.2104 | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 5.5000e-07 | scale: 2048.00 | time: 26.558 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  0/ 4 | global iter:     13/  5000| tot_loss: 3.3938 | rl_loss: 1.5516 | pt_loss: 1.8423 | pg_loss: 0.0376 | reg_loss: 1.5140 | reward: -0.5560 | rev_kl: 2.2435 | stu_lens: 107.5000 | mixed_lens: 128.0000 | lr: 6.0000e-07 | scale: 2048.00 | time: 26.559 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  0/ 4 | global iter:     14/  5000| tot_loss: 4.2107 | rl_loss: 2.0969 | pt_loss: 2.1138 | pg_loss: 0.4976 | reg_loss: 1.5993 | reward: -1.0358 | rev_kl: 1.9356 | stu_lens: 98.5000 | mixed_lens: 77.0000 | lr: 6.5000e-07 | scale: 2048.00 | time: 26.526 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  0/ 4 | global iter:     15/  5000| tot_loss: 4.2728 | rl_loss: 2.5409 | pt_loss: 1.7319 | pg_loss: 0.2015 | reg_loss: 2.3394 | reward: -0.8948 | rev_kl: 1.9978 | stu_lens: 91.5000 | mixed_lens: 105.5000 | lr: 7.0000e-07 | scale: 2048.00 | time: 26.591 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  0/ 4 | global iter:     16/  5000| tot_loss: 4.4955 | rl_loss: 2.7608 | pt_loss: 1.7347 | pg_loss: 0.5007 | reg_loss: 2.2601 | reward: -1.0965 | rev_kl: 2.2388 | stu_lens: 93.5000 | mixed_lens: 71.5000 | lr: 7.5000e-07 | scale: 2048.00 | time: 26.512 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  0/ 4 | global iter:     16/  5000| tot_loss: 4.1921 | rl_loss: 2.4866 | pt_loss: 1.7055 | pg_loss: 0.4425 | reg_loss: 2.0441 | reward: -1.0533 | rev_kl: 1.9348 | stu_lens: 67.7188 | mixed_lens: 83.2969 | lr: 7.5000e-07 | scale: 2048.00 | time: 26.512 | step time: 26.182
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_en/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  0/ 4 | global iter:     17/  5000| tot_loss: 5.5753 | rl_loss: 3.5848 | pt_loss: 1.9905 | pg_loss: 1.5877 | reg_loss: 1.9972 | reward: -1.9396 | rev_kl: 4.1652 | stu_lens: 5.0000 | mixed_lens: 13.0000 | lr: 8.0000e-07 | scale: 2048.00 | time: 26.546 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  1/ 4 | global iter:     18/  5000| tot_loss: 4.1742 | rl_loss: 2.1803 | pt_loss: 1.9939 | pg_loss: 0.0393 | reg_loss: 2.1410 | reward: -0.3410 | rev_kl: 1.8662 | stu_lens: 49.0000 | mixed_lens: 128.0000 | lr: 8.5000e-07 | scale: 2048.00 | time: 26.510 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  1/ 4 | global iter:     19/  5000| tot_loss: 4.3738 | rl_loss: 2.5356 | pt_loss: 1.8382 | pg_loss: 0.2111 | reg_loss: 2.3244 | reward: -0.7596 | rev_kl: 2.5896 | stu_lens: 83.5000 | mixed_lens: 100.5000 | lr: 9.0000e-07 | scale: 2048.00 | time: 26.529 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  1/ 4 | global iter:     20/  5000| tot_loss: 3.5544 | rl_loss: 1.6677 | pt_loss: 1.8867 | pg_loss: 0.0571 | reg_loss: 1.6105 | reward: -0.4496 | rev_kl: 1.9257 | stu_lens: 128.0000 | mixed_lens: 118.5000 | lr: 9.5000e-07 | scale: 2048.00 | time: 26.512 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  1/ 4 | global iter:     21/  5000| tot_loss: 4.0054 | rl_loss: 2.1792 | pt_loss: 1.8262 | pg_loss: 0.1361 | reg_loss: 2.0431 | reward: -0.7404 | rev_kl: 2.9401 | stu_lens: 72.0000 | mixed_lens: 122.0000 | lr: 1.0000e-06 | scale: 2048.00 | time: 26.535 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  1/ 4 | global iter:     22/  5000| tot_loss: 4.7092 | rl_loss: 3.0445 | pt_loss: 1.6646 | pg_loss: 0.8628 | reg_loss: 2.1818 | reward: -1.8325 | rev_kl: 2.4088 | stu_lens: 94.0000 | mixed_lens: 39.0000 | lr: 1.0500e-06 | scale: 2048.00 | time: 26.497 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  1/ 4 | global iter:     23/  5000| tot_loss: 2.5462 | rl_loss: 1.0548 | pt_loss: 1.4914 | pg_loss: 0.0118 | reg_loss: 1.0429 | reward: -0.3320 | rev_kl: 1.8430 | stu_lens: 79.0000 | mixed_lens: 122.0000 | lr: 1.1000e-06 | scale: 2048.00 | time: 26.552 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  1/ 4 | global iter:     24/  5000| tot_loss: 3.9469 | rl_loss: 2.1367 | pt_loss: 1.8102 | pg_loss: 0.1718 | reg_loss: 1.9649 | reward: -0.5343 | rev_kl: 2.5590 | stu_lens: 76.5000 | mixed_lens: 106.5000 | lr: 1.1500e-06 | scale: 2048.00 | time: 26.488 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  1/ 4 | global iter:     25/  5000| tot_loss: 5.2064 | rl_loss: 2.9631 | pt_loss: 2.2432 | pg_loss: 0.7850 | reg_loss: 2.1781 | reward: -1.3731 | rev_kl: 2.9910 | stu_lens: 41.0000 | mixed_lens: 66.5000 | lr: 1.2000e-06 | scale: 2048.00 | time: 26.545 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  1/ 4 | global iter:     26/  5000| tot_loss: 3.7303 | rl_loss: 2.1892 | pt_loss: 1.5411 | pg_loss: 0.0395 | reg_loss: 2.1498 | reward: -0.5633 | rev_kl: 3.5754 | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 1.2500e-06 | scale: 2048.00 | time: 26.501 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  1/ 4 | global iter:     27/  5000| tot_loss: 4.6744 | rl_loss: 2.9581 | pt_loss: 1.7162 | pg_loss: 0.5864 | reg_loss: 2.3717 | reward: -4.0853 | rev_kl: 2.0191 | stu_lens: 114.0000 | mixed_lens: 67.0000 | lr: 1.3000e-06 | scale: 2048.00 | time: 26.536 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  1/ 4 | global iter:     28/  5000| tot_loss: 3.4971 | rl_loss: 1.8232 | pt_loss: 1.6739 | pg_loss: 0.1622 | reg_loss: 1.6610 | reward: -0.3444 | rev_kl: 2.1612 | stu_lens: 77.5000 | mixed_lens: 102.0000 | lr: 1.3500e-06 | scale: 2048.00 | time: 26.506 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  1/ 4 | global iter:     29/  5000| tot_loss: 4.4472 | rl_loss: 3.0360 | pt_loss: 1.4112 | pg_loss: 0.8715 | reg_loss: 2.1645 | reward: -0.7523 | rev_kl: 1.9143 | stu_lens: 44.0000 | mixed_lens: 54.0000 | lr: 1.4000e-06 | scale: 2048.00 | time: 26.552 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  1/ 4 | global iter:     30/  5000| tot_loss: 6.0638 | rl_loss: 4.4428 | pt_loss: 1.6209 | pg_loss: 2.0659 | reg_loss: 2.3769 | reward: -6.4126 | rev_kl: 1.0931 | stu_lens: 12.0000 | mixed_lens: 11.0000 | lr: 1.4500e-06 | scale: 2048.00 | time: 26.503 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  1/ 4 | global iter:     31/  5000| tot_loss: 4.0597 | rl_loss: 1.9851 | pt_loss: 2.0747 | pg_loss: 0.0110 | reg_loss: 1.9740 | reward: -0.6925 | rev_kl: 1.8250 | stu_lens: 77.5000 | mixed_lens: 128.0000 | lr: 1.5000e-06 | scale: 2048.00 | time: 26.545 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  1/ 4 | global iter:     32/  5000| tot_loss: 3.7518 | rl_loss: 1.6923 | pt_loss: 2.0595 | pg_loss: 0.7143 | reg_loss: 0.9780 | reward: -1.0499 | rev_kl: 1.2517 | stu_lens: 42.0000 | mixed_lens: 45.0000 | lr: 1.5500e-06 | scale: 2048.00 | time: 26.515 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  1/ 4 | global iter:     32/  5000| tot_loss: 4.2085 | rl_loss: 2.4136 | pt_loss: 1.7949 | pg_loss: 0.4560 | reg_loss: 1.9576 | reward: -1.1638 | rev_kl: 2.2371 | stu_lens: 68.2500 | mixed_lens: 86.4219 | lr: 1.5500e-06 | scale: 2048.00 | time: 26.515 | step time: 27.751
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_en/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  1/ 4 | global iter:     33/  5000| tot_loss: 4.1540 | rl_loss: 2.2465 | pt_loss: 1.9075 | pg_loss: 0.1034 | reg_loss: 2.1431 | reward: -0.4874 | rev_kl: 2.4039 | stu_lens: 50.0000 | mixed_lens: 118.0000 | lr: 1.6000e-06 | scale: 2048.00 | time: 26.537 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  2/ 4 | global iter:     34/  5000| tot_loss: 3.6158 | rl_loss: 1.9286 | pt_loss: 1.6872 | pg_loss: 0.8480 | reg_loss: 1.0807 | reward: -1.1983 | rev_kl: 1.0040 | stu_lens: 38.5000 | mixed_lens: 44.0000 | lr: 1.6500e-06 | scale: 2048.00 | time: 26.490 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  2/ 4 | global iter:     35/  5000| tot_loss: 5.6695 | rl_loss: 3.7103 | pt_loss: 1.9593 | pg_loss: 1.6588 | reg_loss: 2.0515 | reward: -2.4188 | rev_kl: 1.2481 | stu_lens: 66.5000 | mixed_lens: 20.5000 | lr: 1.7000e-06 | scale: 2048.00 | time: 26.520 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  2/ 4 | global iter:     36/  5000| tot_loss: 4.0172 | rl_loss: 2.4673 | pt_loss: 1.5498 | pg_loss: 0.4903 | reg_loss: 1.9771 | reward: -1.4856 | rev_kl: 2.8410 | stu_lens: 57.5000 | mixed_lens: 78.0000 | lr: 1.7500e-06 | scale: 2048.00 | time: 26.477 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  2/ 4 | global iter:     37/  5000| tot_loss: 2.8089 | rl_loss: 1.2895 | pt_loss: 1.5194 | pg_loss: -0.0122 | reg_loss: 1.3017 | reward: -0.5472 | rev_kl: 2.3367 | stu_lens: 74.0000 | mixed_lens: 128.0000 | lr: 1.8000e-06 | scale: 2048.00 | time: 26.530 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  2/ 4 | global iter:     38/  5000| tot_loss: 3.1406 | rl_loss: 1.4141 | pt_loss: 1.7265 | pg_loss: 0.0824 | reg_loss: 1.3316 | reward: -0.3832 | rev_kl: 1.7487 | stu_lens: 88.5000 | mixed_lens: 118.0000 | lr: 1.8500e-06 | scale: 2048.00 | time: 26.467 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  2/ 4 | global iter:     39/  5000| tot_loss: 3.2875 | rl_loss: 2.0104 | pt_loss: 1.2771 | pg_loss: 0.5280 | reg_loss: 1.4824 | reward: -1.1774 | rev_kl: 1.9639 | stu_lens: 67.0000 | mixed_lens: 66.5000 | lr: 1.9000e-06 | scale: 2048.00 | time: 26.514 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  2/ 4 | global iter:     40/  5000| tot_loss: 3.3014 | rl_loss: 1.4505 | pt_loss: 1.8509 | pg_loss: -0.0164 | reg_loss: 1.4668 | reward: -0.6428 | rev_kl: 2.4527 | stu_lens: 92.5000 | mixed_lens: 128.0000 | lr: 1.9500e-06 | scale: 2048.00 | time: 26.476 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  2/ 4 | global iter:     41/  5000| tot_loss: 3.2578 | rl_loss: 1.7540 | pt_loss: 1.5038 | pg_loss: 1.2140 | reg_loss: 0.5400 | reward: -1.3339 | rev_kl: 2.5108 | stu_lens: 24.0000 | mixed_lens: 35.0000 | lr: 2.0000e-06 | scale: 2048.00 | time: 26.478 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  2/ 4 | global iter:     42/  5000| tot_loss: 3.1446 | rl_loss: 1.4827 | pt_loss: 1.6619 | pg_loss: 0.1492 | reg_loss: 1.3335 | reward: -0.5998 | rev_kl: 1.6921 | stu_lens: 52.0000 | mixed_lens: 100.5000 | lr: 2.0500e-06 | scale: 2048.00 | time: 26.449 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  2/ 4 | global iter:     43/  5000| tot_loss: 3.6588 | rl_loss: 1.8726 | pt_loss: 1.7863 | pg_loss: 0.4303 | reg_loss: 1.4423 | reward: -1.0101 | rev_kl: 2.1263 | stu_lens: 32.5000 | mixed_lens: 77.0000 | lr: 2.1000e-06 | scale: 2048.00 | time: 26.501 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  2/ 4 | global iter:     44/  5000| tot_loss: 3.8794 | rl_loss: 1.9390 | pt_loss: 1.9404 | pg_loss: 0.5489 | reg_loss: 1.3901 | reward: -0.7719 | rev_kl: 1.8228 | stu_lens: 65.0000 | mixed_lens: 76.5000 | lr: 2.1500e-06 | scale: 2048.00 | time: 26.439 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  2/ 4 | global iter:     45/  5000| tot_loss: 2.8230 | rl_loss: 1.6078 | pt_loss: 1.2153 | pg_loss: 0.3336 | reg_loss: 1.2741 | reward: -0.6801 | rev_kl: 2.2913 | stu_lens: 66.5000 | mixed_lens: 89.5000 | lr: 2.2000e-06 | scale: 2048.00 | time: 26.471 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  2/ 4 | global iter:     46/  5000| tot_loss: 3.1511 | rl_loss: 1.4829 | pt_loss: 1.6682 | pg_loss: 0.4731 | reg_loss: 1.0098 | reward: -1.4245 | rev_kl: 1.8909 | stu_lens: 74.0000 | mixed_lens: 67.5000 | lr: 2.2500e-06 | scale: 2048.00 | time: 26.456 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  2/ 4 | global iter:     47/  5000| tot_loss: 3.1742 | rl_loss: 1.3297 | pt_loss: 1.8444 | pg_loss: 0.1709 | reg_loss: 1.1588 | reward: -0.5446 | rev_kl: 2.1832 | stu_lens: 76.5000 | mixed_lens: 106.5000 | lr: 2.3000e-06 | scale: 2048.00 | time: 26.504 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  2/ 4 | global iter:     48/  5000| tot_loss: 3.5012 | rl_loss: 2.0524 | pt_loss: 1.4489 | pg_loss: 1.1153 | reg_loss: 0.9371 | reward: -0.4810 | rev_kl: 2.2727 | stu_lens: 63.0000 | mixed_lens: 36.0000 | lr: 2.3500e-06 | scale: 2048.00 | time: 26.452 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  2/ 4 | global iter:     48/  5000| tot_loss: 3.5731 | rl_loss: 1.8180 | pt_loss: 1.7551 | pg_loss: 0.4163 | reg_loss: 1.4016 | reward: -1.1451 | rev_kl: 2.1580 | stu_lens: 69.0781 | mixed_lens: 86.2188 | lr: 2.3500e-06 | scale: 2048.00 | time: 26.452 | step time: 27.713
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_en/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  2/ 4 | global iter:     49/  5000| tot_loss: 2.4307 | rl_loss: 1.0754 | pt_loss: 1.3553 | pg_loss: 0.2246 | reg_loss: 0.8507 | reward: -0.5955 | rev_kl: 1.3169 | stu_lens: 20.0000 | mixed_lens: 101.5000 | lr: 2.4000e-06 | scale: 2048.00 | time: 26.482 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  3/ 4 | global iter:     50/  5000| tot_loss: 3.7526 | rl_loss: 1.6119 | pt_loss: 2.1407 | pg_loss: 0.8074 | reg_loss: 0.8045 | reward: -1.2409 | rev_kl: 2.6054 | stu_lens: 37.0000 | mixed_lens: 63.0000 | lr: 2.4500e-06 | scale: 2048.00 | time: 26.510 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  3/ 4 | global iter:     51/  5000| tot_loss: 2.6254 | rl_loss: 1.2756 | pt_loss: 1.3498 | pg_loss: 0.0589 | reg_loss: 1.2166 | reward: -0.5356 | rev_kl: 2.1247 | stu_lens: 76.0000 | mixed_lens: 128.0000 | lr: 2.5000e-06 | scale: 2048.00 | time: 26.477 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  3/ 4 | global iter:     52/  5000| tot_loss: 2.9914 | rl_loss: 1.3038 | pt_loss: 1.6876 | pg_loss: 0.5281 | reg_loss: 0.7757 | reward: -1.4208 | rev_kl: 1.4683 | stu_lens: 29.5000 | mixed_lens: 72.5000 | lr: 2.5500e-06 | scale: 2048.00 | time: 26.495 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  3/ 4 | global iter:     53/  5000| tot_loss: 3.7957 | rl_loss: 1.8427 | pt_loss: 1.9530 | pg_loss: 1.5586 | reg_loss: 0.2840 | reward: -1.6179 | rev_kl: 2.8695 | stu_lens: 20.5000 | mixed_lens: 21.0000 | lr: 2.6000e-06 | scale: 2048.00 | time: 26.482 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  3/ 4 | global iter:     54/  5000| tot_loss: 2.8264 | rl_loss: 0.9852 | pt_loss: 1.8413 | pg_loss: 0.1572 | reg_loss: 0.8280 | reward: -0.7003 | rev_kl: 2.2989 | stu_lens: 83.5000 | mixed_lens: 100.5000 | lr: 2.6500e-06 | scale: 2048.00 | time: 26.476 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  3/ 4 | global iter:     55/  5000| tot_loss: 2.8055 | rl_loss: 1.1053 | pt_loss: 1.7001 | pg_loss: 0.3585 | reg_loss: 0.7468 | reward: -0.9646 | rev_kl: 2.2767 | stu_lens: 40.0000 | mixed_lens: 84.0000 | lr: 2.7000e-06 | scale: 2048.00 | time: 26.495 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  3/ 4 | global iter:     56/  5000| tot_loss: 2.5681 | rl_loss: 0.7057 | pt_loss: 1.8624 | pg_loss: 0.0083 | reg_loss: 0.6973 | reward: -0.4284 | rev_kl: 1.9808 | stu_lens: 80.5000 | mixed_lens: 128.0000 | lr: 2.7500e-06 | scale: 2048.00 | time: 26.459 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  3/ 4 | global iter:     57/  5000| tot_loss: 2.5804 | rl_loss: 0.8822 | pt_loss: 1.6982 | pg_loss: 0.0430 | reg_loss: 0.8392 | reward: -0.5515 | rev_kl: 2.0812 | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 2.8000e-06 | scale: 2048.00 | time: 26.481 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  3/ 4 | global iter:     58/  5000| tot_loss: 2.0934 | rl_loss: 0.5531 | pt_loss: 1.5403 | pg_loss: 0.2559 | reg_loss: 0.2972 | reward: -0.6420 | rev_kl: 1.2253 | stu_lens: 71.0000 | mixed_lens: 82.5000 | lr: 2.8500e-06 | scale: 2048.00 | time: 26.444 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  3/ 4 | global iter:     59/  5000| tot_loss: 3.3720 | rl_loss: 1.6597 | pt_loss: 1.7122 | pg_loss: 0.5574 | reg_loss: 1.1024 | reward: -1.4856 | rev_kl: 2.8410 | stu_lens: 57.5000 | mixed_lens: 78.0000 | lr: 2.9000e-06 | scale: 2048.00 | time: 26.467 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  3/ 4 | global iter:     60/  5000| tot_loss: 2.8078 | rl_loss: 1.3102 | pt_loss: 1.4975 | pg_loss: 0.2822 | reg_loss: 1.0280 | reward: -0.6706 | rev_kl: 2.2031 | stu_lens: 34.5000 | mixed_lens: 101.5000 | lr: 2.9500e-06 | scale: 2048.00 | time: 26.482 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  3/ 4 | global iter:     61/  5000| tot_loss: 2.9625 | rl_loss: 1.2675 | pt_loss: 1.6949 | pg_loss: 0.2404 | reg_loss: 1.0272 | reward: -0.8163 | rev_kl: 1.7393 | stu_lens: 128.0000 | mixed_lens: 100.5000 | lr: 3.0000e-06 | scale: 2048.00 | time: 26.460 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  3/ 4 | global iter:     62/  5000| tot_loss: 2.3069 | rl_loss: 0.8116 | pt_loss: 1.4952 | pg_loss: 0.0374 | reg_loss: 0.7742 | reward: -0.5738 | rev_kl: 1.9527 | stu_lens: 92.5000 | mixed_lens: 128.0000 | lr: 3.0500e-06 | scale: 2048.00 | time: 26.443 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  3/ 4 | global iter:     63/  5000| tot_loss: 3.3558 | rl_loss: 1.3258 | pt_loss: 2.0300 | pg_loss: 0.6021 | reg_loss: 0.7237 | reward: -0.6085 | rev_kl: 2.6728 | stu_lens: 69.5000 | mixed_lens: 70.5000 | lr: 3.1000e-06 | scale: 2048.00 | time: 26.455 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  3/ 4 | global iter:     64/  5000| tot_loss: 2.2146 | rl_loss: 0.9003 | pt_loss: 1.3144 | pg_loss: 0.3486 | reg_loss: 0.5517 | reward: -5.3515 | rev_kl: 1.7977 | stu_lens: 24.5000 | mixed_lens: 59.5000 | lr: 3.1500e-06 | scale: 2048.00 | time: 26.420 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  3/ 4 | global iter:     64/  5000| tot_loss: 2.9128 | rl_loss: 1.2065 | pt_loss: 1.7063 | pg_loss: 0.3817 | reg_loss: 0.8248 | reward: -1.0829 | rev_kl: 2.1592 | stu_lens: 69.4375 | mixed_lens: 90.7344 | lr: 3.1500e-06 | scale: 2048.00 | time: 26.420 | step time: 27.698
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_en/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  3/ 4 | global iter:     65/  5000| tot_loss: 2.7271 | rl_loss: 1.1814 | pt_loss: 1.5457 | pg_loss: 0.4313 | reg_loss: 0.7501 | reward: -1.4643 | rev_kl: 2.0473 | stu_lens: 128.0000 | mixed_lens: 65.5000 | lr: 3.2000e-06 | scale: 2048.00 | time: 26.512 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  0/ 4 | global iter:     66/  5000| tot_loss: 3.5855 | rl_loss: 1.9433 | pt_loss: 1.6422 | pg_loss: 0.3425 | reg_loss: 1.6008 | reward: -0.3478 | rev_kl: 1.2578 | stu_lens: 85.0000 | mixed_lens: 94.5000 | lr: 3.2500e-06 | scale: 2048.00 | time: 26.493 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  0/ 4 | global iter:     67/  5000| tot_loss: 3.5566 | rl_loss: 1.8454 | pt_loss: 1.7111 | pg_loss: 0.6107 | reg_loss: 1.2347 | reward: -1.0203 | rev_kl: 0.5865 | stu_lens: 69.0000 | mixed_lens: 53.5000 | lr: 3.3000e-06 | scale: 2048.00 | time: 26.488 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  0/ 4 | global iter:     68/  5000| tot_loss: 3.8899 | rl_loss: 2.4588 | pt_loss: 1.4311 | pg_loss: 1.1470 | reg_loss: 1.3118 | reward: -0.7651 | rev_kl: 1.3306 | stu_lens: 33.0000 | mixed_lens: 35.5000 | lr: 3.3500e-06 | scale: 2048.00 | time: 26.426 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  0/ 4 | global iter:     69/  5000| tot_loss: 2.9222 | rl_loss: 0.8361 | pt_loss: 2.0861 | pg_loss: 0.6478 | reg_loss: 0.1883 | reward: -0.1944 | rev_kl: 1.0110 | stu_lens: 26.5000 | mixed_lens: 36.5000 | lr: 3.4000e-06 | scale: 2048.00 | time: 26.515 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  0/ 4 | global iter:     70/  5000| tot_loss: 3.2273 | rl_loss: 1.4509 | pt_loss: 1.7764 | pg_loss: 0.3605 | reg_loss: 1.0903 | reward: -2.8205 | rev_kl: 0.8931 | stu_lens: 77.0000 | mixed_lens: 66.5000 | lr: 3.4500e-06 | scale: 2048.00 | time: 26.442 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  0/ 4 | global iter:     71/  5000| tot_loss: 3.3143 | rl_loss: 1.6298 | pt_loss: 1.6845 | pg_loss: 0.1626 | reg_loss: 1.4672 | reward: -0.3417 | rev_kl: 0.7172 | stu_lens: 74.0000 | mixed_lens: 111.0000 | lr: 3.5000e-06 | scale: 2048.00 | time: 26.508 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  0/ 4 | global iter:     72/  5000| tot_loss: 3.7168 | rl_loss: 1.8644 | pt_loss: 1.8524 | pg_loss: 0.3473 | reg_loss: 1.5171 | reward: -0.3614 | rev_kl: 1.4031 | stu_lens: 85.0000 | mixed_lens: 89.5000 | lr: 3.5500e-06 | scale: 2048.00 | time: 26.445 | step time: 0.000
+[2023-12-13 15:22:18,120] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2048, but hysteresis is 4. Reducing hysteresis to 3
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  0/ 4 | global iter:     73/  5000| tot_loss: 1.9345 | rl_loss: 0.0674 | pt_loss: 1.8671 | pg_loss: -0.6108 | reg_loss: 0.6783 | reward: 0.3001 | rev_kl: 0.9372 | stu_lens: 27.5000 | mixed_lens: 32.0000 | lr: 3.5500e-06 | scale: 2048.00 | time: 2.909 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  0/ 4 | global iter:     74/  5000| tot_loss: 3.2230 | rl_loss: 1.4589 | pt_loss: 1.7641 | pg_loss: 0.3038 | reg_loss: 1.1551 | reward: -0.4659 | rev_kl: 1.9123 | stu_lens: 95.0000 | mixed_lens: 82.5000 | lr: 3.6000e-06 | scale: 2048.00 | time: 26.483 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  0/ 4 | global iter:     75/  5000| tot_loss: 3.8127 | rl_loss: 1.9192 | pt_loss: 1.8935 | pg_loss: 0.6030 | reg_loss: 1.3162 | reward: -1.6239 | rev_kl: 1.4291 | stu_lens: 70.0000 | mixed_lens: 68.0000 | lr: 3.6500e-06 | scale: 2048.00 | time: 26.460 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  0/ 4 | global iter:     76/  5000| tot_loss: 3.5520 | rl_loss: 1.9241 | pt_loss: 1.6279 | pg_loss: 0.5633 | reg_loss: 1.3608 | reward: -0.6863 | rev_kl: 0.8885 | stu_lens: 106.0000 | mixed_lens: 76.5000 | lr: 3.7000e-06 | scale: 2048.00 | time: 26.477 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  0/ 4 | global iter:     77/  5000| tot_loss: 4.0667 | rl_loss: 2.6523 | pt_loss: 1.4144 | pg_loss: 0.9986 | reg_loss: 1.6537 | reward: -0.7303 | rev_kl: 1.7208 | stu_lens: 72.5000 | mixed_lens: 51.5000 | lr: 3.7500e-06 | scale: 2048.00 | time: 26.490 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  0/ 4 | global iter:     78/  5000| tot_loss: 3.1098 | rl_loss: 1.0649 | pt_loss: 2.0450 | pg_loss: 0.0426 | reg_loss: 1.0222 | reward: -0.0393 | rev_kl: 1.3963 | stu_lens: 78.0000 | mixed_lens: 128.0000 | lr: 3.8000e-06 | scale: 2048.00 | time: 26.500 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  0/ 4 | global iter:     79/  5000| tot_loss: 3.5413 | rl_loss: 1.4596 | pt_loss: 2.0817 | pg_loss: 0.2246 | reg_loss: 1.2350 | reward: -0.2429 | rev_kl: 1.3630 | stu_lens: 128.0000 | mixed_lens: 89.0000 | lr: 3.8500e-06 | scale: 2048.00 | time: 26.490 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  0/ 4 | global iter:     80/  5000| tot_loss: 3.4989 | rl_loss: 1.6048 | pt_loss: 1.8942 | pg_loss: 0.0595 | reg_loss: 1.5452 | reward: -0.2205 | rev_kl: 1.8266 | stu_lens: 116.5000 | mixed_lens: 128.0000 | lr: 3.9000e-06 | scale: 2048.00 | time: 26.519 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  0/ 4 | global iter:     80/  5000| tot_loss: 3.4770 | rl_loss: 1.7182 | pt_loss: 1.7588 | pg_loss: 0.4590 | reg_loss: 1.2592 | reward: -0.6028 | rev_kl: 1.3417 | stu_lens: 77.4688 | mixed_lens: 73.8750 | lr: 3.9000e-06 | scale: 2048.00 | time: 26.519 | step time: 26.230
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_en/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  0/ 4 | global iter:     81/  5000| tot_loss: 3.9195 | rl_loss: 1.9222 | pt_loss: 1.9973 | pg_loss: 0.3272 | reg_loss: 1.5950 | reward: -0.5198 | rev_kl: 1.1176 | stu_lens: 59.0000 | mixed_lens: 103.0000 | lr: 3.9500e-06 | scale: 2048.00 | time: 26.486 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  1/ 4 | global iter:     82/  5000| tot_loss: 3.1385 | rl_loss: 1.2145 | pt_loss: 1.9240 | pg_loss: 0.0665 | reg_loss: 1.1479 | reward: -0.1464 | rev_kl: 1.8077 | stu_lens: 96.5000 | mixed_lens: 128.0000 | lr: 4.0000e-06 | scale: 2048.00 | time: 26.518 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  1/ 4 | global iter:     83/  5000| tot_loss: 2.9405 | rl_loss: 0.9385 | pt_loss: 2.0019 | pg_loss: 0.1234 | reg_loss: 0.8151 | reward: -0.1641 | rev_kl: 1.2448 | stu_lens: 74.0000 | mixed_lens: 111.0000 | lr: 4.0500e-06 | scale: 2048.00 | time: 26.467 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  1/ 4 | global iter:     84/  5000| tot_loss: 3.1132 | rl_loss: 1.4438 | pt_loss: 1.6694 | pg_loss: 0.4736 | reg_loss: 0.9702 | reward: -1.5232 | rev_kl: 1.2308 | stu_lens: 84.0000 | mixed_lens: 78.0000 | lr: 4.1000e-06 | scale: 2048.00 | time: 26.474 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  1/ 4 | global iter:     85/  5000| tot_loss: 3.2548 | rl_loss: 1.0685 | pt_loss: 2.1862 | pg_loss: 0.3009 | reg_loss: 0.7676 | reward: -0.3129 | rev_kl: 0.5577 | stu_lens: 106.0000 | mixed_lens: 104.0000 | lr: 4.1500e-06 | scale: 2048.00 | time: 26.450 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  1/ 4 | global iter:     86/  5000| tot_loss: 3.8794 | rl_loss: 1.9208 | pt_loss: 1.9586 | pg_loss: 1.2134 | reg_loss: 0.7074 | reward: -1.0986 | rev_kl: 1.0027 | stu_lens: 13.5000 | mixed_lens: 33.0000 | lr: 4.2000e-06 | scale: 2048.00 | time: 26.465 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  1/ 4 | global iter:     87/  5000| tot_loss: 2.7123 | rl_loss: 0.9505 | pt_loss: 1.7618 | pg_loss: 0.2402 | reg_loss: 0.7103 | reward: -0.1654 | rev_kl: 1.2609 | stu_lens: 128.0000 | mixed_lens: 96.5000 | lr: 4.2500e-06 | scale: 2048.00 | time: 26.437 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  1/ 4 | global iter:     88/  5000| tot_loss: 2.1748 | rl_loss: 0.4783 | pt_loss: 1.6966 | pg_loss: 0.2899 | reg_loss: 0.1884 | reward: -0.1929 | rev_kl: 0.7081 | stu_lens: 62.0000 | mixed_lens: 79.5000 | lr: 4.3000e-06 | scale: 2048.00 | time: 26.436 | step time: 0.000
+[2023-12-13 15:29:19,356] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2048, but hysteresis is 3. Reducing hysteresis to 2
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  1/ 4 | global iter:     89/  5000| tot_loss: 1.9791 | rl_loss: -0.0427 | pt_loss: 2.0218 | pg_loss: -0.6464 | reg_loss: 0.6037 | reward: 0.3001 | rev_kl: 0.9372 | stu_lens: 27.5000 | mixed_lens: 32.0000 | lr: 4.3000e-06 | scale: 2048.00 | time: 2.891 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  1/ 4 | global iter:     90/  5000| tot_loss: 2.9689 | rl_loss: 1.2382 | pt_loss: 1.7306 | pg_loss: 0.4194 | reg_loss: 0.8188 | reward: -0.6927 | rev_kl: 1.1757 | stu_lens: 80.0000 | mixed_lens: 76.0000 | lr: 4.3500e-06 | scale: 2048.00 | time: 26.400 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  1/ 4 | global iter:     91/  5000| tot_loss: 2.9041 | rl_loss: 0.8289 | pt_loss: 2.0752 | pg_loss: 0.2730 | reg_loss: 0.5559 | reward: -0.4196 | rev_kl: 1.4200 | stu_lens: 95.0000 | mixed_lens: 81.0000 | lr: 4.4000e-06 | scale: 2048.00 | time: 26.451 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  1/ 4 | global iter:     92/  5000| tot_loss: 2.8834 | rl_loss: 1.1062 | pt_loss: 1.7772 | pg_loss: 0.4587 | reg_loss: 0.6475 | reward: -0.1185 | rev_kl: 1.4788 | stu_lens: 67.5000 | mixed_lens: 70.0000 | lr: 4.4500e-06 | scale: 2048.00 | time: 26.449 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  1/ 4 | global iter:     93/  5000| tot_loss: 4.3644 | rl_loss: 2.3391 | pt_loss: 2.0254 | pg_loss: 1.1268 | reg_loss: 1.2122 | reward: -1.7619 | rev_kl: 1.2736 | stu_lens: 46.5000 | mixed_lens: 47.0000 | lr: 4.5000e-06 | scale: 2048.00 | time: 26.496 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  1/ 4 | global iter:     94/  5000| tot_loss: 3.5497 | rl_loss: 1.5558 | pt_loss: 1.9939 | pg_loss: 0.4168 | reg_loss: 1.1390 | reward: -0.5767 | rev_kl: 1.1940 | stu_lens: 128.0000 | mixed_lens: 84.5000 | lr: 4.5500e-06 | scale: 2048.00 | time: 26.454 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  1/ 4 | global iter:     95/  5000| tot_loss: 2.5865 | rl_loss: 0.7240 | pt_loss: 1.8625 | pg_loss: -0.0077 | reg_loss: 0.7317 | reward: -0.3019 | rev_kl: 1.2663 | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 4.6000e-06 | scale: 2048.00 | time: 26.484 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  1/ 4 | global iter:     96/  5000| tot_loss: 3.0040 | rl_loss: 1.3627 | pt_loss: 1.6413 | pg_loss: 0.5106 | reg_loss: 0.8521 | reward: -0.4850 | rev_kl: 2.2904 | stu_lens: 19.0000 | mixed_lens: 53.0000 | lr: 4.6500e-06 | scale: 2048.00 | time: 26.456 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  1/ 4 | global iter:     96/  5000| tot_loss: 3.0980 | rl_loss: 1.2463 | pt_loss: 1.8516 | pg_loss: 0.3752 | reg_loss: 0.8712 | reward: -0.5306 | rev_kl: 1.3586 | stu_lens: 80.4688 | mixed_lens: 80.6562 | lr: 4.6500e-06 | scale: 2048.00 | time: 26.456 | step time: 26.215
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_en/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  1/ 4 | global iter:     97/  5000| tot_loss: 3.2276 | rl_loss: 1.4579 | pt_loss: 1.7697 | pg_loss: 0.9285 | reg_loss: 0.5294 | reward: -0.3836 | rev_kl: 0.6133 | stu_lens: 30.5000 | mixed_lens: 39.0000 | lr: 4.7000e-06 | scale: 2048.00 | time: 26.516 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  2/ 4 | global iter:     98/  5000| tot_loss: 2.1177 | rl_loss: 0.5068 | pt_loss: 1.6109 | pg_loss: 0.0063 | reg_loss: 0.5005 | reward: -0.1211 | rev_kl: 1.0971 | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 4.7500e-06 | scale: 2048.00 | time: 26.486 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  2/ 4 | global iter:     99/  5000| tot_loss: 2.6857 | rl_loss: 0.7860 | pt_loss: 1.8997 | pg_loss: 0.2975 | reg_loss: 0.4885 | reward: -0.5942 | rev_kl: 2.0305 | stu_lens: 47.0000 | mixed_lens: 87.0000 | lr: 4.8000e-06 | scale: 2048.00 | time: 26.532 | step time: 0.000
+                                 Evaluation #1                                  
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ prompts                               ┃ samples                              ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Below is an instruction that          │ Below is an instruction that         │
+│ describes a task. Write a response    │ describes a task. Write a response   │
+│ that appropriately completes the      │ that appropriately completes the     │
+│ request.                              │ request.                             │
+│                                       │                                      │
+│ ### Instruction:                      │ ### Instruction:                     │
+│ Convert the above time to Pacific     │ Convert the above time to Pacific    │
+│ Standard Time.                        │ Standard Time.                       │
+│                                       │                                      │
+│ ### Response:                         │ ### Response:                        │
+│                                       │ 11:19 PM PST                         │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│ Below is an instruction that          │ Below is an instruction that         │
+│ describes a task. Write a response    │ describes a task. Write a response   │
+│ that appropriately completes the      │ that appropriately completes the     │
+│ request.                              │ request.                             │
+│                                       │                                      │
+│ ### Instruction:                      │ ### Instruction:                     │
+│ What about in unix 'epoch' time?      │ What about in unix 'epoch' time?     │
+│ (assume 0 seconds)?                   │ (assume 0 seconds)?                  │
+│                                       │                                      │
+│ ### Response:                         │ ### Response:                        │
+│                                       │ In unix 'epoch' time, 0 seconds      │
+│                                       │ would be 1970-01-01 00:00:00.000000  │
+│                                       │ UTC.                                 │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│ Below is an instruction that          │ Below is an instruction that         │
+│ describes a task. Write a response    │ describes a task. Write a response   │
+│ that appropriately completes the      │ that appropriately completes the     │
+│ request.                              │ request.                             │
+│                                       │                                      │
+│ ### Instruction:                      │ ### Instruction:                     │
+│ What about in unix 'epoch' time?      │ What about in unix 'epoch' time?     │
+│ (assume 0 seconds)?                   │ (assume 0 seconds)?                  │
+│                                       │                                      │
+│ ### Response:                         │ ### Response:                        │
+│                                       │ Zero seconds is the same as          │
+│                                       │ 1970-01-01 00:00:00 in unix time.    │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+eval | rougeL: 16.311 | exact_match: 0.000 | rev_kl: 1.258 | lens: 95.624 | pt_loss: 1.117 | lm_loss: 1.229 | kd_loss: 1.006 
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  2/ 4 | global iter:    100/  5000| tot_loss: 3.5596 | rl_loss: 1.3861 | pt_loss: 2.1734 | pg_loss: 0.6008 | reg_loss: 0.7853 | reward: -0.3638 | rev_kl: 1.9353 | stu_lens: 68.5000 | mixed_lens: 63.0000 | lr: 4.8500e-06 | scale: 2048.00 | time: 26.491 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  2/ 4 | global iter:    101/  5000| tot_loss: 3.5185 | rl_loss: 1.6993 | pt_loss: 1.8192 | pg_loss: 1.0296 | reg_loss: 0.6697 | reward: -1.4474 | rev_kl: 1.7947 | stu_lens: 54.0000 | mixed_lens: 42.0000 | lr: 4.9000e-06 | scale: 2048.00 | time: 26.451 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  2/ 4 | global iter:    102/  5000| tot_loss: 2.5987 | rl_loss: 0.8545 | pt_loss: 1.7442 | pg_loss: 0.2041 | reg_loss: 0.6504 | reward: -0.6376 | rev_kl: 1.3660 | stu_lens: 128.0000 | mixed_lens: 87.5000 | lr: 4.9500e-06 | scale: 2048.00 | time: 26.499 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  2/ 4 | global iter:    103/  5000| tot_loss: 2.5786 | rl_loss: 0.7248 | pt_loss: 1.8539 | pg_loss: 0.5779 | reg_loss: 0.1469 | reward: -0.1944 | rev_kl: 1.0110 | stu_lens: 26.5000 | mixed_lens: 36.5000 | lr: 5.0000e-06 | scale: 2048.00 | time: 26.424 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  2/ 4 | global iter:    104/  5000| tot_loss: 2.3298 | rl_loss: 0.9428 | pt_loss: 1.3870 | pg_loss: 0.3480 | reg_loss: 0.5948 | reward: -0.1255 | rev_kl: 0.9810 | stu_lens: 80.5000 | mixed_lens: 83.5000 | lr: 5.0000e-06 | scale: 2048.00 | time: 26.458 | step time: 0.000
+[2023-12-13 16:02:35,448] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2048, but hysteresis is 2. Reducing hysteresis to 1
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  2/ 4 | global iter:    105/  5000| tot_loss: 1.7027 | rl_loss: 0.4046 | pt_loss: 1.2980 | pg_loss: 0.1454 | reg_loss: 0.2592 | reward: -0.2362 | rev_kl: 1.2093 | stu_lens: 66.0000 | mixed_lens: 103.0000 | lr: 5.0000e-06 | scale: 2048.00 | time: 2.892 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  2/ 4 | global iter:    106/  5000| tot_loss: 2.8367 | rl_loss: 1.0593 | pt_loss: 1.7774 | pg_loss: 0.2419 | reg_loss: 0.8174 | reward: 0.0068 | rev_kl: 1.5840 | stu_lens: 36.0000 | mixed_lens: 70.0000 | lr: 5.0000e-06 | scale: 2048.00 | time: 26.413 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  2/ 4 | global iter:    107/  5000| tot_loss: 3.1321 | rl_loss: 0.9908 | pt_loss: 2.1414 | pg_loss: 0.3354 | reg_loss: 0.6554 | reward: -0.3344 | rev_kl: 1.1687 | stu_lens: 81.0000 | mixed_lens: 86.5000 | lr: 5.0000e-06 | scale: 2048.00 | time: 26.463 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  2/ 4 | global iter:    108/  5000| tot_loss: 2.3988 | rl_loss: 0.7617 | pt_loss: 1.6371 | pg_loss: 0.2446 | reg_loss: 0.5171 | reward: -0.2471 | rev_kl: 1.3323 | stu_lens: 128.0000 | mixed_lens: 89.0000 | lr: 5.0000e-06 | scale: 2048.00 | time: 26.398 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  2/ 4 | global iter:    109/  5000| tot_loss: 3.0018 | rl_loss: 1.4239 | pt_loss: 1.5779 | pg_loss: 0.8248 | reg_loss: 0.5991 | reward: -0.6061 | rev_kl: 1.2321 | stu_lens: 54.5000 | mixed_lens: 37.5000 | lr: 5.0000e-06 | scale: 2048.00 | time: 26.428 | step time: 0.000

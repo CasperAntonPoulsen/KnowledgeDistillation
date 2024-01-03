@@ -1,0 +1,50 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s][2023-12-18 13:06:22,360] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGINT death signal, shutting down workers
+[2023-12-18 13:06:22,360] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 120076 closing signal SIGINT
+Loading checkpoint shards:   0%|          | 0/2 [00:08<?, ?it/s]
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 93, in <module>
+    main()
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 74, in main
+    teacher_model = get_teacher_model(args, device)
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 29, in get_teacher_model
+    model = AutoModelForCausalLM.from_pretrained(args.teacher_model_path, config=config, device_map={"": device}, torch_dtype=torch.float16)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/auto/auto_factory.py", line 566, in from_pretrained
+    return model_class.from_pretrained(
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/modeling_utils.py", line 3480, in from_pretrained
+    ) = cls._load_pretrained_model(
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/modeling_utils.py", line 3871, in _load_pretrained_model
+    new_error_msgs, offload_index, state_dict_index = _load_state_dict_into_meta_model(
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/modeling_utils.py", line 743, in _load_state_dict_into_meta_model
+    set_module_tensor_to_device(model, param_name, param_device, **set_module_kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/accelerate/utils/modeling.py", line 317, in set_module_tensor_to_device
+    new_value = value.to(device)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib64/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 736, in run
+    result = self._invoke_run(role)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 877, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 62, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 119502 got signal: 2

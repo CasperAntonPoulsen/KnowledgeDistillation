@@ -1,0 +1,40 @@
+Wed Dec 13 10:56:31 2023       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.104.12             Driver Version: 535.104.12   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA H100 PCIe               On  | 00000000:41:00.0 Off |                    0 |
+| N/A   24C    P0              46W / 350W |      4MiB / 81559MiB |      0%   E. Process |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+[2023-12-13 10:56:39,251] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+OK
+########## valid ##########
+Data num 977
+Prompt lengths. Mean: 48.55885363357216 Max: 125 Min: 30
+Response Mean: 172.72262026612077 Max: 1736 Min: 2
+########## train ##########
+Data num 37345
+Prompt lengths. Mean: 48.93260141919936 Max: 128 Min: 28
+Response Mean: 171.2037488284911 Max: 10179 Min: 1
+[2023-12-13 10:56:48,013] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+OK
+########## valid ##########
+Data num 977
+Prompt lengths. Mean: 48.55885363357216 Max: 125 Min: 30
+Response Mean: 172.72262026612077 Max: 1736 Min: 2
+########## train ##########
+Data num 37345
+Prompt lengths. Mean: 48.93260141919936 Max: 128 Min: 28
+Response Mean: 171.2037488284911 Max: 10179 Min: 1

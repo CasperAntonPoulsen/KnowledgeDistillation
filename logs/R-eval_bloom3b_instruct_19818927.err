@@ -1,0 +1,20 @@
+Loaded module: cuda/12.1
+  0%|          | 0/11810 [00:00<?, ?it/s]  0%|          | 0/11810 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/Tk-Instruct/src/run_bloom.py", line 75, in <module>
+    response = model(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 869, in forward
+    raise ValueError(f"Got unexpected arguments: {deprecated_arguments}")
+ValueError: Got unexpected arguments: {'temperature': 1, 'max_tokens': 128}
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/Tk-Instruct/src/compute_metrics.py", line 140, in <module>
+    results = compute_metrics(predictions, references, xlingual=args.track == "xlingual")
+  File "/dtu/p1/johlau/Tk-Instruct/src/compute_metrics.py", line 90, in compute_metrics
+    exact_match = 100.0 * exact_match / len(references)
+ZeroDivisionError: float division by zero
+/dtu/p1/johlau/Tk-Instruct/scripts/run_bloom.sh: line 23: syntax error near unexpected token `done'
+/dtu/p1/johlau/Tk-Instruct/scripts/run_bloom.sh: line 23: `done'

@@ -1,0 +1,3 @@
+Loaded module: cuda/12.1
+/dtu/p1/johlau/LMOps/minillm/scripts/bloom/minillm/train_3b_7b_both.sh: line 101: unexpected EOF while looking for matching `"'
+/dtu/p1/johlau/LMOps/minillm/scripts/bloom/minillm/train_3b_7b_both.sh: line 104: syntax error: unexpected end of file

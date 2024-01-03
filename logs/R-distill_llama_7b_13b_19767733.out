@@ -1,0 +1,602 @@
+Wed Dec 13 14:14:30 2023       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.104.12             Driver Version: 535.104.12   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA H100 PCIe               On  | 00000000:A1:00.0 Off |                    0 |
+| N/A   23C    P0              45W / 350W |      4MiB / 81559MiB |      0%   E. Process |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+python3 -m torch.distributed.run --nproc_per_node 1 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 3026 /dtu/p1/johlau/LMOps/minillm/train_minillm.py --base-path /dtu/p1/johlau/LMOps/minillm --model-path /dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_init/llama-7B --teacher-model-path /dtu/p1/johlau/LMOps/minillm/results/llama/train/sft/llama-13B --ckpt-name 7B-init --teacher-ckpt-name 13B-sft --n-gpu 1 --n-nodes 1 --model-type llama --teacher-model-fp16 --gradient-checkpointing --prompt-data-dir /dtu/p1/johlau/LMOps/minillm/processed_data/dolly/prompt/llama/ --lm-data-dir /dtu/p1/johlau/LMOps/minillm/processed_data/roberta/llama/256/20M/ --dev-num 1000 --num-workers 0 --epochs 10 --total-iters 5000 --kd-ratio 0.5 --batch-size 2 --eval-batch-size 4 --lr 5e-6 --lr-min 5e-6 --gradient-accumulation-steps 2 --max-length 256 --max-prompt-length 128 --warmup-iters 100 --scheduler-name cosine_trm --save /dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm/ --seed 10 --seed-ppo 42 --seed-lm 7 --save-interval 500 --eval-interval 100 --log-interval 16 --mid-log-num 1 --type minillm --ppo-epochs 4 --num-rollouts 64 --chunk-size 2 --length-norm --single-step-reg --teacher-mixed-alpha 0.2 --reward-scaling 0.5 --cliprange-reward 100 --do-sample --top-k 0 --top-p 1.0 --temperature 1.0 --deepspeed --deepspeed_config /dtu/p1/johlau/LMOps/minillm/configs/deepspeed/ds_config_zero2_offload.json /dtu/p1/johlau/LMOps/minillm 3026
+PYTHONPATH=/dtu/p1/johlau/LMOps/minillm
+[2023-12-13 14:14:35,932] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 1
+[2023-12-13 14:14:37,504] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-12-13 14:14:37,504] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_path ................... /dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_init/llama-7B
+  ckpt_name .................... 7B-init
+  model_type ................... llama
+  teacher_model_type ........... None
+  n_gpu ........................ 1
+  n_nodes ...................... 1
+  teacher_model_path ........... /dtu/p1/johlau/LMOps/minillm/results/llama/train/sft/llama-13B
+  teacher_ckpt_name ............ 13B-sft
+  teacher_model_fp16 ........... True
+  model_parallel ............... False
+  model_parallel_size .......... None
+  no_value ..................... False
+  dropout_path_rate ............ None
+  fp32 ......................... False
+  type ......................... minillm
+  do_train ..................... False
+  do_valid ..................... False
+  do_eval ...................... False
+  base_path .................... /dtu/p1/johlau/LMOps/minillm
+  load ......................... None
+  save ......................... /dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+  log_interval ................. 16
+  mid_log_num .................. 1
+  save_interval ................ 500
+  eval_interval ................ 100
+  local_rank ................... 0
+  save_additional_suffix ....... 
+  save_rollout ................. False
+  eb_sample_times .............. 3
+  data_dir ..................... None
+  processed_data_dir ........... None
+  force_process ................ False
+  force_process_demo ........... False
+  data_process_workers ......... -1
+  train_num .................... -1
+  train_ratio .................. 1
+  dev_num ...................... 1000
+  dev_ratio .................... 1
+  gen_num ...................... -1
+  data_names ................... None
+  prompt_type .................. None
+  num_workers .................. 0
+  max_prompt_length ............ 128
+  min_prompt_length ............ 64
+  json_data .................... False
+  bin_data ..................... False
+  txt_data ..................... False
+  prompt_data_dir .............. /dtu/p1/johlau/LMOps/minillm/processed_data/dolly/prompt/llama/
+  lm_data_dir .................. /dtu/p1/johlau/LMOps/minillm/processed_data/roberta/llama/256/20M/
+  eval_ppl ..................... False
+  eval_rw ...................... False
+  eval_gen ..................... False
+  only_prompt .................. False
+  batch_size ................... 2
+  eval_batch_size .............. 4
+  clip_grad .................... 1.0
+  total_iters .................. 5000
+  train_iters_per_epoch ........ -1
+  max_length ................... 256
+  seed ......................... 10
+  seed_order ................... 42
+  seed_data .................... 42
+  seed_ppo ..................... 42
+  seed_lm ...................... 7
+  epochs ....................... 10
+  training_epochs .............. 10000
+  gradient_accumulation_steps .. 2
+  gradient_checkpointing ....... True
+  attn_dtype ................... None
+  lr ........................... 5e-06
+  lr_min ....................... 5e-06
+  weight_decay ................. 0.01
+  loss_scale ................... 65536
+  kd_ratio ..................... 0.5
+  warmup_iters ................. 100
+  lr_decay_iters ............... None
+  lr_decay_style ............... noam
+  scheduler_name ............... cosine_trm
+  reward_scaling ............... 0.5
+  cliprange_reward ............. 100.0
+  ppo_epochs ................... 4
+  num_rollouts ................. 64
+  num_rollouts_per_device ...... 64
+  cliprange .................... 0.2
+  chunk_size ................... 2
+  gamma ........................ 0.95
+  length_norm .................. True
+  single_step_reg .............. True
+  teacher_mixed_alpha .......... 0.2
+  lm_coef ...................... 1
+  top_k ........................ 0
+  top_p ........................ 1.0
+  do_sample .................... True
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  num_beams .................... 1
+  temperature .................. 1.0
+  peft ......................... None
+  peft_lora_r .................. 8
+  peft_lora_alpha .............. 32
+  peft_lora_dropout ............ 0.1
+  peft_name .................... None
+  peft_path .................... None
+  teacher_peft_name ............ None
+  teacher_peft_path ............ None
+  deepspeed .................... True
+  deepspeed_config ............. /dtu/p1/johlau/LMOps/minillm/configs/deepspeed/ds_config_zero2_offload.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  rank ......................... 0
+  world_size ................... 1
+ > number of parameters: 13015864320
+ > number of parameters: 6738415616
+Model load time: 6.237842798233032s
+ > number of parameters: 6738M
+[2023-12-13 14:14:56,011] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.12.1, git-hash=unknown, git-branch=unknown
+[2023-12-13 14:14:56,948] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-12-13 14:14:56,950] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2023-12-13 14:14:56,950] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2023-12-13 14:14:56,961] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
+[2023-12-13 14:14:56,961] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'torch.optim.adamw.AdamW'>
+[2023-12-13 14:14:56,961] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 2 optimizer
+[2023-12-13 14:14:56,961] [INFO] [stage_1_and_2.py:147:__init__] Reduce bucket size 200000000
+[2023-12-13 14:14:56,961] [INFO] [stage_1_and_2.py:148:__init__] Allgather bucket size 200000000
+[2023-12-13 14:14:56,961] [INFO] [stage_1_and_2.py:149:__init__] CPU Offload: True
+[2023-12-13 14:14:56,962] [INFO] [stage_1_and_2.py:150:__init__] Round robin gradient partitioning: False
+[2023-12-13 14:15:09,014] [INFO] [utils.py:802:see_memory_usage] Before initializing optimizer states
+[2023-12-13 14:15:09,015] [INFO] [utils.py:803:see_memory_usage] MA 37.23 GB         Max_MA 37.23 GB         CA 37.23 GB         Max_CA 37 GB 
+[2023-12-13 14:15:09,015] [INFO] [utils.py:810:see_memory_usage] CPU Virtual Memory:  used = 42.56 GB, percent = 5.6%
+[2023-12-13 14:15:57,528] [INFO] [utils.py:802:see_memory_usage] After initializing optimizer states
+[2023-12-13 14:15:57,529] [INFO] [utils.py:803:see_memory_usage] MA 37.23 GB         Max_MA 37.23 GB         CA 37.23 GB         Max_CA 37 GB 
+[2023-12-13 14:15:57,529] [INFO] [utils.py:810:see_memory_usage] CPU Virtual Memory:  used = 227.46 GB, percent = 30.1%
+[2023-12-13 14:15:57,529] [INFO] [stage_1_and_2.py:514:__init__] optimizer state initialized
+[2023-12-13 14:15:57,621] [INFO] [utils.py:802:see_memory_usage] After initializing ZeRO optimizer
+[2023-12-13 14:15:57,622] [INFO] [utils.py:803:see_memory_usage] MA 37.23 GB         Max_MA 37.23 GB         CA 37.23 GB         Max_CA 37 GB 
+[2023-12-13 14:15:57,622] [INFO] [utils.py:810:see_memory_usage] CPU Virtual Memory:  used = 227.54 GB, percent = 30.1%
+[2023-12-13 14:15:57,630] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = AdamW
+[2023-12-13 14:15:57,630] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2023-12-13 14:15:57,630] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.LambdaLR object at 0x7f089355fe80>
+[2023-12-13 14:15:57,630] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0], mom=[[0.9, 0.95]]
+[2023-12-13 14:15:57,631] [INFO] [config.py:972:print] DeepSpeedEngine configuration:
+[2023-12-13 14:15:57,631] [INFO] [config.py:976:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-12-13 14:15:57,631] [INFO] [config.py:976:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-12-13 14:15:57,631] [INFO] [config.py:976:print]   amp_enabled .................. False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   amp_params ................... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   bfloat16_enabled ............. False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   checkpoint_parallel_write_pipeline  False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   checkpoint_tag_validation_enabled  True
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   checkpoint_tag_validation_fail  False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f089355f2e0>
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   communication_data_type ...... None
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   curriculum_enabled_legacy .... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   curriculum_params_legacy ..... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   data_efficiency_enabled ...... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   dataloader_drop_last ......... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   disable_allgather ............ False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   dump_state ................... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 5000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   eigenvalue_enabled ........... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   eigenvalue_gas_boundary_resolution  1
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   eigenvalue_layer_num ......... 0
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   eigenvalue_max_iter .......... 100
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   eigenvalue_stability ......... 1e-06
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   eigenvalue_tol ............... 0.01
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   eigenvalue_verbose ........... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   elasticity_enabled ........... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   fp16_auto_cast ............... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   fp16_enabled ................. True
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   fp16_master_weights_and_gradients  False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   global_rank .................. 0
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   grad_accum_dtype ............. None
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   gradient_accumulation_steps .. 2
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   gradient_clipping ............ 1.0
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   gradient_predivide_factor .... 1.0
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   initial_dynamic_scale ........ 2048
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   load_universal_checkpoint .... False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   loss_scale ................... 0
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   memory_breakdown ............. False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   mics_hierarchial_params_gather  False
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   mics_shard_size .............. -1
+[2023-12-13 14:15:57,632] [INFO] [config.py:976:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   optimizer_legacy_fusion ...... False
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   optimizer_name ............... None
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   optimizer_params ............. None
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   pld_enabled .................. False
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   pld_params ................... False
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   prescale_gradients ........... False
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   scheduler_name ............... None
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   scheduler_params ............. None
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   seq_parallel_communication_data_type  torch.float32
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   sparse_attention ............. None
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   sparse_gradients_enabled ..... False
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   steps_per_print .............. 10000000
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   train_batch_size ............. 4
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   train_micro_batch_size_per_gpu  2
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   use_node_local_storage ....... False
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   wall_clock_breakdown ......... False
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   weight_quantization_config ... None
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   world_size ................... 1
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   zero_allow_untested_optimizer  True
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   zero_config .................. stage=2 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=200000000 allgather_partitions=True allgather_bucket_size=200000000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='cpu', nvme_path=None, buffer_count=4, pin_memory=False, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False) sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   zero_enabled ................. True
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   zero_force_ds_cpu_optimizer .. False
+[2023-12-13 14:15:57,633] [INFO] [config.py:976:print]   zero_optimization_stage ...... 2
+[2023-12-13 14:15:57,633] [INFO] [config.py:962:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 2, 
+    "gradient_accumulation_steps": 2, 
+    "zero_optimization": {
+        "stage": 2, 
+        "offload_optimizer": {
+            "device": "cpu"
+        }, 
+        "allgather_partitions": true, 
+        "allgather_bucket_size": 2.000000e+08, 
+        "overlap_comm": true, 
+        "reduce_scatter": true, 
+        "reduce_bucket_size": 2.000000e+08, 
+        "contiguous_gradients": true
+    }, 
+    "zero_force_ds_cpu_optimizer": false, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 5.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": 1.000000e+07
+}
+Probing Dataset
+Probing end. Max data state 1, total length 13517
+Num PPO instances: 13517
+Probing Dataset
+Probing end. Max data state 1, total length 973
+Num PPO instances: 973
+Probing Dataset
+Probing end. Max data state 1, total length 6958892
+Num LM instances: 6958892
+Probing Dataset
+Probing end. Max data state 1, total length 10000
+Num LM instances: 10000
+                                 Evaluation #0                                  
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ prompts                               ┃ samples                              ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Debajo hay una instrucción que        │ Debajo hay una instrucción que       │
+│ describe una tarea. Escribe una       │ describe una tarea. Escribe una      │
+│ respuesta que complete adecuadamente  │ respuesta que complete adecuadamente │
+│ la solicitud.                         │ la solicitud.                        │
+│                                       │                                      │
+│ ### Instrucción:                      │ ### Instrucción:                     │
+│ dime un chiste acerca de la situacion │ dime un chiste acerca de la          │
+│ actual de la economia, de modo que    │ situacion actual de la economia, de  │
+│ los niños comprendan el mal estado de │ modo que los niños comprendan el mal │
+│ la misma.                             │ estado de la misma.                  │
+│                                       │                                      │
+│ ### Respuesta:                        │ ### Respuesta:                       │
+│                                       │ El economista más famoso que ha      │
+│                                       │ vivido, no fue un erudito como es    │
+│                                       │ sospechado. Fue tontito Bugs Bunny,  │
+│                                       │ quien solucionó el mal estado        │
+│                                       │ alcançado en varios países con tan   │
+│                                       │ sólo un arrugazo y un suspiro.       │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│ Debajo hay una instrucción que        │ Debajo hay una instrucción que       │
+│ describe una tarea. Escribe una       │ describe una tarea. Escribe una      │
+│ respuesta que complete adecuadamente  │ respuesta que complete adecuadamente │
+│ la solicitud.                         │ la solicitud.                        │
+│                                       │                                      │
+│ ### Instrucción:                      │ ### Instrucción:                     │
+│ No entiendo la gracia de este chiste. │ No entiendo la gracia de este        │
+│ ¿Puedes contar otro?                  │ chiste. ¿Puedes contar otro?         │
+│                                       │                                      │
+│ ### Respuesta:                        │ ### Respuesta:                       │
+│                                       │ Claro. Bien, un hombre entra en una  │
+│                                       │ librería de Londres y pregunta al    │
+│                                       │ dependiente "Disculpe, ¿dónde puede  │
+│                                       │ encontrar 'Una Canción de Humo'?", a │
+│                                       │ lo que el dependiente responde       │
+│                                       │ "Bueno, usted puede encontrar la     │
+│                                       │ novela en español por aquí, pero si  │
+│                                       │ veo por dónde está mirando, lo único │
+│                                       │ que hay en inglés es esta otra       │
+│                                       │ novela llamada 'Smoke', pero la he   │
+│                                       │ visto lo suficiente", "No se         │
+│                                       │ preocupe, mi español es bueno",      │
+│                                       │ "Ahhh                                │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│ Debajo hay una instrucción que        │ Debajo hay una instrucción que       │
+│ describe una tarea. Escribe una       │ describe una tarea. Escribe una      │
+│ respuesta que complete adecuadamente  │ respuesta que complete adecuadamente │
+│ la solicitud.                         │ la solicitud.                        │
+│                                       │                                      │
+│ ### Instrucción:                      │ ### Instrucción:                     │
+│ No entiendo la gracia de este chiste. │ No entiendo la gracia de este        │
+│ ¿Puedes contar otro?                  │ chiste. ¿Puedes contar otro?         │
+│                                       │                                      │
+│ ### Respuesta:                        │ ### Respuesta:                       │
+│                                       │ Tómate un poquito de tiempo y        │
+│                                       │ explicame tu posición                │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+eval | rougeL: 12.247 | exact_match: 0.000 | rev_kl: 1.499 | lens: 82.407 | pt_loss: 1.792 | lm_loss: 1.930 | kd_loss: 1.654 
+Total Steps: 5000 Data Epochs: 10
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  0/ 4 | global iter:      2/  5000| tot_loss: 3.5227 | rl_loss: 1.2919 | pt_loss: 2.2307 | pg_loss: 0.0621 | reg_loss: 1.2299 | reward: -0.4211 | rev_kl: 1.6442 | stu_lens: 86.5000 | mixed_lens: 128.0000 | lr: 5.0000e-08 | scale: 2048.00 | time: 25.901 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  0/ 4 | global iter:      3/  5000| tot_loss: 3.1947 | rl_loss: 1.5175 | pt_loss: 1.6772 | pg_loss: 0.1079 | reg_loss: 1.4096 | reward: -0.2279 | rev_kl: 1.4040 | stu_lens: 96.0000 | mixed_lens: 123.0000 | lr: 1.0000e-07 | scale: 2048.00 | time: 26.354 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  0/ 4 | global iter:      4/  5000| tot_loss: 3.5261 | rl_loss: 1.5019 | pt_loss: 2.0243 | pg_loss: 0.0731 | reg_loss: 1.4287 | reward: -0.2203 | rev_kl: 1.2883 | stu_lens: 106.0000 | mixed_lens: 128.0000 | lr: 1.5000e-07 | scale: 2048.00 | time: 26.367 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  0/ 4 | global iter:      5/  5000| tot_loss: 3.7963 | rl_loss: 1.9907 | pt_loss: 1.8056 | pg_loss: 0.6300 | reg_loss: 1.3607 | reward: -0.4291 | rev_kl: 1.3560 | stu_lens: 73.0000 | mixed_lens: 55.0000 | lr: 2.0000e-07 | scale: 2048.00 | time: 26.351 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  0/ 4 | global iter:      6/  5000| tot_loss: 4.3134 | rl_loss: 1.9810 | pt_loss: 2.3323 | pg_loss: 0.4328 | reg_loss: 1.5482 | reward: -0.3573 | rev_kl: 1.7566 | stu_lens: 87.0000 | mixed_lens: 86.0000 | lr: 2.5000e-07 | scale: 2048.00 | time: 26.361 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  0/ 4 | global iter:      7/  5000| tot_loss: 3.8088 | rl_loss: 1.6526 | pt_loss: 2.1561 | pg_loss: 0.2797 | reg_loss: 1.3730 | reward: -0.4789 | rev_kl: 1.7925 | stu_lens: 15.5000 | mixed_lens: 100.5000 | lr: 3.0000e-07 | scale: 2048.00 | time: 26.331 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  0/ 4 | global iter:      8/  5000| tot_loss: 3.7225 | rl_loss: 1.9669 | pt_loss: 1.7556 | pg_loss: 0.5813 | reg_loss: 1.3856 | reward: -1.0663 | rev_kl: 1.7411 | stu_lens: 66.0000 | mixed_lens: 67.5000 | lr: 3.5000e-07 | scale: 2048.00 | time: 26.360 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  0/ 4 | global iter:      9/  5000| tot_loss: 4.3035 | rl_loss: 2.6080 | pt_loss: 1.6955 | pg_loss: 0.9045 | reg_loss: 1.7035 | reward: -0.5947 | rev_kl: 1.4995 | stu_lens: 14.5000 | mixed_lens: 54.0000 | lr: 4.0000e-07 | scale: 2048.00 | time: 26.338 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  0/ 4 | global iter:     10/  5000| tot_loss: 3.1710 | rl_loss: 1.2345 | pt_loss: 1.9365 | pg_loss: 0.0308 | reg_loss: 1.2038 | reward: -0.2570 | rev_kl: 1.4192 | stu_lens: 124.5000 | mixed_lens: 128.0000 | lr: 4.5000e-07 | scale: 2048.00 | time: 26.348 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  0/ 4 | global iter:     11/  5000| tot_loss: 3.2061 | rl_loss: 1.4106 | pt_loss: 1.7955 | pg_loss: 0.0635 | reg_loss: 1.3471 | reward: -0.3766 | rev_kl: 1.4476 | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 5.0000e-07 | scale: 2048.00 | time: 26.313 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  0/ 4 | global iter:     12/  5000| tot_loss: 3.6418 | rl_loss: 1.4244 | pt_loss: 2.2174 | pg_loss: 0.2355 | reg_loss: 1.1889 | reward: -0.4744 | rev_kl: 1.2007 | stu_lens: 128.0000 | mixed_lens: 86.0000 | lr: 5.5000e-07 | scale: 2048.00 | time: 26.326 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  0/ 4 | global iter:     13/  5000| tot_loss: 3.2540 | rl_loss: 1.4860 | pt_loss: 1.7680 | pg_loss: 0.0859 | reg_loss: 1.4002 | reward: -0.3050 | rev_kl: 2.1529 | stu_lens: 74.0000 | mixed_lens: 126.5000 | lr: 6.0000e-07 | scale: 2048.00 | time: 26.317 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  0/ 4 | global iter:     14/  5000| tot_loss: 3.2131 | rl_loss: 1.7418 | pt_loss: 1.4713 | pg_loss: 0.3321 | reg_loss: 1.4096 | reward: -0.8546 | rev_kl: 1.3466 | stu_lens: 73.5000 | mixed_lens: 98.0000 | lr: 6.5000e-07 | scale: 2048.00 | time: 26.350 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  0/ 4 | global iter:     15/  5000| tot_loss: 3.1873 | rl_loss: 1.5946 | pt_loss: 1.5927 | pg_loss: 0.1814 | reg_loss: 1.4132 | reward: -5.5688 | rev_kl: 1.4941 | stu_lens: 67.0000 | mixed_lens: 65.5000 | lr: 7.0000e-07 | scale: 2048.00 | time: 26.313 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  0/ 4 | global iter:     16/  5000| tot_loss: 3.8605 | rl_loss: 2.2944 | pt_loss: 1.5661 | pg_loss: 0.7336 | reg_loss: 1.5609 | reward: -1.0690 | rev_kl: 1.6612 | stu_lens: 67.5000 | mixed_lens: 52.5000 | lr: 7.5000e-07 | scale: 2048.00 | time: 26.328 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  0/ 4 | global iter:     16/  5000| tot_loss: 3.4161 | rl_loss: 1.7149 | pt_loss: 1.7012 | pg_loss: 0.3675 | reg_loss: 1.3474 | reward: -0.6923 | rev_kl: 1.3597 | stu_lens: 67.0156 | mixed_lens: 84.2656 | lr: 7.5000e-07 | scale: 2048.00 | time: 26.328 | step time: 26.046
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  0/ 4 | global iter:     17/  5000| tot_loss: 3.5668 | rl_loss: 1.6097 | pt_loss: 1.9571 | pg_loss: 0.4676 | reg_loss: 1.1421 | reward: -0.0175 | rev_kl: 1.1414 | stu_lens: 128.0000 | mixed_lens: 75.5000 | lr: 8.0000e-07 | scale: 2048.00 | time: 26.310 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  1/ 4 | global iter:     18/  5000| tot_loss: 3.2791 | rl_loss: 1.3590 | pt_loss: 1.9201 | pg_loss: 0.0680 | reg_loss: 1.2910 | reward: -0.2805 | rev_kl: 1.4388 | stu_lens: 78.5000 | mixed_lens: 128.0000 | lr: 8.5000e-07 | scale: 2048.00 | time: 26.341 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  1/ 4 | global iter:     19/  5000| tot_loss: 4.2056 | rl_loss: 2.6548 | pt_loss: 1.5508 | pg_loss: 1.2439 | reg_loss: 1.4109 | reward: -1.7421 | rev_kl: 0.7197 | stu_lens: 44.5000 | mixed_lens: 23.5000 | lr: 9.0000e-07 | scale: 2048.00 | time: 26.306 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  1/ 4 | global iter:     20/  5000| tot_loss: 3.7714 | rl_loss: 1.7299 | pt_loss: 2.0414 | pg_loss: 0.1842 | reg_loss: 1.5457 | reward: -0.4421 | rev_kl: 1.2572 | stu_lens: 70.0000 | mixed_lens: 102.5000 | lr: 9.5000e-07 | scale: 2048.00 | time: 26.325 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  1/ 4 | global iter:     21/  5000| tot_loss: 3.1819 | rl_loss: 1.5826 | pt_loss: 1.5992 | pg_loss: 0.0708 | reg_loss: 1.5118 | reward: -0.3096 | rev_kl: 1.1363 | stu_lens: 71.5000 | mixed_lens: 126.5000 | lr: 1.0000e-06 | scale: 2048.00 | time: 26.304 | step time: 0.000
+[2023-12-13 14:54:42,525] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2048, but hysteresis is 4. Reducing hysteresis to 3
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  1/ 4 | global iter:     22/  5000| tot_loss: 3.1010 | rl_loss: 1.8326 | pt_loss: 1.2685 | pg_loss: 0.5237 | reg_loss: 1.3088 | reward: -0.9038 | rev_kl: 1.6376 | stu_lens: 67.5000 | mixed_lens: 62.5000 | lr: 1.0000e-06 | scale: 2048.00 | time: 2.865 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  1/ 4 | global iter:     23/  5000| tot_loss: 2.9890 | rl_loss: 1.2738 | pt_loss: 1.7152 | pg_loss: 0.0104 | reg_loss: 1.2633 | reward: -0.4055 | rev_kl: 2.2716 | stu_lens: 74.0000 | mixed_lens: 128.0000 | lr: 1.0500e-06 | scale: 2048.00 | time: 26.305 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  1/ 4 | global iter:     24/  5000| tot_loss: 4.3308 | rl_loss: 2.2749 | pt_loss: 2.0559 | pg_loss: 0.7785 | reg_loss: 1.4964 | reward: -0.7677 | rev_kl: 2.0213 | stu_lens: 72.0000 | mixed_lens: 43.5000 | lr: 1.1000e-06 | scale: 2048.00 | time: 26.289 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  1/ 4 | global iter:     25/  5000| tot_loss: 3.0191 | rl_loss: 1.5367 | pt_loss: 1.4824 | pg_loss: 0.8530 | reg_loss: 0.6838 | reward: -0.6625 | rev_kl: 1.2077 | stu_lens: 73.0000 | mixed_lens: 19.5000 | lr: 1.1500e-06 | scale: 2048.00 | time: 26.326 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  1/ 4 | global iter:     26/  5000| tot_loss: 3.4043 | rl_loss: 1.4381 | pt_loss: 1.9662 | pg_loss: -0.0012 | reg_loss: 1.4393 | reward: -0.2807 | rev_kl: 1.0816 | stu_lens: 47.5000 | mixed_lens: 128.0000 | lr: 1.2000e-06 | scale: 2048.00 | time: 26.318 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  1/ 4 | global iter:     27/  5000| tot_loss: 3.6464 | rl_loss: 1.4416 | pt_loss: 2.2049 | pg_loss: 0.3224 | reg_loss: 1.1192 | reward: -0.2624 | rev_kl: 1.7044 | stu_lens: 73.0000 | mixed_lens: 75.5000 | lr: 1.2500e-06 | scale: 2048.00 | time: 26.316 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  1/ 4 | global iter:     28/  5000| tot_loss: 2.9002 | rl_loss: 1.1372 | pt_loss: 1.7630 | pg_loss: 0.0544 | reg_loss: 1.0828 | reward: -0.3281 | rev_kl: 1.3613 | stu_lens: 81.0000 | mixed_lens: 128.0000 | lr: 1.3000e-06 | scale: 2048.00 | time: 26.292 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  1/ 4 | global iter:     29/  5000| tot_loss: 3.5184 | rl_loss: 1.8837 | pt_loss: 1.6347 | pg_loss: 0.5170 | reg_loss: 1.3667 | reward: -0.6619 | rev_kl: 1.7423 | stu_lens: 14.0000 | mixed_lens: 71.0000 | lr: 1.3500e-06 | scale: 2048.00 | time: 26.317 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  1/ 4 | global iter:     30/  5000| tot_loss: 3.5289 | rl_loss: 1.7396 | pt_loss: 1.7893 | pg_loss: 0.3503 | reg_loss: 1.3893 | reward: -0.4217 | rev_kl: 1.2101 | stu_lens: 40.0000 | mixed_lens: 88.0000 | lr: 1.4000e-06 | scale: 2048.00 | time: 26.284 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  1/ 4 | global iter:     31/  5000| tot_loss: 2.8375 | rl_loss: 1.2984 | pt_loss: 1.5390 | pg_loss: 0.1823 | reg_loss: 1.1162 | reward: -0.7743 | rev_kl: 1.3662 | stu_lens: 81.0000 | mixed_lens: 104.0000 | lr: 1.4500e-06 | scale: 2048.00 | time: 26.327 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  1/ 4 | global iter:     32/  5000| tot_loss: 3.4446 | rl_loss: 1.7225 | pt_loss: 1.7222 | pg_loss: 0.5146 | reg_loss: 1.2078 | reward: -0.3758 | rev_kl: 1.2691 | stu_lens: 27.5000 | mixed_lens: 68.5000 | lr: 1.5000e-06 | scale: 2048.00 | time: 26.277 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  1/ 4 | global iter:     32/  5000| tot_loss: 3.3859 | rl_loss: 1.5907 | pt_loss: 1.7952 | pg_loss: 0.3440 | reg_loss: 1.2467 | reward: -0.7158 | rev_kl: 1.4278 | stu_lens: 75.5000 | mixed_lens: 88.4844 | lr: 1.5000e-06 | scale: 2048.00 | time: 26.277 | step time: 26.172
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  1/ 4 | global iter:     33/  5000| tot_loss: 2.9693 | rl_loss: 1.3155 | pt_loss: 1.6538 | pg_loss: 0.5135 | reg_loss: 0.8020 | reward: -0.8478 | rev_kl: 1.3994 | stu_lens: 97.0000 | mixed_lens: 70.5000 | lr: 1.5500e-06 | scale: 2048.00 | time: 26.324 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  2/ 4 | global iter:     34/  5000| tot_loss: 3.3711 | rl_loss: 1.8219 | pt_loss: 1.5492 | pg_loss: 0.8880 | reg_loss: 0.9340 | reward: -0.8369 | rev_kl: 1.5825 | stu_lens: 105.0000 | mixed_lens: 37.5000 | lr: 1.6000e-06 | scale: 2048.00 | time: 26.285 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  2/ 4 | global iter:     35/  5000| tot_loss: 3.4297 | rl_loss: 1.6615 | pt_loss: 1.7682 | pg_loss: 0.6035 | reg_loss: 1.0580 | reward: -0.7469 | rev_kl: 1.4781 | stu_lens: 71.5000 | mixed_lens: 68.5000 | lr: 1.6500e-06 | scale: 2048.00 | time: 26.295 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  2/ 4 | global iter:     36/  5000| tot_loss: 2.4180 | rl_loss: 0.8791 | pt_loss: 1.5388 | pg_loss: 0.0472 | reg_loss: 0.8320 | reward: -0.1960 | rev_kl: 1.0639 | stu_lens: 128.0000 | mixed_lens: 123.0000 | lr: 1.7000e-06 | scale: 2048.00 | time: 26.312 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  2/ 4 | global iter:     37/  5000| tot_loss: 3.7433 | rl_loss: 1.7981 | pt_loss: 1.9452 | pg_loss: 0.5108 | reg_loss: 1.2873 | reward: -0.5915 | rev_kl: 1.3268 | stu_lens: 70.0000 | mixed_lens: 63.0000 | lr: 1.7500e-06 | scale: 2048.00 | time: 26.319 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  2/ 4 | global iter:     38/  5000| tot_loss: 3.1020 | rl_loss: 1.3051 | pt_loss: 1.7969 | pg_loss: 0.4731 | reg_loss: 0.8320 | reward: -0.9397 | rev_kl: 1.1837 | stu_lens: 97.0000 | mixed_lens: 70.5000 | lr: 1.8000e-06 | scale: 2048.00 | time: 26.297 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  2/ 4 | global iter:     39/  5000| tot_loss: 3.4767 | rl_loss: 1.6133 | pt_loss: 1.8634 | pg_loss: 0.5747 | reg_loss: 1.0387 | reward: -1.1450 | rev_kl: 1.8884 | stu_lens: 9.0000 | mixed_lens: 59.0000 | lr: 1.8500e-06 | scale: 2048.00 | time: 26.312 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  2/ 4 | global iter:     40/  5000| tot_loss: 3.2915 | rl_loss: 1.0864 | pt_loss: 2.2051 | pg_loss: 0.1298 | reg_loss: 0.9566 | reward: -0.5723 | rev_kl: 1.3633 | stu_lens: 60.0000 | mixed_lens: 104.0000 | lr: 1.9000e-06 | scale: 2048.00 | time: 26.282 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  2/ 4 | global iter:     41/  5000| tot_loss: 3.5240 | rl_loss: 1.6968 | pt_loss: 1.8272 | pg_loss: 0.6302 | reg_loss: 1.0665 | reward: -0.4545 | rev_kl: 1.0012 | stu_lens: 68.5000 | mixed_lens: 68.5000 | lr: 1.9500e-06 | scale: 2048.00 | time: 26.319 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  2/ 4 | global iter:     42/  5000| tot_loss: 2.6305 | rl_loss: 1.0223 | pt_loss: 1.6083 | pg_loss: 0.2001 | reg_loss: 0.8221 | reward: -0.3575 | rev_kl: 1.1253 | stu_lens: 68.5000 | mixed_lens: 85.5000 | lr: 2.0000e-06 | scale: 2048.00 | time: 26.282 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  2/ 4 | global iter:     43/  5000| tot_loss: 2.7443 | rl_loss: 0.8466 | pt_loss: 1.8977 | pg_loss: 0.0134 | reg_loss: 0.8331 | reward: -0.2992 | rev_kl: 1.1411 | stu_lens: 49.5000 | mixed_lens: 128.0000 | lr: 2.0500e-06 | scale: 2048.00 | time: 26.304 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  2/ 4 | global iter:     44/  5000| tot_loss: 2.2885 | rl_loss: 0.8288 | pt_loss: 1.4598 | pg_loss: 0.2504 | reg_loss: 0.5784 | reward: -0.5894 | rev_kl: 1.6054 | stu_lens: 112.5000 | mixed_lens: 102.0000 | lr: 2.1000e-06 | scale: 2048.00 | time: 26.285 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  2/ 4 | global iter:     45/  5000| tot_loss: 3.0452 | rl_loss: 1.6270 | pt_loss: 1.4183 | pg_loss: 0.4231 | reg_loss: 1.2039 | reward: -0.4778 | rev_kl: 1.9410 | stu_lens: 43.5000 | mixed_lens: 75.5000 | lr: 2.1500e-06 | scale: 2048.00 | time: 26.309 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  2/ 4 | global iter:     46/  5000| tot_loss: 3.5812 | rl_loss: 1.4301 | pt_loss: 2.1512 | pg_loss: 0.4666 | reg_loss: 0.9635 | reward: -1.1348 | rev_kl: 1.6001 | stu_lens: 66.0000 | mixed_lens: 67.5000 | lr: 2.2000e-06 | scale: 2048.00 | time: 26.284 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  2/ 4 | global iter:     47/  5000| tot_loss: 3.0919 | rl_loss: 1.0498 | pt_loss: 2.0421 | pg_loss: 0.2179 | reg_loss: 0.8319 | reward: -0.4579 | rev_kl: 2.1882 | stu_lens: 72.0000 | mixed_lens: 85.5000 | lr: 2.2500e-06 | scale: 2048.00 | time: 26.316 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  2/ 4 | global iter:     48/  5000| tot_loss: 3.1992 | rl_loss: 1.1487 | pt_loss: 2.0505 | pg_loss: 0.4927 | reg_loss: 0.6560 | reward: -0.6449 | rev_kl: 1.6807 | stu_lens: 72.5000 | mixed_lens: 79.5000 | lr: 2.3000e-06 | scale: 2048.00 | time: 26.292 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  2/ 4 | global iter:     48/  5000| tot_loss: 3.0025 | rl_loss: 1.2066 | pt_loss: 1.7958 | pg_loss: 0.3136 | reg_loss: 0.8931 | reward: -0.7270 | rev_kl: 1.4371 | stu_lens: 71.0312 | mixed_lens: 88.0312 | lr: 2.3000e-06 | scale: 2048.00 | time: 26.292 | step time: 27.630
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  2/ 4 | global iter:     49/  5000| tot_loss: 2.6506 | rl_loss: 0.8169 | pt_loss: 1.8336 | pg_loss: 0.0597 | reg_loss: 0.7573 | reward: -0.2419 | rev_kl: 1.1263 | stu_lens: 75.0000 | mixed_lens: 121.5000 | lr: 2.3500e-06 | scale: 2048.00 | time: 26.309 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  3/ 4 | global iter:     50/  5000| tot_loss: 2.4108 | rl_loss: 0.7139 | pt_loss: 1.6968 | pg_loss: 0.1188 | reg_loss: 0.5951 | reward: -0.4664 | rev_kl: 1.3766 | stu_lens: 128.0000 | mixed_lens: 113.0000 | lr: 2.4000e-06 | scale: 2048.00 | time: 26.277 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  3/ 4 | global iter:     51/  5000| tot_loss: 2.6226 | rl_loss: 0.6971 | pt_loss: 1.9255 | pg_loss: 0.0062 | reg_loss: 0.6909 | reward: -0.2598 | rev_kl: 1.3563 | stu_lens: 128.0000 | mixed_lens: 126.5000 | lr: 2.4500e-06 | scale: 2048.00 | time: 26.307 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  3/ 4 | global iter:     52/  5000| tot_loss: 2.5488 | rl_loss: 0.9626 | pt_loss: 1.5862 | pg_loss: 0.5600 | reg_loss: 0.4027 | reward: -1.1137 | rev_kl: 1.9735 | stu_lens: 5.5000 | mixed_lens: 61.0000 | lr: 2.5000e-06 | scale: 2048.00 | time: 26.278 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  3/ 4 | global iter:     53/  5000| tot_loss: 2.1875 | rl_loss: 0.6488 | pt_loss: 1.5386 | pg_loss: 0.6038 | reg_loss: 0.0450 | reward: -0.1211 | rev_kl: 0.7913 | stu_lens: 68.5000 | mixed_lens: 16.0000 | lr: 2.5500e-06 | scale: 2048.00 | time: 26.303 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  3/ 4 | global iter:     54/  5000| tot_loss: 2.6609 | rl_loss: 0.8962 | pt_loss: 1.7648 | pg_loss: 0.2917 | reg_loss: 0.6045 | reward: -0.3630 | rev_kl: 1.2299 | stu_lens: 36.5000 | mixed_lens: 85.5000 | lr: 2.6000e-06 | scale: 2048.00 | time: 26.285 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  3/ 4 | global iter:     55/  5000| tot_loss: 3.7541 | rl_loss: 2.1824 | pt_loss: 1.5717 | pg_loss: 1.3685 | reg_loss: 0.8140 | reward: -5.6946 | rev_kl: 2.3168 | stu_lens: 11.0000 | mixed_lens: 23.0000 | lr: 2.6500e-06 | scale: 2048.00 | time: 26.297 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  3/ 4 | global iter:     56/  5000| tot_loss: 2.5405 | rl_loss: 0.6858 | pt_loss: 1.8547 | pg_loss: -0.0055 | reg_loss: 0.6914 | reward: -0.4530 | rev_kl: 1.3958 | stu_lens: 78.5000 | mixed_lens: 128.0000 | lr: 2.7000e-06 | scale: 2048.00 | time: 26.272 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  3/ 4 | global iter:     57/  5000| tot_loss: 2.0156 | rl_loss: 0.6484 | pt_loss: 1.3672 | pg_loss: 0.0746 | reg_loss: 0.5738 | reward: -0.3126 | rev_kl: 1.1982 | stu_lens: 128.0000 | mixed_lens: 107.5000 | lr: 2.7500e-06 | scale: 2048.00 | time: 26.297 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  3/ 4 | global iter:     58/  5000| tot_loss: 2.4343 | rl_loss: 0.8145 | pt_loss: 1.6197 | pg_loss: 0.2766 | reg_loss: 0.5379 | reward: -0.7647 | rev_kl: 2.3825 | stu_lens: 51.0000 | mixed_lens: 79.5000 | lr: 2.8000e-06 | scale: 2048.00 | time: 26.299 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  3/ 4 | global iter:     59/  5000| tot_loss: 2.4531 | rl_loss: 0.5010 | pt_loss: 1.9521 | pg_loss: 0.0411 | reg_loss: 0.4599 | reward: -0.1960 | rev_kl: 1.0639 | stu_lens: 128.0000 | mixed_lens: 123.0000 | lr: 2.8500e-06 | scale: 2048.00 | time: 26.300 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  3/ 4 | global iter:     60/  5000| tot_loss: 2.1548 | rl_loss: 0.5023 | pt_loss: 1.6525 | pg_loss: 0.0054 | reg_loss: 0.4969 | reward: -0.2276 | rev_kl: 1.4421 | stu_lens: 124.5000 | mixed_lens: 128.0000 | lr: 2.9000e-06 | scale: 2048.00 | time: 26.267 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  3/ 4 | global iter:     61/  5000| tot_loss: 2.3551 | rl_loss: 0.9404 | pt_loss: 1.4147 | pg_loss: 0.4076 | reg_loss: 0.5328 | reward: -0.3240 | rev_kl: 0.8803 | stu_lens: 72.0000 | mixed_lens: 89.5000 | lr: 2.9500e-06 | scale: 2048.00 | time: 26.292 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  3/ 4 | global iter:     62/  5000| tot_loss: 3.2492 | rl_loss: 1.3247 | pt_loss: 1.9245 | pg_loss: 0.4900 | reg_loss: 0.8347 | reward: -0.7232 | rev_kl: 1.1277 | stu_lens: 34.0000 | mixed_lens: 78.5000 | lr: 3.0000e-06 | scale: 2048.00 | time: 26.270 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  3/ 4 | global iter:     63/  5000| tot_loss: 3.1501 | rl_loss: 1.3062 | pt_loss: 1.8439 | pg_loss: 0.4734 | reg_loss: 0.8328 | reward: -0.4880 | rev_kl: 1.4106 | stu_lens: 16.0000 | mixed_lens: 79.5000 | lr: 3.0500e-06 | scale: 2048.00 | time: 26.285 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  3/ 4 | global iter:     64/  5000| tot_loss: 2.6759 | rl_loss: 0.8409 | pt_loss: 1.8350 | pg_loss: 0.1544 | reg_loss: 0.6865 | reward: -0.4057 | rev_kl: 1.4283 | stu_lens: 87.0000 | mixed_lens: 100.0000 | lr: 3.1000e-06 | scale: 2048.00 | time: 26.271 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  3/ 4 | global iter:     64/  5000| tot_loss: 2.6936 | rl_loss: 0.9324 | pt_loss: 1.7612 | pg_loss: 0.3265 | reg_loss: 0.6059 | reward: -0.7091 | rev_kl: 1.3994 | stu_lens: 73.7656 | mixed_lens: 89.7812 | lr: 3.1000e-06 | scale: 2048.00 | time: 26.271 | step time: 27.616
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  3/ 4 | global iter:     65/  5000| tot_loss: 2.7153 | rl_loss: 0.9068 | pt_loss: 1.8085 | pg_loss: 0.3449 | reg_loss: 0.5620 | reward: -0.6563 | rev_kl: 1.6096 | stu_lens: 118.5000 | mixed_lens: 80.5000 | lr: 3.1500e-06 | scale: 2048.00 | time: 26.295 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  0/ 4 | global iter:     66/  5000| tot_loss: 4.0212 | rl_loss: 1.7428 | pt_loss: 2.2783 | pg_loss: 0.5168 | reg_loss: 1.2260 | reward: -0.5933 | rev_kl: 0.9357 | stu_lens: 46.0000 | mixed_lens: 80.0000 | lr: 3.2000e-06 | scale: 2048.00 | time: 26.365 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  0/ 4 | global iter:     67/  5000| tot_loss: 3.6386 | rl_loss: 1.8035 | pt_loss: 1.8351 | pg_loss: 0.5337 | reg_loss: 1.2698 | reward: -0.6483 | rev_kl: 1.3225 | stu_lens: 22.0000 | mixed_lens: 70.5000 | lr: 3.2500e-06 | scale: 2048.00 | time: 26.282 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  0/ 4 | global iter:     68/  5000| tot_loss: 2.8493 | rl_loss: 1.2820 | pt_loss: 1.5673 | pg_loss: 0.5381 | reg_loss: 0.7439 | reward: -0.9928 | rev_kl: 0.7428 | stu_lens: 114.5000 | mixed_lens: 58.0000 | lr: 3.3000e-06 | scale: 2048.00 | time: 26.290 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  0/ 4 | global iter:     69/  5000| tot_loss: 3.1948 | rl_loss: 1.5194 | pt_loss: 1.6754 | pg_loss: 0.4663 | reg_loss: 1.0531 | reward: -0.3127 | rev_kl: 1.1705 | stu_lens: 39.5000 | mixed_lens: 71.0000 | lr: 3.3500e-06 | scale: 2048.00 | time: 26.274 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  0/ 4 | global iter:     70/  5000| tot_loss: 3.1275 | rl_loss: 1.0275 | pt_loss: 2.1000 | pg_loss: 0.3400 | reg_loss: 0.6875 | reward: -0.8221 | rev_kl: 0.8638 | stu_lens: 31.5000 | mixed_lens: 72.0000 | lr: 3.4000e-06 | scale: 2048.00 | time: 26.294 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  0/ 4 | global iter:     71/  5000| tot_loss: 2.7763 | rl_loss: 0.9971 | pt_loss: 1.7792 | pg_loss: 0.1956 | reg_loss: 0.8015 | reward: -0.4707 | rev_kl: 0.9438 | stu_lens: 88.0000 | mixed_lens: 76.5000 | lr: 3.4500e-06 | scale: 2048.00 | time: 26.270 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  0/ 4 | global iter:     72/  5000| tot_loss: 2.5490 | rl_loss: 1.1262 | pt_loss: 1.4228 | pg_loss: 0.0838 | reg_loss: 1.0423 | reward: -0.2588 | rev_kl: 1.1716 | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 3.5000e-06 | scale: 2048.00 | time: 26.297 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  0/ 4 | global iter:     73/  5000| tot_loss: 2.8038 | rl_loss: 1.1458 | pt_loss: 1.6580 | pg_loss: 0.3968 | reg_loss: 0.7490 | reward: -0.2573 | rev_kl: 0.6923 | stu_lens: 41.5000 | mixed_lens: 74.5000 | lr: 3.5500e-06 | scale: 2048.00 | time: 26.268 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  0/ 4 | global iter:     74/  5000| tot_loss: 3.0876 | rl_loss: 1.3595 | pt_loss: 1.7281 | pg_loss: 0.3971 | reg_loss: 0.9625 | reward: -0.6996 | rev_kl: 1.0000 | stu_lens: 69.0000 | mixed_lens: 71.5000 | lr: 3.6000e-06 | scale: 2048.00 | time: 26.304 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  0/ 4 | global iter:     75/  5000| tot_loss: 3.1077 | rl_loss: 1.4538 | pt_loss: 1.6540 | pg_loss: 0.3673 | reg_loss: 1.0864 | reward: -5.1937 | rev_kl: 1.5669 | stu_lens: 38.0000 | mixed_lens: 65.0000 | lr: 3.6500e-06 | scale: 2048.00 | time: 26.256 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  0/ 4 | global iter:     76/  5000| tot_loss: 3.4117 | rl_loss: 1.4459 | pt_loss: 1.9658 | pg_loss: 0.4310 | reg_loss: 1.0149 | reward: -0.2094 | rev_kl: 0.8747 | stu_lens: 74.0000 | mixed_lens: 73.5000 | lr: 3.7000e-06 | scale: 2048.00 | time: 26.286 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  0/ 4 | global iter:     77/  5000| tot_loss: 2.8180 | rl_loss: 1.1558 | pt_loss: 1.6622 | pg_loss: 0.1796 | reg_loss: 0.9762 | reward: -1.6795 | rev_kl: 0.6401 | stu_lens: 12.5000 | mixed_lens: 57.0000 | lr: 3.7500e-06 | scale: 2048.00 | time: 26.266 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  0/ 4 | global iter:     78/  5000| tot_loss: 3.6943 | rl_loss: 1.8152 | pt_loss: 1.8791 | pg_loss: 0.5729 | reg_loss: 1.2423 | reward: -0.4003 | rev_kl: 2.2275 | stu_lens: 76.0000 | mixed_lens: 55.5000 | lr: 3.8000e-06 | scale: 2048.00 | time: 26.305 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  0/ 4 | global iter:     79/  5000| tot_loss: 2.1804 | rl_loss: 0.7609 | pt_loss: 1.4195 | pg_loss: 0.0178 | reg_loss: 0.7432 | reward: -0.1125 | rev_kl: 0.7923 | stu_lens: 98.0000 | mixed_lens: 128.0000 | lr: 3.8500e-06 | scale: 2048.00 | time: 26.267 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  0/ 4 | global iter:     80/  5000| tot_loss: 2.4964 | rl_loss: 0.8206 | pt_loss: 1.6757 | pg_loss: 0.0604 | reg_loss: 0.7603 | reward: -0.0490 | rev_kl: 0.8721 | stu_lens: 97.0000 | mixed_lens: 128.0000 | lr: 3.9000e-06 | scale: 2048.00 | time: 26.297 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  0/ 4 | global iter:     80/  5000| tot_loss: 3.1536 | rl_loss: 1.3235 | pt_loss: 1.8300 | pg_loss: 0.3295 | reg_loss: 0.9941 | reward: -1.0408 | rev_kl: 1.0629 | stu_lens: 80.7031 | mixed_lens: 85.4219 | lr: 3.9000e-06 | scale: 2048.00 | time: 26.297 | step time: 27.615
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  0/ 4 | global iter:     81/  5000| tot_loss: 3.1954 | rl_loss: 1.2304 | pt_loss: 1.9650 | pg_loss: 0.2761 | reg_loss: 0.9543 | reward: -0.5999 | rev_kl: 0.6376 | stu_lens: 79.0000 | mixed_lens: 94.0000 | lr: 3.9500e-06 | scale: 2048.00 | time: 26.267 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  1/ 4 | global iter:     82/  5000| tot_loss: 3.4324 | rl_loss: 1.3752 | pt_loss: 2.0572 | pg_loss: 0.7475 | reg_loss: 0.6277 | reward: -5.3828 | rev_kl: 2.6601 | stu_lens: 21.5000 | mixed_lens: 11.0000 | lr: 4.0000e-06 | scale: 2048.00 | time: 26.293 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  1/ 4 | global iter:     83/  5000| tot_loss: 2.7966 | rl_loss: 0.9889 | pt_loss: 1.8077 | pg_loss: 0.2912 | reg_loss: 0.6977 | reward: -0.4648 | rev_kl: 0.8262 | stu_lens: 88.5000 | mixed_lens: 64.5000 | lr: 4.0500e-06 | scale: 2048.00 | time: 26.262 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  1/ 4 | global iter:     84/  5000| tot_loss: 2.4393 | rl_loss: 0.6471 | pt_loss: 1.7921 | pg_loss: -0.0080 | reg_loss: 0.6551 | reward: -0.2881 | rev_kl: 0.9367 | stu_lens: 104.5000 | mixed_lens: 128.0000 | lr: 4.1000e-06 | scale: 2048.00 | time: 26.291 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  1/ 4 | global iter:     85/  5000| tot_loss: 2.2885 | rl_loss: 0.7661 | pt_loss: 1.5224 | pg_loss: 0.2737 | reg_loss: 0.4924 | reward: -0.2056 | rev_kl: 0.7275 | stu_lens: 73.5000 | mixed_lens: 73.5000 | lr: 4.1500e-06 | scale: 2048.00 | time: 26.261 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  1/ 4 | global iter:     86/  5000| tot_loss: 2.7349 | rl_loss: 0.9919 | pt_loss: 1.7430 | pg_loss: 0.4262 | reg_loss: 0.5658 | reward: -0.4481 | rev_kl: 0.6965 | stu_lens: 21.0000 | mixed_lens: 63.5000 | lr: 4.2000e-06 | scale: 2048.00 | time: 26.279 | step time: 0.000
+[2023-12-13 15:29:44,575] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2048, but hysteresis is 3. Reducing hysteresis to 2
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  1/ 4 | global iter:     87/  5000| tot_loss: 2.7372 | rl_loss: 1.0765 | pt_loss: 1.6607 | pg_loss: 0.7693 | reg_loss: 0.3072 | reward: -9.7136 | rev_kl: 0.6032 | stu_lens: 30.5000 | mixed_lens: 12.0000 | lr: 4.2000e-06 | scale: 2048.00 | time: 2.842 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  1/ 4 | global iter:     88/  5000| tot_loss: 2.6406 | rl_loss: 0.8887 | pt_loss: 1.7519 | pg_loss: 0.1047 | reg_loss: 0.7840 | reward: -0.2167 | rev_kl: 1.1533 | stu_lens: 82.0000 | mixed_lens: 105.5000 | lr: 4.2500e-06 | scale: 2048.00 | time: 26.264 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  1/ 4 | global iter:     89/  5000| tot_loss: 1.9938 | rl_loss: 0.8030 | pt_loss: 1.1907 | pg_loss: 0.3161 | reg_loss: 0.4869 | reward: -0.2573 | rev_kl: 0.6923 | stu_lens: 41.5000 | mixed_lens: 74.5000 | lr: 4.3000e-06 | scale: 2048.00 | time: 26.295 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  17/ 32 | ppo epoch:  1/ 4 | global iter:     90/  5000| tot_loss: 2.6649 | rl_loss: 1.0840 | pt_loss: 1.5809 | pg_loss: 0.3836 | reg_loss: 0.7004 | reward: -1.2211 | rev_kl: 2.0575 | stu_lens: 76.0000 | mixed_lens: 69.5000 | lr: 4.3500e-06 | scale: 2048.00 | time: 26.285 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  19/ 32 | ppo epoch:  1/ 4 | global iter:     91/  5000| tot_loss: 2.2147 | rl_loss: 0.4283 | pt_loss: 1.7864 | pg_loss: -0.0165 | reg_loss: 0.4448 | reward: -0.2674 | rev_kl: 0.8751 | stu_lens: 91.0000 | mixed_lens: 128.0000 | lr: 4.4000e-06 | scale: 2048.00 | time: 26.298 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  21/ 32 | ppo epoch:  1/ 4 | global iter:     92/  5000| tot_loss: 2.6594 | rl_loss: 0.9907 | pt_loss: 1.6687 | pg_loss: 0.1392 | reg_loss: 0.8514 | reward: -0.7084 | rev_kl: 1.1886 | stu_lens: 83.5000 | mixed_lens: 102.5000 | lr: 4.4500e-06 | scale: 2048.00 | time: 26.260 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  23/ 32 | ppo epoch:  1/ 4 | global iter:     93/  5000| tot_loss: 2.8228 | rl_loss: 1.0532 | pt_loss: 1.7696 | pg_loss: 0.4118 | reg_loss: 0.6414 | reward: -0.9086 | rev_kl: 1.0125 | stu_lens: 41.5000 | mixed_lens: 69.0000 | lr: 4.5000e-06 | scale: 2048.00 | time: 26.282 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  25/ 32 | ppo epoch:  1/ 4 | global iter:     94/  5000| tot_loss: 3.0831 | rl_loss: 1.1621 | pt_loss: 1.9210 | pg_loss: 0.3973 | reg_loss: 0.7647 | reward: -0.5389 | rev_kl: 1.1639 | stu_lens: 71.0000 | mixed_lens: 80.0000 | lr: 4.5500e-06 | scale: 2048.00 | time: 26.266 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  27/ 32 | ppo epoch:  1/ 4 | global iter:     95/  5000| tot_loss: 2.2825 | rl_loss: 0.4926 | pt_loss: 1.7899 | pg_loss: 0.0001 | reg_loss: 0.4926 | reward: -0.1255 | rev_kl: 1.0559 | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 4.6000e-06 | scale: 2048.00 | time: 26.296 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  1/ 4 | global iter:     96/  5000| tot_loss: 2.8195 | rl_loss: 1.1166 | pt_loss: 1.7029 | pg_loss: 0.4884 | reg_loss: 0.6281 | reward: -0.3607 | rev_kl: 0.8572 | stu_lens: 79.0000 | mixed_lens: 63.0000 | lr: 4.6500e-06 | scale: 2048.00 | time: 26.261 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  29/ 32 | ppo epoch:  1/ 4 | global iter:     96/  5000| tot_loss: 2.7099 | rl_loss: 0.9900 | pt_loss: 1.7199 | pg_loss: 0.3000 | reg_loss: 0.6901 | reward: -1.0307 | rev_kl: 1.0246 | stu_lens: 79.2969 | mixed_lens: 87.1094 | lr: 4.6500e-06 | scale: 2048.00 | time: 26.261 | step time: 26.141
+/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:  31/ 32 | ppo epoch:  1/ 4 | global iter:     97/  5000| tot_loss: 2.3596 | rl_loss: 0.7400 | pt_loss: 1.6197 | pg_loss: 0.1493 | reg_loss: 0.5907 | reward: -0.3821 | rev_kl: 0.7306 | stu_lens: 67.0000 | mixed_lens: 104.0000 | lr: 4.7000e-06 | scale: 2048.00 | time: 26.290 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/ 32 | ppo epoch:  2/ 4 | global iter:     98/  5000| tot_loss: 2.7863 | rl_loss: 0.9375 | pt_loss: 1.8488 | pg_loss: 0.4238 | reg_loss: 0.5138 | reward: -0.5037 | rev_kl: 0.8336 | stu_lens: 85.0000 | mixed_lens: 80.0000 | lr: 4.7500e-06 | scale: 2048.00 | time: 26.254 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/ 32 | ppo epoch:  2/ 4 | global iter:     99/  5000| tot_loss: 2.7625 | rl_loss: 0.6920 | pt_loss: 2.0705 | pg_loss: 0.2801 | reg_loss: 0.4119 | reward: -0.4293 | rev_kl: 0.9522 | stu_lens: 128.0000 | mixed_lens: 81.5000 | lr: 4.8000e-06 | scale: 2048.00 | time: 26.284 | step time: 0.000
+                                 Evaluation #1                                  
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ prompts                               ┃ samples                              ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Debajo hay una instrucción que        │ Debajo hay una instrucción que       │
+│ describe una tarea. Escribe una       │ describe una tarea. Escribe una      │
+│ respuesta que complete adecuadamente  │ respuesta que complete adecuadamente │
+│ la solicitud.                         │ la solicitud.                        │
+│                                       │                                      │
+│ ### Instrucción:                      │ ### Instrucción:                     │
+│ dime un chiste acerca de la situacion │ dime un chiste acerca de la          │
+│ actual de la economia, de modo que    │ situacion actual de la economia, de  │
+│ los niños comprendan el mal estado de │ modo que los niños comprendan el mal │
+│ la misma.                             │ estado de la misma.                  │
+│                                       │                                      │
+│ ### Respuesta:                        │ ### Respuesta:                       │
+│                                       │ La economia actual está en una       │
+│                                       │ situación bastante delicada. Existe  │
+│                                       │ una gran cantidad de gastos que      │
+│                                       │ deben pagarse, pero no existe la     │
+│                                       │ necesidad de hacerlo, debido a la    │
+│                                       │ pandemia de la COVID-19. Esto se ve  │
+│                                       │ agravado por la cancelación del PIB, │
+│                                       │ debido a la disminución de la        │
+│                                       │ actividad económica, que se ve       │
+│                                       │ afectada por la pandemia.            │
+│                                       │                                      │
+│                                       │ Para solucionar este problema, es    │
+│                                       │ necesario incrementar la actividad   │
+│                                       │ económica, de modo que puedan ser    │
+│                                       │ gastados                             │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│ Debajo hay una instrucción que        │ Debajo hay una instrucción que       │
+│ describe una tarea. Escribe una       │ describe una tarea. Escribe una      │
+│ respuesta que complete adecuadamente  │ respuesta que complete adecuadamente │
+│ la solicitud.                         │ la solicitud.                        │
+│                                       │                                      │
+│ ### Instrucción:                      │ ### Instrucción:                     │
+│ No entiendo la gracia de este chiste. │ No entiendo la gracia de este        │
+│ ¿Puedes contar otro?                  │ chiste. ¿Puedes contar otro?         │
+│                                       │                                      │
+│ ### Respuesta:                        │ ### Respuesta:                       │
+│                                       │ De nada. Este chiste es muy simple.  │
+│                                       │ Es una situación en la que un padre  │
+│                                       │ le diría a su hijo que había         │
+│                                       │ olvidado el carro de la tienda y     │
+│                                       │ tenía que tomar el Metro, y el hijo  │
+│                                       │ le respondiera que el Metro no       │
+│                                       │ existía. El padre entonces le diría  │
+│                                       │ que debía tomar un taxi, y el hijo   │
+│                                       │ le respondiera que debía tomar un    │
+│                                       │ coche. El padre entonces le diría    │
+│                                       │ que debía pedir ayuda a un vecino, y │
+│                                       │ el hijo le respondiera que el vecino │
+│                                       │ no existía. El padre entonces le     │
+│                                       │ diría que deb                        │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│ Debajo hay una instrucción que        │ Debajo hay una instrucción que       │
+│ describe una tarea. Escribe una       │ describe una tarea. Escribe una      │
+│ respuesta que complete adecuadamente  │ respuesta que complete adecuadamente │
+│ la solicitud.                         │ la solicitud.                        │
+│                                       │                                      │
+│ ### Instrucción:                      │ ### Instrucción:                     │
+│ No entiendo la gracia de este chiste. │ No entiendo la gracia de este        │
+│ ¿Puedes contar otro?                  │ chiste. ¿Puedes contar otro?         │
+│                                       │                                      │
+│ ### Respuesta:                        │ ### Respuesta:                       │
+│                                       │ Sí, este chiste se hace porque hay   │
+│                                       │ dos personas que se conocen muy de   │
+│                                       │ cerca. Ambas sienten un gran respeto │
+│                                       │ mutuo, ya que han logrado            │
+│                                       │ desarrollar una amistad que dura     │
+│                                       │ muchos años. Ambos han alcanzado un  │
+│                                       │ punto en su relación en que ya no    │
+│                                       │ necesitan ninguna otra persona para  │
+│                                       │ completarlos, ya que saben que cada  │
+│                                       │ uno de ellos es completosolo. Esta   │
+│                                       │ amistad es por tanto la base de este │
+│                                       │ chiste, ya que describe la amistad   │
+│                                       │ que tienen ambas personas.           │
+│                                       │                                      │
+│                                       │ Desde el punto de vista de quien     │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+eval | rougeL: 16.544 | exact_match: 0.000 | rev_kl: 0.884 | lens: 97.971 | pt_loss: 1.764 | lm_loss: 1.911 | kd_loss: 1.617 
+train | data_epochs  0/10 | inner iter:   5/ 32 | ppo epoch:  2/ 4 | global iter:    100/  5000| tot_loss: 2.5614 | rl_loss: 0.6466 | pt_loss: 1.9148 | pg_loss: 0.1628 | reg_loss: 0.4839 | reward: -0.2272 | rev_kl: 0.7806 | stu_lens: 114.0000 | mixed_lens: 107.0000 | lr: 4.8500e-06 | scale: 2048.00 | time: 26.254 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   7/ 32 | ppo epoch:  2/ 4 | global iter:    101/  5000| tot_loss: 1.7496 | rl_loss: 0.5609 | pt_loss: 1.1887 | pg_loss: 0.0778 | reg_loss: 0.4831 | reward: -0.0623 | rev_kl: 0.8886 | stu_lens: 46.5000 | mixed_lens: 118.5000 | lr: 4.9000e-06 | scale: 2048.00 | time: 26.307 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   9/ 32 | ppo epoch:  2/ 4 | global iter:    102/  5000| tot_loss: 2.4081 | rl_loss: 0.5164 | pt_loss: 1.8917 | pg_loss: 0.1657 | reg_loss: 0.3507 | reward: -1.7427 | rev_kl: 0.7858 | stu_lens: 70.5000 | mixed_lens: 66.5000 | lr: 4.9500e-06 | scale: 2048.00 | time: 26.302 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  11/ 32 | ppo epoch:  2/ 4 | global iter:    103/  5000| tot_loss: 2.1322 | rl_loss: 0.8370 | pt_loss: 1.2952 | pg_loss: 0.3931 | reg_loss: 0.4439 | reward: -0.3127 | rev_kl: 1.1705 | stu_lens: 39.5000 | mixed_lens: 71.0000 | lr: 5.0000e-06 | scale: 2048.00 | time: 26.254 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  13/ 32 | ppo epoch:  2/ 4 | global iter:    104/  5000| tot_loss: 3.9628 | rl_loss: 2.1263 | pt_loss: 1.8365 | pg_loss: 1.7169 | reg_loss: 0.4094 | reward: -0.6625 | rev_kl: 0.6761 | stu_lens: 13.0000 | mixed_lens: 25.0000 | lr: 5.0000e-06 | scale: 2048.00 | time: 26.298 | step time: 0.000
+train | data_epochs  0/10 | inner iter:  15/ 32 | ppo epoch:  2/ 4 | global iter:    105/  5000| tot_loss: 3.1907 | rl_loss: 1.0968 | pt_loss: 2.0939 | pg_loss: 0.5027 | reg_loss: 0.5941 | reward: -0.5741 | rev_kl: 0.7814 | stu_lens: 72.5000 | mixed_lens: 75.5000 | lr: 5.0000e-06 | scale: 2048.00 | time: 26.260 | step time: 0.000

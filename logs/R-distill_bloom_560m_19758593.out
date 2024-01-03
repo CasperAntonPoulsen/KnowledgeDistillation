@@ -1,0 +1,498 @@
+��Tue Dec 12 16:43:35 2023       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.104.12             Driver Version: 535.104.12   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA H100 PCIe               On  | 00000000:41:00.0 Off |                    0 |
+| N/A   26C    P0              45W / 350W |      4MiB / 81559MiB |      0%   E. Process |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+python3 -m torch.distributed.run --nproc_per_node 1 --nnodes 1 --node_rank 0 --master_addr localhost --master_port 3401 /dtu/p1/johlau/LMOps/minillm/train_minillm.py --base-path /dtu/p1/johlau/LMOps/minillm --model-path bigscience/bloom-560m --teacher-model-path bigscience/bloom-1b1 --ckpt-name bloom-560m --teacher-ckpt-name bloom-1b1 --n-gpu 1 --n-nodes 1 --model-type bloom --teacher-model-fp16 --gradient-checkpointing --prompt-data-dir /dtu/p1/johlau/LMOps/minillm/processed_data/dolly/prompt/bloom/ --lm-data-dir /dtu/p1/johlau/LMOps/minillm/processed_data/roberta/bloom/512/20M/ --dev-num 1000 --num-workers 0 --epochs 10 --total-iters 500 --kd-ratio 0.5 --batch-size 8 --lr 5e-6 --lr-min 5e-6 --gradient-accumulation-steps 2 --max-length 256 --max-prompt-length 128 --warmup-iters 100 --scheduler-name cosine_trm --save /dtu/p1/johlau/LMOps/minillm/results/bloom/train/minillm/ --seed 10 --seed-ppo 42 --seed-lm 7 --save-interval 500 --eval-interval 100 --log-interval 16 --mid-log-num 1 --type minillm --ppo-epochs 4 --num-rollouts 32 --chunk-size 8 --length-norm --single-step-reg --teacher-mixed-alpha 0.2 --reward-scaling 0.5 --cliprange-reward 100 --do-sample --top-k 0 --top-p 1.0 --temperature 1.0 --deepspeed --deepspeed_config /dtu/p1/johlau/LMOps/minillm/configs/deepspeed/ds_config.json /dtu/p1/johlau/LMOps/minillm
+PYTHONPATH=/dtu/p1/johlau/LMOps/minillm
+[2023-12-12 16:43:51,780] [INFO] [real_accelerator.py:158:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+using world size: 1
+[2023-12-12 16:43:54,896] [INFO] [comm.py:637:init_distributed] cdb=None
+[2023-12-12 16:43:54,896] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+arguments:
+  model_path ................... bigscience/bloom-560m
+  ckpt_name .................... bloom-560m
+  model_type ................... bloom
+  teacher_model_type ........... None
+  n_gpu ........................ 1
+  n_nodes ...................... 1
+  teacher_model_path ........... bigscience/bloom-1b1
+  teacher_ckpt_name ............ bloom-1b1
+  teacher_model_fp16 ........... True
+  model_parallel ............... False
+  model_parallel_size .......... None
+  no_value ..................... False
+  dropout_path_rate ............ None
+  fp32 ......................... False
+  type ......................... minillm
+  do_train ..................... False
+  do_valid ..................... False
+  do_eval ...................... False
+  base_path .................... /dtu/p1/johlau/LMOps/minillm
+  load ......................... None
+  save ......................... /dtu/p1/johlau/LMOps/minillm/results/bloom/train/minillm/bs8-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr32_ln_sr_tm0.2
+  log_interval ................. 16
+  mid_log_num .................. 1
+  save_interval ................ 500
+  eval_interval ................ 100
+  local_rank ................... 0
+  save_additional_suffix ....... 
+  save_rollout ................. False
+  eb_sample_times .............. 3
+  data_dir ..................... None
+  processed_data_dir ........... None
+  force_process ................ False
+  force_process_demo ........... False
+  data_process_workers ......... -1
+  train_num .................... -1
+  train_ratio .................. 1
+  dev_num ...................... 1000
+  dev_ratio .................... 1
+  gen_num ...................... -1
+  data_names ................... None
+  prompt_type .................. None
+  num_workers .................. 0
+  max_prompt_length ............ 128
+  min_prompt_length ............ 128
+  json_data .................... False
+  bin_data ..................... False
+  txt_data ..................... False
+  prompt_data_dir .............. /dtu/p1/johlau/LMOps/minillm/processed_data/dolly/prompt/bloom/
+  lm_data_dir .................. /dtu/p1/johlau/LMOps/minillm/processed_data/roberta/bloom/512/20M/
+  eval_ppl ..................... False
+  eval_rw ...................... False
+  eval_gen ..................... False
+  only_prompt .................. False
+  batch_size ................... 8
+  eval_batch_size .............. 32
+  clip_grad .................... 1.0
+  total_iters .................. 500
+  train_iters_per_epoch ........ -1
+  max_length ................... 256
+  seed ......................... 10
+  seed_order ................... 42
+  seed_data .................... 42
+  seed_ppo ..................... 42
+  seed_lm ...................... 7
+  epochs ....................... 10
+  training_epochs .............. 10000
+  gradient_accumulation_steps .. 2
+  gradient_checkpointing ....... True
+  attn_dtype ................... None
+  lr ........................... 5e-06
+  lr_min ....................... 5e-06
+  weight_decay ................. 0.01
+  loss_scale ................... 65536
+  kd_ratio ..................... 0.5
+  warmup_iters ................. 100
+  lr_decay_iters ............... None
+  lr_decay_style ............... noam
+  scheduler_name ............... cosine_trm
+  reward_scaling ............... 0.5
+  cliprange_reward ............. 100.0
+  ppo_epochs ................... 4
+  num_rollouts ................. 32
+  num_rollouts_per_device ...... 32
+  cliprange .................... 0.2
+  chunk_size ................... 8
+  gamma ........................ 0.95
+  length_norm .................. True
+  single_step_reg .............. True
+  teacher_mixed_alpha .......... 0.2
+  lm_coef ...................... 1
+  top_k ........................ 0
+  top_p ........................ 1.0
+  do_sample .................... True
+  no_repeat_ngram_size ......... 6
+  repetition_penalty ........... None
+  num_beams .................... 1
+  temperature .................. 1.0
+  peft ......................... None
+  peft_lora_r .................. 8
+  peft_lora_alpha .............. 32
+  peft_lora_dropout ............ 0.1
+  peft_name .................... None
+  peft_path .................... None
+  teacher_peft_name ............ None
+  teacher_peft_path ............ None
+  deepspeed .................... True
+  deepspeed_config ............. /dtu/p1/johlau/LMOps/minillm/configs/deepspeed/ds_config.json
+  deepscale .................... False
+  deepscale_config ............. None
+  deepspeed_mpi ................ False
+  rank ......................... 0
+  world_size ................... 1
+ > number of parameters: 1065314304
+ > number of parameters: 559214592
+Model load time: 0.7240359783172607s
+ > number of parameters: 559M
+[2023-12-12 16:43:59,279] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.12.1, git-hash=unknown, git-branch=unknown
+[2023-12-12 16:44:01,249] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-12-12 16:44:01,250] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2023-12-12 16:44:01,250] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2023-12-12 16:44:01,262] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
+[2023-12-12 16:44:01,262] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'torch.optim.adamw.AdamW'>
+[2023-12-12 16:44:01,262] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 1 optimizer
+[2023-12-12 16:44:01,262] [INFO] [stage_1_and_2.py:147:__init__] Reduce bucket size 500,000,000
+[2023-12-12 16:44:01,262] [INFO] [stage_1_and_2.py:148:__init__] Allgather bucket size 500,000,000
+[2023-12-12 16:44:01,262] [INFO] [stage_1_and_2.py:149:__init__] CPU Offload: False
+[2023-12-12 16:44:01,262] [INFO] [stage_1_and_2.py:150:__init__] Round robin gradient partitioning: False
+[2023-12-12 16:44:01,969] [INFO] [utils.py:802:see_memory_usage] Before initializing optimizer states
+[2023-12-12 16:44:01,970] [INFO] [utils.py:803:see_memory_usage] MA 5.11 GB         Max_MA 6.15 GB         CA 6.2 GB         Max_CA 6 GB 
+[2023-12-12 16:44:01,970] [INFO] [utils.py:810:see_memory_usage] CPU Virtual Memory:  used = 12.99 GB, percent = 1.7%
+[2023-12-12 16:44:02,566] [INFO] [utils.py:802:see_memory_usage] After initializing optimizer states
+[2023-12-12 16:44:02,567] [INFO] [utils.py:803:see_memory_usage] MA 9.28 GB         Max_MA 13.45 GB         CA 14.54 GB         Max_CA 15 GB 
+[2023-12-12 16:44:02,567] [INFO] [utils.py:810:see_memory_usage] CPU Virtual Memory:  used = 12.99 GB, percent = 1.7%
+[2023-12-12 16:44:02,567] [INFO] [stage_1_and_2.py:514:__init__] optimizer state initialized
+[2023-12-12 16:44:02,654] [INFO] [utils.py:802:see_memory_usage] After initializing ZeRO optimizer
+[2023-12-12 16:44:02,654] [INFO] [utils.py:803:see_memory_usage] MA 9.28 GB         Max_MA 9.28 GB         CA 14.54 GB         Max_CA 15 GB 
+[2023-12-12 16:44:02,654] [INFO] [utils.py:810:see_memory_usage] CPU Virtual Memory:  used = 12.99 GB, percent = 1.7%
+[2023-12-12 16:44:02,661] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = AdamW
+[2023-12-12 16:44:02,661] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2023-12-12 16:44:02,661] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.LambdaLR object at 0x7fc8be6f8ca0>
+[2023-12-12 16:44:02,661] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0], mom=[[0.9, 0.95]]
+[2023-12-12 16:44:02,661] [INFO] [config.py:972:print] DeepSpeedEngine configuration:
+[2023-12-12 16:44:02,661] [INFO] [config.py:976:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-12-12 16:44:02,661] [INFO] [config.py:976:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-12-12 16:44:02,661] [INFO] [config.py:976:print]   amp_enabled .................. False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   amp_params ................... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   bfloat16_enabled ............. False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   checkpoint_parallel_write_pipeline  False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   checkpoint_tag_validation_enabled  True
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   checkpoint_tag_validation_fail  False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fc8be648e50>
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   communication_data_type ...... None
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   curriculum_enabled_legacy .... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   curriculum_params_legacy ..... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   data_efficiency_enabled ...... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   dataloader_drop_last ......... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   disable_allgather ............ False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   dump_state ................... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   dynamic_loss_scale_args ...... {'init_scale': 2048, 'scale_window': 2000, 'delayed_shift': 4, 'consecutive_hysteresis': False, 'min_scale': 1}
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   eigenvalue_enabled ........... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   eigenvalue_gas_boundary_resolution  1
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   eigenvalue_layer_num ......... 0
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   eigenvalue_max_iter .......... 100
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   eigenvalue_stability ......... 1e-06
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   eigenvalue_tol ............... 0.01
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   eigenvalue_verbose ........... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   elasticity_enabled ........... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   fp16_auto_cast ............... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   fp16_enabled ................. True
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   fp16_master_weights_and_gradients  False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   global_rank .................. 0
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   grad_accum_dtype ............. None
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   gradient_accumulation_steps .. 2
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   gradient_clipping ............ 1.0
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   gradient_predivide_factor .... 1.0
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   initial_dynamic_scale ........ 2048
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   load_universal_checkpoint .... False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   loss_scale ................... 0
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   memory_breakdown ............. False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   mics_hierarchial_params_gather  False
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   mics_shard_size .............. -1
+[2023-12-12 16:44:02,662] [INFO] [config.py:976:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName'wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   optimizer_legacy_fusion ...... False
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   optimizer_name ............... None
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   optimizer_params ............. None
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   pld_enabled .................. False
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   pld_params ................... False
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   prescale_gradients ........... False
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   scheduler_name ............... None
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   scheduler_params ............. None
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   seq_parallel_communication_data_type  torch.float32
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   sparse_attention ............. None
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   sparse_gradients_enabled ..... False
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   steps_per_print .............. 10000000
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   train_batch_size ............. 16
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   train_micro_batch_size_per_gpu  8
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   use_node_local_storage ....... False
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   wall_clock_breakdown ......... False
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   weight_quantization_config ... None
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   world_size ................... 1
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   zero_allow_untested_optimizer  True
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   zero_config .................. stage=1 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500,000,000 allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   zero_enabled ................. True
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   zero_force_ds_cpu_optimizer .. True
+[2023-12-12 16:44:02,663] [INFO] [config.py:976:print]   zero_optimization_stage ...... 1
+[2023-12-12 16:44:02,663] [INFO] [config.py:962:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 8, 
+    "gradient_accumulation_steps": 2, 
+    "zero_optimization": {
+        "stage": 1
+    }, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 11, 
+        "loss_scale_window": 2.000000e+03, 
+        "hysteresis": 4
+    }, 
+    "wall_clock_breakdown": false, 
+    "gradient_clipping": 1.0, 
+    "steps_per_print": 1.000000e+07
+}
+Probing Dataset
+Probing end. Max data state 1, total length 14003
+Num PPO instances: 14003
+Probing Dataset
+Probing end. Max data state 1, total length 989
+Num PPO instances: 989
+Probing Dataset
+Probing end. Max data state 1, total length 2536398
+Num LM instances: 2536398
+Probing Dataset
+Probing end. Max data state 1, total length 10000
+Num LM instances: 10000
+                                 Evaluation #0                                  
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ prompts                               ┃ samples                              ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Debajo hay unaयस que describe una്മ.   │ Debajo hay unaयस que describe una്മ.  │
+│ Escribe una respuesta que completeعية │ Escribe una respuesta que            │
+│ la标准.                               │ completeعية la标准.                  │
+│                                       │                                      │
+│ Channel सकता:                         │ Channel सकता:                        │
+│ dime un chiste acerca de la situacion │ dime un chiste acerca de la          │
+│ actual de la economia, de modo que    │ situacion actual de la economia, de  │
+│ los niños comprendan el mal estado de │ modo que los niños comprendan el mal │
+│ la misma.                             │ estado de la misma.                  │
+│                                       │                                      │
+│ Channel Respuesta:                    │ Channel Respuesta:                   │
+│                                       │ this is what things look like now,   │
+│                                       │ the earnings are not enough. I think │
+│                                       │ the government should give it extra  │
+│                                       │ in a little while,                   │
+│                                       │                                      │
+│                                       │ channel People:                      │
+│                                       │ What do you mean?                    │
+│                                       │                                      │
+│                                       │ channel People:                      │
+│                                       │  Don't think so.                     │
+│                                       │  I mean that school fees would be    │
+│                                       │ not enough to pay it in the month.   │
+│                                       │                                      │
+│                                       │ channel People:                      │
+│                                       │  We can give them extra up to junior │
+│                                       │ high. But I don't think it's right.  │
+│                                       │                                      │
+│                                       │ channel People:                      │
+│                                       │  You want us to get hostage?         │
+│                                       │  We want to represent the sick,      │
+│                                       │ weak, and needy.                     │
+│                                       │                                      │
+│                                       │ channel People:                      │
+│                                       │  Is that what we're looking to       │
+│                                       │ benefit the most from?               │
+│                                       │  Can we do better?                   │
+│                                       │                                      │
+│                                       │                                      │
+│                                       │ As for                               │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│ Debajo hay unaयस que describe una്മ.   │ Debajo hay unaयस que describe una്മ.  │
+│ Escribe una respuesta que completeعية │ Escribe una respuesta que            │
+│ la标准.                               │ completeعية la标准.                  │
+│                                       │                                      │
+│ Channel सकता:                         │ Channel सकता:                        │
+│ Noiapkan laحِ de este chiste. ¿ Court  │ Noiapkan laحِ de este chiste. ¿ Court │
+│ contar otro?                          │ contar otro?                         │
+│                                       │                                      │
+│ Channel Respuesta:                    │ Channel Respuesta:                   │
+│                                       │ على تقصencia unऔरb conallis. रिस     │
+│                                       │ نشره conastacionesfilters            │
+│                                       │                                      │
+│                                       │ AfterGame :                          │
+│                                       │ @SconeraChakra: Welcome to a_com.    │
+│                                       │ :)@monarchsei: Me cardila que as_mae │
+│                                       │ 100,000 in_Dlanss a that game. De    │
+│                                       │ 分_se online                         │
+│                                       │         @SconeraChakra: Scone        │
+│                                       │ rative! The_Score is %_valid value   │
+│                                       │ and 5 in MEP is %_non_valid          │
+│                                       │ value.自定义. Current                │
+│                                       │ @monarchsei: info Vous recevez_M_en  │
+│                                       │ un, eton a le_charnal pour COM!      │
+├───────────────────────────────────────┼──────────────────────────────────────┤
+│ Debajo hay unaयस que describe una്മ.   │ Debajo hay unaयस que describe una്മ.  │
+│ Escribe una respuesta que completeعية │ Escribe una respuesta que            │
+│ la标准.                               │ completeعية la标准.                  │
+│                                       │                                      │
+│ Channel सकता:                         │ Channel सकता:                        │
+│ Noiapkan laحِ de este chiste. ¿ Court  │ Noiapkan laحِ de este chiste. ¿ Court │
+│ contar otro?                          │ contar otro?                         │
+│                                       │                                      │
+│ Channel Respuesta:                    │ Channel Respuesta:                   │
+│                                       │ Si                                   │
+│                                       │                                      │
+│                                       │ Cancaila seem: apparaideo un مجموعب  │
+│                                       │ من مار, maybe it fail, or Sometimes, │
+│                                       │ very many times, aTransfer de los    │
+│                                       │ amigos, no Meet a gentleman, and in  │
+│                                       │ thewhelming photos with some people. │
+│                                       │ कि الرجل इले कमामा वाले المُصور En los  │
+│                                       │ contactos SPOAM, unaprofileuse       │
+│                                       │ unaobsolutme de avanzo en lasربides, │
+│                                       │ فاروق, a Emmanuel de فترة टिप्पणी من  │
+│                                       │ واتست/ او راغ کرکےست Denver ডि Ann   │
+│                                       │ Beeleza撰写 ਹਾਲ در في لا'  espoirs   │
+│                                       │ on تبلش ف وكسب الانلوال من إحدى      │
+│                                       │ شركاتأرام، खासيص                     │
+└───────────────────────────────────────┴──────────────────────────────────────┘
+eval | rougeL: 5.333 | exact_match: 0.000 | rev_kl: inf | lens: 122.578 | pt_loss: 7.581 | lm_loss: 8.808 | kd_loss: 6.354 
+Total Steps: 500 Data Epochs: 10
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  0/ 4 | global iter:      2/   500| tot_loss: 9.2640 | rl_loss: 1.0571 | pt_loss: 8.2069 | pg_loss: 0.0445 | reg_loss: 1.0126 | reward: 0.1334 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 112.3750 | lr: 5.0000e-08 | scale: 2048.00 | time: 0.481 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  0/ 4 | global iter:      3/   500| tot_loss: 8.3196 | rl_loss: 1.0218 | pt_loss: 7.2978 | pg_loss: 0.0656 | reg_loss: 0.9562 | reward: 0.1139 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 123.3750 | lr: 1.0000e-07 | scale: 2048.00 | time: 0.364 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  1/ 4 | global iter:      4/   500| tot_loss: 8.9189 | rl_loss: 0.9008 | pt_loss: 8.0181 | pg_loss: 0.0407 | reg_loss: 0.8601 | reward: 0.1869 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 1.5000e-07 | scale: 2048.00 | time: 0.396 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  1/ 4 | global iter:      5/   500| tot_loss: 8.9161 | rl_loss: 0.8721 | pt_loss: 8.0439 | pg_loss: 0.0302 | reg_loss: 0.8420 | reward: 0.2058 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 120.6250 | lr: 2.0000e-07 | scale: 2048.00 | time: 0.396 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  2/ 4 | global iter:      6/   500| tot_loss: 8.7643 | rl_loss: 1.1040 | pt_loss: 7.6602 | pg_loss: 0.0599 | reg_loss: 1.0441 | reward: -0.1201 | rev_kl: inf | stu_lens: 118.2500 | mixed_lens: 119.7500 | lr: 2.5000e-07 | scale: 2048.00 | time: 0.397 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  2/ 4 | global iter:      7/   500| tot_loss: 8.6236 | rl_loss: 0.9013 | pt_loss: 7.7223 | pg_loss: 0.0665 | reg_loss: 0.8348 | reward: 0.1012 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 3.0000e-07 | scale: 2048.00 | time: 0.397 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  3/ 4 | global iter:      8/   500| tot_loss: 9.3803 | rl_loss: 1.1221 | pt_loss: 8.2582 | pg_loss: 0.0351 | reg_loss: 1.0871 | reward: 0.3235 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 120.6250 | lr: 3.5000e-07 | scale: 2048.00 | time: 0.396 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  3/ 4 | global iter:      9/   500| tot_loss: 8.3796 | rl_loss: 0.8775 | pt_loss: 7.5021 | pg_loss: 0.0571 | reg_loss: 0.8204 | reward: 0.0927 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 4.0000e-07 | scale: 2048.00 | time: 0.396 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  0/ 4 | global iter:     10/   500| tot_loss: 9.0406 | rl_loss: 0.9856 | pt_loss: 8.0550 | pg_loss: 0.0690 | reg_loss: 0.9166 | reward: 0.0412 | rev_kl: inf | stu_lens: 124.2500 | mixed_lens: 128.0000 | lr: 4.5000e-07 | scale: 2048.00 | time: 0.396 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  0/ 4 | global iter:     11/   500| tot_loss: 8.5439 | rl_loss: 0.9826 | pt_loss: 7.5613 | pg_loss: 0.0879 | reg_loss: 0.8948 | reward: 0.0871 | rev_kl: inf | stu_lens: 115.5000 | mixed_lens: 113.8750 | lr: 5.0000e-07 | scale: 2048.00 | time: 0.396 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  1/ 4 | global iter:     12/   500| tot_loss: 9.1320 | rl_loss: 1.0336 | pt_loss: 8.0985 | pg_loss: 0.0893 | reg_loss: 0.9443 | reward: 0.1168 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 5.5000e-07 | scale: 2048.00 | time: 0.397 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  1/ 4 | global iter:     13/   500| tot_loss: 8.9105 | rl_loss: 0.9467 | pt_loss: 7.9638 | pg_loss: 0.0865 | reg_loss: 0.8602 | reward: 0.1646 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 113.8750 | lr: 6.0000e-07 | scale: 2048.00 | time: 0.396 | step time: 0.000
+[ERROR] ratio nan
+[2023-12-12 16:48:45,335] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2048, but hysteresis is 4. Reducing hysteresis to 3
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  2/ 4 | global iter:     14/   500| tot_loss: 8.6144 | rl_loss: 0.9247 | pt_loss: 7.6897 | pg_loss: 0.0824 | reg_loss: 0.8423 | reward: 0.2368 | rev_kl: inf | stu_lens: 115.5000 | mixed_lens: 128.0000 | lr: 6.0000e-07 | scale: 2048.00 | time: 0.337 | step time: 0.000
+[ERROR] ratio nan
+[2023-12-12 16:48:46,382] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2048, but hysteresis is 3. Reducing hysteresis to 2
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  2/ 4 | global iter:     15/   500| tot_loss: nan | rl_loss: nan | pt_loss: 7.4693 | pg_loss: nan | reg_loss: 0.9327 | reward: 0.0890 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 113.8750 | lr: 6.0000e-07 | scale: 2048.00 | time: 0.329 | step time: 0.000
+[ERROR] ratio nan
+[2023-12-12 16:48:47,426] [INFO] [loss_scaler.py:190:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2048, but hysteresis is 2. Reducing hysteresis to 1
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  3/ 4 | global iter:     16/   500| tot_loss: 7.9748 | rl_loss: 0.9988 | pt_loss: 6.9760 | pg_loss: 0.0880 | reg_loss: 0.9108 | reward: 0.1284 | rev_kl: inf | stu_lens: 120.5000 | mixed_lens: 128.0000 | lr: 6.0000e-07 | scale: 2048.00 | time: 0.338 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  3/ 4 | global iter:     16/   500| tot_loss: nan | rl_loss: nan | pt_loss: 7.1922 | pg_loss: nan | reg_loss: 0.8644 | reward: 0.1007 | rev_kl: inf | stu_lens: 114.7930 | mixed_lens: 115.7031 | lr: 6.0000e-07 | scale: 2048.00 | time: 0.338 | step time: 0.750
+/dtu/p1/johlau/LMOps/minillm/results/bloom/train/minillm/bs8-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr32_ln_sr_tm0.2
+****************************************************************************************************
+[ERROR] ratio nan
+[2023-12-12 16:48:48,485] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2048, reducing to 1024
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  3/ 4 | global iter:     17/   500| tot_loss: nan | rl_loss: nan | pt_loss: 8.1784 | pg_loss: nan | reg_loss: 0.8474 | reward: 0.0858 | rev_kl: inf | stu_lens: 117.1250 | mixed_lens: 128.0000 | lr: 6.0000e-07 | scale: 1024.00 | time: 0.337 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  0/ 4 | global iter:     18/   500| tot_loss: 8.3528 | rl_loss: 0.8793 | pt_loss: 7.4735 | pg_loss: 0.0524 | reg_loss: 0.8269 | reward: 0.4683 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 115.5000 | lr: 6.5000e-07 | scale: 1024.00 | time: 0.396 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  0/ 4 | global iter:     19/   500| tot_loss: 8.0335 | rl_loss: 0.9270 | pt_loss: 7.1065 | pg_loss: 0.0479 | reg_loss: 0.8791 | reward: 0.2563 | rev_kl: inf | stu_lens: 117.0000 | mixed_lens: 128.0000 | lr: 7.0000e-07 | scale: 1024.00 | time: 0.397 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  1/ 4 | global iter:     20/   500| tot_loss: 8.4113 | rl_loss: 0.8194 | pt_loss: 7.5920 | pg_loss: 0.0451 | reg_loss: 0.7742 | reward: 0.0281 | rev_kl: inf | stu_lens: 117.0000 | mixed_lens: 126.1250 | lr: 7.5000e-07 | scale: 1024.00 | time: 0.397 | step time: 0.000
+[ERROR] ratio nan
+[ERROR] ratio nan
+[2023-12-12 16:49:13,081] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 1024, reducing to 512
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  1/ 4 | global iter:     21/   500| tot_loss: nan | rl_loss: nan | pt_loss: 7.5060 | pg_loss: nan | reg_loss: 0.8780 | reward: 0.3013 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 116.1250 | lr: 7.5000e-07 | scale: 512.00 | time: 0.330 | step time: 0.000
+[ERROR] ratio nan
+[ERROR] ratio nan
+[2023-12-12 16:49:14,124] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 512, reducing to 256
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  2/ 4 | global iter:     22/   500| tot_loss: nan | rl_loss: nan | pt_loss: 7.6937 | pg_loss: nan | reg_loss: 0.7894 | reward: 0.2482 | rev_kl: inf | stu_lens: 117.0000 | mixed_lens: 119.2500 | lr: 7.5000e-07 | scale: 256.00 | time: 0.327 | step time: 0.000
+[ERROR] ratio nan
+[ERROR] ratio nan
+[2023-12-12 16:49:15,174] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 256, reducing to 128
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  2/ 4 | global iter:     23/   500| tot_loss: nan | rl_loss: nan | pt_loss: 7.1901 | pg_loss: nan | reg_loss: 0.7397 | reward: 0.0396 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 126.1250 | lr: 7.5000e-07 | scale: 128.00 | time: 0.336 | step time: 0.000
+[ERROR] ratio nan
+[2023-12-12 16:49:16,220] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 128, reducing to 64
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  3/ 4 | global iter:     24/   500| tot_loss: 8.0226 | rl_loss: 0.9021 | pt_loss: 7.1204 | pg_loss: 0.0726 | reg_loss: 0.8295 | reward: 0.3931 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 115.5000 | lr: 7.5000e-07 | scale:  64.00 | time: 0.337 | step time: 0.000
+[ERROR] ratio nan
+[ERROR] ratio nan
+[2023-12-12 16:49:17,258] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 64, reducing to 32
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  3/ 4 | global iter:     25/   500| tot_loss: nan | rl_loss: nan | pt_loss: 7.5541 | pg_loss: nan | reg_loss: 0.9574 | reward: 0.0720 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 116.0000 | lr: 7.5000e-07 | scale:  32.00 | time: 0.331 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  0/ 4 | global iter:     26/   500| tot_loss: 8.0867 | rl_loss: 0.9093 | pt_loss: 7.1774 | pg_loss: 0.0702 | reg_loss: 0.8391 | reward: 0.3423 | rev_kl: 17619197770289839779872768.0000 | stu_lens: 114.5000 | mixed_lens: 128.0000 | lr: 8.0000e-07 | scale:  32.00 | time: 0.396 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  0/ 4 | global iter:     27/   500| tot_loss: 7.8600 | rl_loss: 0.8783 | pt_loss: 6.9817 | pg_loss: 0.0586 | reg_loss: 0.8197 | reward: 0.0850 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 120.5000 | lr: 8.5000e-07 | scale:  32.00 | time: 0.396 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  1/ 4 | global iter:     28/   500| tot_loss: 8.0129 | rl_loss: 0.9458 | pt_loss: 7.0670 | pg_loss: 0.0782 | reg_loss: 0.8676 | reward: 0.2371 | rev_kl: 5892796751507541758031429632.0000 | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 9.0000e-07 | scale:  32.00 | time: 0.395 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  1/ 4 | global iter:     29/   500| tot_loss: 8.1179 | rl_loss: 0.8635 | pt_loss: 7.2544 | pg_loss: 0.0540 | reg_loss: 0.8095 | reward: 0.3889 | rev_kl: inf | stu_lens: 116.6250 | mixed_lens: 120.5000 | lr: 9.5000e-07 | scale:  32.00 | time: 0.395 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  2/ 4 | global iter:     30/   500| tot_loss: 7.8804 | rl_loss: 0.9681 | pt_loss: 6.9123 | pg_loss: 0.0866 | reg_loss: 0.8815 | reward: 0.2096 | rev_kl: inf | stu_lens: 114.5000 | mixed_lens: 128.0000 | lr: 1.0000e-06 | scale:  32.00 | time: 0.562 | step time: 0.000
+[ERROR] ratio nan
+[ERROR] ratio nan
+[2023-12-12 16:49:44,216] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 32, reducing to 16
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  2/ 4 | global iter:     31/   500| tot_loss: nan | rl_loss: nan | pt_loss: 7.2871 | pg_loss: nan | reg_loss: 0.8428 | reward: -0.0433 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 107.1250 | lr: 1.0000e-06 | scale:  16.00 | time: 0.330 | step time: 0.000
+[ERROR] ratio nan
+[ERROR] ratio nan
+[2023-12-12 16:49:45,255] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 16, reducing to 8
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  3/ 4 | global iter:     32/   500| tot_loss: nan | rl_loss: nan | pt_loss: 6.6069 | pg_loss: nan | reg_loss: 0.8254 | reward: -0.1776 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 114.6250 | lr: 1.0000e-06 | scale:   8.00 | time: 0.331 | step time: 0.000
+****************************************************************************************************
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  3/ 4 | global iter:     32/   500| tot_loss: nan | rl_loss: nan | pt_loss: 7.2886 | pg_loss: nan | reg_loss: 0.8476 | reward: 0.1891 | rev_kl: inf | stu_lens: 123.3477 | mixed_lens: 119.0156 | lr: 1.0000e-06 | scale:   8.00 | time: 0.331 | step time: 0.698
+/dtu/p1/johlau/LMOps/minillm/results/bloom/train/minillm/bs8-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr32_ln_sr_tm0.2
+****************************************************************************************************
+[ERROR] ratio nan
+[2023-12-12 16:49:46,305] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 8, reducing to 4
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  3/ 4 | global iter:     33/   500| tot_loss: nan | rl_loss: nan | pt_loss: 7.2560 | pg_loss: nan | reg_loss: 0.7384 | reward: 0.3723 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 1.0000e-06 | scale:   4.00 | time: 0.331 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  0/ 4 | global iter:     34/   500| tot_loss: 8.0845 | rl_loss: 0.8330 | pt_loss: 7.2515 | pg_loss: 0.0642 | reg_loss: 0.7688 | reward: 0.1041 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 1.0500e-06 | scale:   4.00 | time: 0.395 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  0/ 4 | global iter:     35/   500| tot_loss: 7.8240 | rl_loss: 0.8284 | pt_loss: 6.9955 | pg_loss: 0.0467 | reg_loss: 0.7818 | reward: -0.0794 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 124.6250 | lr: 1.1000e-06 | scale:   4.00 | time: 0.395 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  1/ 4 | global iter:     36/   500| tot_loss: 7.6438 | rl_loss: 0.8349 | pt_loss: 6.8089 | pg_loss: 0.0611 | reg_loss: 0.7738 | reward: 0.0181 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 1.1500e-06 | scale:   4.00 | time: 0.396 | step time: 0.000
+[ERROR] ratio nan
+[2023-12-12 16:50:10,843] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 4, reducing to 2
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  1/ 4 | global iter:     37/   500| tot_loss: 7.7578 | rl_loss: 0.7928 | pt_loss: 6.9650 | pg_loss: 0.0493 | reg_loss: 0.7435 | reward: 0.1033 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 124.6250 | lr: 1.1500e-06 | scale:   2.00 | time: 0.337 | step time: 0.000
+[ERROR] ratio nan
+[2023-12-12 16:50:11,890] [INFO] [loss_scaler.py:183:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2, reducing to 1
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  2/ 4 | global iter:     38/   500| tot_loss: 7.8022 | rl_loss: 0.6984 | pt_loss: 7.1038 | pg_loss: 0.0425 | reg_loss: 0.6559 | reward: -0.0439 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 124.6250 | lr: 1.1500e-06 | scale:   1.00 | time: 0.338 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  2/ 4 | global iter:     39/   500| tot_loss: 7.9940 | rl_loss: 0.8611 | pt_loss: 7.1330 | pg_loss: 0.0883 | reg_loss: 0.7728 | reward: 0.0792 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 1.2000e-06 | scale:   1.00 | time: 0.395 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  3/ 4 | global iter:     40/   500| tot_loss: 7.7781 | rl_loss: 0.8375 | pt_loss: 6.9405 | pg_loss: 0.0656 | reg_loss: 0.7719 | reward: 0.2301 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 1.2500e-06 | scale:   1.00 | time: 0.395 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  3/ 4 | global iter:     41/   500| tot_loss: 7.7705 | rl_loss: 0.8986 | pt_loss: 6.8719 | pg_loss: 0.0465 | reg_loss: 0.8521 | reward: -0.0299 | rev_kl: inf | stu_lens: 128.0000 | mixed_lens: 124.6250 | lr: 1.3000e-06 | scale:   1.00 | time: 0.395 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  0/ 4 | global iter:     42/   500| tot_loss: 7.7131 | rl_loss: 0.8141 | pt_loss: 6.8991 | pg_loss: 0.0545 | reg_loss: 0.7596 | reward: 0.0501 | rev_kl: 4.3837 | stu_lens: 128.0000 | mixed_lens: 128.0000 | lr: 1.3500e-06 | scale:   1.00 | time: 0.395 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   3/  4 | ppo epoch:  0/ 4 | global iter:     43/   500| tot_loss: 7.7910 | rl_loss: 0.7648 | pt_loss: 7.0262 | pg_loss: 0.0638 | reg_loss: 0.7010 | reward: -0.0786 | rev_kl: 3557304.0000 | stu_lens: 105.7500 | mixed_lens: 128.0000 | lr: 1.4000e-06 | scale:   1.00 | time: 0.395 | step time: 0.000
+train | data_epochs  0/10 | inner iter:   1/  4 | ppo epoch:  1/ 4 | global iter:     44/   500| tot_loss: 8.1121 | rl_loss: 0.8130 | pt_loss: 7.2990 | pg_loss: 0.0716 | reg_loss: 0.7415 | reward: 0.0047 | rev_kl: inf | stu_lens: 111.6250 | mixed_lens: 126.2500 | lr: 1.4500e-06 | scale:   1.00 | time: 0.394 | step time: 0.000
+[ERROR] ratio nan

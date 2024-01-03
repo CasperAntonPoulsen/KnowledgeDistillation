@@ -1,0 +1,84 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Generation Evaluation:   0%|          | 0/62 [00:00<?, ?it/s]Generation Evaluation:   2%|▏         | 1/62 [00:01<01:47,  1.77s/it]Generation Evaluation:   3%|▎         | 2/62 [00:03<01:45,  1.76s/it]Generation Evaluation:   5%|▍         | 3/62 [00:05<01:43,  1.76s/it]Generation Evaluation:   6%|▋         | 4/62 [00:07<01:42,  1.76s/it]Generation Evaluation:   8%|▊         | 5/62 [00:08<01:40,  1.76s/it]Generation Evaluation:  10%|▉         | 6/62 [00:10<01:38,  1.77s/it]Generation Evaluation:  11%|█▏        | 7/62 [00:12<01:37,  1.77s/it]Generation Evaluation:  13%|█▎        | 8/62 [00:14<01:35,  1.76s/it]Generation Evaluation:  15%|█▍        | 9/62 [00:15<01:33,  1.77s/it]Generation Evaluation:  16%|█▌        | 10/62 [00:17<01:31,  1.77s/it]Generation Evaluation:  18%|█▊        | 11/62 [00:19<01:30,  1.77s/it]Generation Evaluation:  19%|█▉        | 12/62 [00:21<01:28,  1.77s/it]Generation Evaluation:  21%|██        | 13/62 [00:22<01:26,  1.77s/it]Generation Evaluation:  23%|██▎       | 14/62 [00:24<01:24,  1.76s/it]Generation Evaluation:  24%|██▍       | 15/62 [00:26<01:22,  1.76s/it]Generation Evaluation:  26%|██▌       | 16/62 [00:28<01:21,  1.77s/it]Generation Evaluation:  27%|██▋       | 17/62 [00:29<01:19,  1.76s/it]Generation Evaluation:  29%|██▉       | 18/62 [00:31<01:17,  1.76s/it]Generation Evaluation:  31%|███       | 19/62 [00:33<01:15,  1.76s/it]Generation Evaluation:  32%|███▏      | 20/62 [00:35<01:14,  1.76s/it]Generation Evaluation:  34%|███▍      | 21/62 [00:37<01:12,  1.76s/it]Generation Evaluation:  35%|███▌      | 22/62 [00:38<01:10,  1.76s/it]Generation Evaluation:  37%|███▋      | 23/62 [00:40<01:08,  1.76s/it]Generation Evaluation:  39%|███▊      | 24/62 [00:42<01:06,  1.76s/it]Generation Evaluation:  40%|████      | 25/62 [00:44<01:05,  1.76s/it]Generation Evaluation:  42%|████▏     | 26/62 [00:45<01:03,  1.76s/it]Generation Evaluation:  44%|████▎     | 27/62 [00:47<01:01,  1.76s/it]Generation Evaluation:  45%|████▌     | 28/62 [00:49<00:59,  1.76s/it]Generation Evaluation:  47%|████▋     | 29/62 [00:51<00:58,  1.76s/it]Generation Evaluation:  48%|████▊     | 30/62 [00:52<00:56,  1.76s/it]Generation Evaluation:  50%|█████     | 31/62 [00:54<00:54,  1.76s/it]Generation Evaluation:  52%|█████▏    | 32/62 [00:56<00:52,  1.77s/it]Generation Evaluation:  53%|█████▎    | 33/62 [00:58<00:51,  1.77s/it]Generation Evaluation:  55%|█████▍    | 34/62 [00:59<00:49,  1.76s/it]Generation Evaluation:  56%|█████▋    | 35/62 [01:01<00:47,  1.76s/it]Generation Evaluation:  58%|█████▊    | 36/62 [01:03<00:45,  1.76s/it]Generation Evaluation:  60%|█████▉    | 37/62 [01:05<00:44,  1.76s/it]Generation Evaluation:  61%|██████▏   | 38/62 [01:07<00:42,  1.76s/it]Generation Evaluation:  63%|██████▎   | 39/62 [01:08<00:40,  1.76s/it]Generation Evaluation:  65%|██████▍   | 40/62 [01:10<00:38,  1.76s/it]Generation Evaluation:  66%|██████▌   | 41/62 [01:12<00:37,  1.76s/it]Generation Evaluation:  68%|██████▊   | 42/62 [01:14<00:35,  1.76s/it]Generation Evaluation:  69%|██████▉   | 43/62 [01:15<00:33,  1.76s/it]Generation Evaluation:  71%|███████   | 44/62 [01:17<00:31,  1.76s/it]Generation Evaluation:  73%|███████▎  | 45/62 [01:19<00:29,  1.76s/it]Generation Evaluation:  74%|███████▍  | 46/62 [01:21<00:28,  1.76s/it]Generation Evaluation:  76%|███████▌  | 47/62 [01:22<00:26,  1.77s/it]Generation Evaluation:  77%|███████▋  | 48/62 [01:24<00:24,  1.77s/it]Generation Evaluation:  79%|███████▉  | 49/62 [01:26<00:22,  1.77s/it]Generation Evaluation:  81%|████████  | 50/62 [01:28<00:21,  1.77s/it]Generation Evaluation:  82%|████████▏ | 51/62 [01:29<00:19,  1.76s/it]Generation Evaluation:  84%|████████▍ | 52/62 [01:31<00:17,  1.77s/it]Generation Evaluation:  85%|████████▌ | 53/62 [01:33<00:15,  1.77s/it]Generation Evaluation:  87%|████████▋ | 54/62 [01:35<00:14,  1.77s/it]Generation Evaluation:  89%|████████▊ | 55/62 [01:37<00:12,  1.77s/it]Generation Evaluation:  90%|█████████ | 56/62 [01:38<00:10,  1.77s/it]Generation Evaluation:  92%|█████████▏| 57/62 [01:40<00:08,  1.77s/it]Generation Evaluation:  94%|█████████▎| 58/62 [01:42<00:07,  1.77s/it]Generation Evaluation:  95%|█████████▌| 59/62 [01:44<00:05,  1.77s/it]Generation Evaluation:  97%|█████████▋| 60/62 [01:45<00:03,  1.77s/it]Generation Evaluation:  98%|█████████▊| 61/62 [01:47<00:01,  1.77s/it]Generation Evaluation: 100%|██████████| 62/62 [01:49<00:00,  1.76s/it]Generation Evaluation: 100%|██████████| 62/62 [01:49<00:00,  1.76s/it]
+LM Evaluation:   0%|          | 0/63 [00:00<?, ?it/s]LM Evaluation:   2%|▏         | 1/63 [00:00<00:09,  6.71it/s]LM Evaluation:   3%|▎         | 2/63 [00:00<00:08,  7.14it/s]LM Evaluation:   5%|▍         | 3/63 [00:00<00:08,  7.37it/s]LM Evaluation:   6%|▋         | 4/63 [00:00<00:07,  7.49it/s]LM Evaluation:   8%|▊         | 5/63 [00:00<00:07,  7.56it/s]LM Evaluation:  10%|▉         | 6/63 [00:00<00:07,  7.60it/s]LM Evaluation:  11%|█         | 7/63 [00:00<00:07,  7.62it/s]LM Evaluation:  13%|█▎        | 8/63 [00:01<00:07,  7.65it/s]LM Evaluation:  14%|█▍        | 9/63 [00:01<00:07,  7.65it/s]LM Evaluation:  16%|█▌        | 10/63 [00:01<00:06,  7.66it/s]LM Evaluation:  17%|█▋        | 11/63 [00:01<00:06,  7.67it/s]LM Evaluation:  19%|█▉        | 12/63 [00:01<00:06,  7.66it/s]LM Evaluation:  21%|██        | 13/63 [00:01<00:06,  7.66it/s]LM Evaluation:  22%|██▏       | 14/63 [00:01<00:06,  7.67it/s]LM Evaluation:  24%|██▍       | 15/63 [00:01<00:06,  7.66it/s]LM Evaluation:  25%|██▌       | 16/63 [00:02<00:06,  7.67it/s]LM Evaluation:  27%|██▋       | 17/63 [00:02<00:06,  7.66it/s]LM Evaluation:  29%|██▊       | 18/63 [00:02<00:05,  7.67it/s]LM Evaluation:  30%|███       | 19/63 [00:02<00:05,  7.66it/s]LM Evaluation:  32%|███▏      | 20/63 [00:02<00:05,  7.66it/s]LM Evaluation:  33%|███▎      | 21/63 [00:02<00:05,  7.65it/s]LM Evaluation:  35%|███▍      | 22/63 [00:02<00:05,  7.66it/s]LM Evaluation:  37%|███▋      | 23/63 [00:03<00:05,  7.65it/s]LM Evaluation:  38%|███▊      | 24/63 [00:03<00:05,  7.66it/s]LM Evaluation:  40%|███▉      | 25/63 [00:03<00:04,  7.66it/s]LM Evaluation:  41%|████▏     | 26/63 [00:03<00:04,  7.66it/s]LM Evaluation:  43%|████▎     | 27/63 [00:03<00:04,  7.67it/s]LM Evaluation:  44%|████▍     | 28/63 [00:03<00:04,  7.67it/s]LM Evaluation:  46%|████▌     | 29/63 [00:03<00:04,  7.67it/s]LM Evaluation:  48%|████▊     | 30/63 [00:03<00:04,  7.68it/s]LM Evaluation:  49%|████▉     | 31/63 [00:04<00:04,  7.68it/s]LM Evaluation:  51%|█████     | 32/63 [00:04<00:04,  7.67it/s]LM Evaluation:  52%|█████▏    | 33/63 [00:04<00:03,  7.68it/s]LM Evaluation:  54%|█████▍    | 34/63 [00:04<00:03,  7.67it/s]LM Evaluation:  56%|█████▌    | 35/63 [00:04<00:03,  7.67it/s]LM Evaluation:  57%|█████▋    | 36/63 [00:04<00:03,  7.66it/s]LM Evaluation:  59%|█████▊    | 37/63 [00:04<00:03,  7.66it/s]LM Evaluation:  60%|██████    | 38/63 [00:04<00:03,  7.67it/s]LM Evaluation:  62%|██████▏   | 39/63 [00:05<00:03,  7.67it/s]LM Evaluation:  63%|██████▎   | 40/63 [00:05<00:03,  7.66it/s]LM Evaluation:  65%|██████▌   | 41/63 [00:05<00:02,  7.66it/s]LM Evaluation:  67%|██████▋   | 42/63 [00:05<00:02,  7.66it/s]LM Evaluation:  68%|██████▊   | 43/63 [00:05<00:02,  7.66it/s]LM Evaluation:  70%|██████▉   | 44/63 [00:05<00:02,  7.66it/s]LM Evaluation:  71%|███████▏  | 45/63 [00:05<00:02,  7.66it/s]LM Evaluation:  73%|███████▎  | 46/63 [00:06<00:02,  7.65it/s]LM Evaluation:  75%|███████▍  | 47/63 [00:06<00:02,  7.66it/s]LM Evaluation:  76%|███████▌  | 48/63 [00:06<00:01,  7.66it/s]LM Evaluation:  78%|███████▊  | 49/63 [00:06<00:01,  7.66it/s]LM Evaluation:  79%|███████▉  | 50/63 [00:06<00:01,  7.66it/s]LM Evaluation:  81%|████████  | 51/63 [00:06<00:01,  7.66it/s]LM Evaluation:  83%|████████▎ | 52/63 [00:06<00:01,  7.67it/s]LM Evaluation:  84%|████████▍ | 53/63 [00:06<00:01,  7.66it/s]LM Evaluation:  86%|████████▌ | 54/63 [00:07<00:01,  7.66it/s]LM Evaluation:  87%|████████▋ | 55/63 [00:07<00:01,  7.65it/s]LM Evaluation:  89%|████████▉ | 56/63 [00:07<00:00,  7.65it/s]LM Evaluation:  90%|█████████ | 57/63 [00:07<00:00,  7.65it/s]LM Evaluation:  92%|█████████▏| 58/63 [00:07<00:00,  7.65it/s]LM Evaluation:  94%|█████████▎| 59/63 [00:07<00:00,  7.65it/s]LM Evaluation:  95%|█████████▌| 60/63 [00:07<00:00,  7.66it/s]LM Evaluation:  97%|█████████▋| 61/63 [00:07<00:00,  7.67it/s]LM Evaluation:  98%|█████████▊| 62/63 [00:08<00:00,  7.67it/s]LM Evaluation: 100%|██████████| 63/63 [00:08<00:00,  7.69it/s]
+/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/zero/stage_1_and_2.py:1881: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:83.)
+  overflow_gpu = get_accelerator().ByteTensor([overflow])
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 93, in <module>
+[2023-12-12 16:41:31,416] torch.distributed.elastic.agent.server.api: [WARNING] Received Signals.SIGINT death signal, shutting down workers
+[2023-12-12 16:41:31,416] torch.distributed.elastic.multiprocessing.api: [WARNING] Sending process 367588 closing signal SIGINT
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 79, in main
+    train(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/__init__.py", line 51, in train
+    trainer.train()
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/trainer.py", line 373, in train
+    self.post_epoch_callback(training_epoch)
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/trainer.py", line 381, in post_epoch_callback
+    self.sampler.run_sample(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/sampler.py", line 84, in run_sample
+    s_gen_out = self.trainer.generate(**batch, return_dict_in_generate=True, mode=mode, output_scores=True)
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/trainer.py", line 614, in generate
+    gen = model.generate(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/model.py", line 21, in generate
+    return self.base_model.generate(**x)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py", line 1805, in generate
+    return self.sample(
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py", line 2916, in sample
+    outputs = self(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 873, in forward
+    transformer_outputs = self.transformer(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 722, in forward
+    outputs = block(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 410, in forward
+    attn_outputs = self.self_attention(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 316, in forward
+    context_layer = torch.bmm(attention_probs_reshaped, value_layer)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib64/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 255, in launch_agent
+    result = agent.run()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/metrics/api.py", line 124, in wrapper
+    result = f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 736, in run
+    result = self._invoke_run(role)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/agent/server/api.py", line 877, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 62, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 367586 got signal: 2

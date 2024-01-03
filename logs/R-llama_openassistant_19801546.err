@@ -1,0 +1,9 @@
+Loaded module: cuda/12.1
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.499589866179194e-05 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.623912401246509e-05 MB/s).
+Processed 1000 documents. 950 instances. (3940.4632949994316 docs/s, 0.01504670623128674 MB/s).
+Processed 2000 documents. 1891 instances. (7309.575738986545 docs/s, 0.02789776049368301 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.732606468325311e-05 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 6.529066588317868e-05 MB/s).
+Processed 1000 documents. 949 instances. (3566.8489080399654 docs/s, 0.01362005522517397 MB/s).
+Processed 2000 documents. 1895 instances. (6265.181395522527 docs/s, 0.02391172022331348 MB/s).

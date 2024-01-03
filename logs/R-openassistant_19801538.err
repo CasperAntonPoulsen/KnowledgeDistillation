@@ -1,0 +1,11 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Processed 0 documents. 1 instances. (0.0 docs/s, 6.94348308545822e-06 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.665992698141955e-06 MB/s).
+Processed 1000 documents. 973 instances. (1608.1115950091576 docs/s, 0.006140593363205592 MB/s).
+Processed 2000 documents. 1960 instances. (2876.9519963152443 docs/s, 0.010980188264134987 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.008647795298424e-06 MB/s).
+Processed 0 documents. 1 instances. (0.0 docs/s, 7.734015602409726e-06 MB/s).
+Processed 1000 documents. 974 instances. (1475.8054414358116 docs/s, 0.005635380733021726 MB/s).
+Processed 2000 documents. 1958 instances. (2402.4471796346356 docs/s, 0.009169190991304218 MB/s).

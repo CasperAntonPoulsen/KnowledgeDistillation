@@ -1,0 +1,15 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/tools/process_data_dolly.py", line 11, in <module>
+    from arguments import get_args
+  File "/dtu/p1/johlau/LMOps/minillm/arguments.py", line 18, in <module>
+    import deepspeed
+ModuleNotFoundError: No module named 'deepspeed'
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/tools/process_data_dolly.py", line 11, in <module>
+    from arguments import get_args
+  File "/dtu/p1/johlau/LMOps/minillm/arguments.py", line 18, in <module>
+    import deepspeed
+ModuleNotFoundError: No module named 'deepspeed'

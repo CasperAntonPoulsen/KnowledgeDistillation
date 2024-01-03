@@ -1,0 +1,59 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:02<00:02,  2.82s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.75s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:03<00:00,  1.91s/it]
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 93, in <module>
+    main()
+  File "/dtu/p1/johlau/LMOps/minillm/train_minillm.py", line 79, in main
+    train(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/__init__.py", line 44, in train
+    lm_pipeline = LMPipeline(
+  File "/dtu/p1/johlau/LMOps/minillm/minillm/pipelines.py", line 122, in __init__
+    self.lm_ctx = DistributedMMapIndexedDataset(lm_data_path, f"{split}", get_rank(), get_world_size())
+  File "/dtu/p1/johlau/LMOps/minillm/data_utils/distributed_indexed.py", line 130, in __init__
+    self._do_init(self._path, self._name, self._cache, self._state)
+  File "/dtu/p1/johlau/LMOps/minillm/data_utils/distributed_indexed.py", line 166, in _do_init
+    self._index = self.Index(index_file_path(source_file))
+  File "/dtu/p1/johlau/LMOps/minillm/data_utils/distributed_indexed.py", line 59, in __init__
+    with open(path, 'rb') as stream:
+FileNotFoundError: [Errno 2] No such file or directory: '/dtu/p1/johlau/LMOps/minillm/processed_data/roberta_both/bloom/256/20M/train_0.idx'
+Exception ignored in: <function DistributedMMapIndexedDataset.Index.__del__ at 0x7f55747fa700>
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/data_utils/distributed_indexed.py", line 89, in __del__
+    self._bin_buffer_mmap._mmap.close()
+AttributeError: 'Index' object has no attribute '_bin_buffer_mmap'
+[2023-12-12 23:57:46,260] torch.distributed.elastic.multiprocessing.api: [ERROR] failed (exitcode: 1) local_rank: 0 (pid: 2069213) of binary: /bin/python3
+Traceback (most recent call last):
+  File "/usr/lib64/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib64/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 810, in <module>
+    main()
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 806, in main
+    run(args)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/run.py", line 797, in run
+    elastic_launch(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/distributed/launcher/api.py", line 264, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+/dtu/p1/johlau/LMOps/minillm/train_minillm.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2023-12-12_23:57:46
+  host      : n-62-12-86.hpccluster.dtu.dk
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 2069213)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

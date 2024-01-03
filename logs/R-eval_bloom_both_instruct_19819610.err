@@ -1,0 +1,75 @@
+Loaded module: cuda/12.1
+  0%|          | 0/400 [00:00<?, ?it/s]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/tokenization_utils_base.py:3862: UserWarning: `as_target_tokenizer` is deprecated and will be removed in v5 of Transformers. You can tokenize your labels by using the argument `text_target` of the regular `__call__` method (either in the same call as your input texts if you use the same keyword arguments, or in a separate call.
+  warnings.warn(
+/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 149, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  0%|          | 1/400 [00:12<1:25:46, 12.90s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 151, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  0%|          | 2/400 [00:26<1:26:35, 13.06s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 147, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  1%|          | 3/400 [00:38<1:25:52, 12.98s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 150, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  1%|          | 4/400 [00:51<1:25:30, 12.96s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 148, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  1%|▏         | 5/400 [01:04<1:24:24, 12.82s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 145, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  2%|▏         | 6/400 [01:17<1:23:37, 12.74s/it]  2%|▏         | 7/400 [01:29<1:23:38, 12.77s/it]  2%|▏         | 8/400 [01:42<1:23:03, 12.71s/it]  2%|▏         | 9/400 [01:55<1:22:34, 12.67s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 152, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  2%|▎         | 10/400 [02:07<1:22:52, 12.75s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 153, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  3%|▎         | 11/400 [02:21<1:23:32, 12.89s/it]  3%|▎         | 12/400 [02:34<1:23:19, 12.88s/it]  3%|▎         | 13/400 [02:46<1:23:09, 12.89s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 146, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  4%|▎         | 14/400 [02:59<1:22:18, 12.79s/it]  4%|▍         | 15/400 [03:12<1:22:10, 12.81s/it]  4%|▍         | 16/400 [03:25<1:22:08, 12.83s/it]  4%|▍         | 17/400 [03:38<1:22:02, 12.85s/it]  4%|▍         | 18/400 [03:51<1:21:51, 12.86s/it]  5%|▍         | 19/400 [04:03<1:21:43, 12.87s/it]  5%|▌         | 20/400 [04:16<1:21:29, 12.87s/it]  5%|▌         | 21/400 [04:29<1:20:40, 12.77s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 144, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  6%|▌         | 22/400 [04:41<1:19:27, 12.61s/it]  6%|▌         | 23/400 [04:54<1:19:41, 12.68s/it]  6%|▌         | 24/400 [05:07<1:20:22, 12.83s/it]  6%|▋         | 25/400 [05:20<1:20:09, 12.82s/it]  6%|▋         | 26/400 [05:33<1:19:57, 12.83s/it]  7%|▋         | 27/400 [05:45<1:19:12, 12.74s/it]  7%|▋         | 28/400 [05:58<1:19:15, 12.78s/it]  7%|▋         | 29/400 [06:11<1:19:11, 12.81s/it]  8%|▊         | 30/400 [06:24<1:19:07, 12.83s/it]  8%|▊         | 31/400 [06:36<1:18:23, 12.75s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 154, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+  8%|▊         | 32/400 [06:50<1:19:00, 12.88s/it]  8%|▊         | 33/400 [07:02<1:18:41, 12.86s/it]  8%|▊         | 34/400 [07:15<1:18:27, 12.86s/it]  9%|▉         | 35/400 [07:28<1:18:19, 12.88s/it]  9%|▉         | 36/400 [07:41<1:17:31, 12.78s/it]  9%|▉         | 37/400 [07:54<1:17:27, 12.80s/it] 10%|▉         | 38/400 [08:06<1:16:47, 12.73s/it] 10%|▉         | 39/400 [08:19<1:16:14, 12.67s/it] 10%|█         | 40/400 [08:31<1:15:15, 12.54s/it] 10%|█         | 41/400 [08:44<1:15:37, 12.64s/it] 10%|█         | 42/400 [08:57<1:15:48, 12.70s/it] 11%|█         | 43/400 [09:10<1:16:26, 12.85s/it] 11%|█         | 44/400 [09:22<1:15:43, 12.76s/it] 11%|█▏        | 45/400 [09:35<1:15:40, 12.79s/it] 12%|█▏        | 46/400 [09:48<1:15:03, 12.72s/it] 12%|█▏        | 47/400 [10:00<1:14:33, 12.67s/it] 12%|█▏        | 48/400 [10:13<1:14:43, 12.74s/it] 12%|█▏        | 49/400 [10:26<1:14:43, 12.77s/it] 12%|█▎        | 50/400 [10:39<1:14:41, 12.81s/it] 13%|█▎        | 51/400 [10:52<1:14:02, 12.73s/it] 13%|█▎        | 52/400 [11:05<1:14:08, 12.78s/it] 13%|█▎        | 53/400 [11:17<1:13:29, 12.71s/it] 14%|█▎        | 54/400 [11:30<1:13:37, 12.77s/it] 14%|█▍        | 55/400 [11:43<1:13:38, 12.81s/it] 14%|█▍        | 56/400 [11:56<1:13:35, 12.84s/it] 14%|█▍        | 57/400 [12:09<1:13:29, 12.86s/it] 14%|█▍        | 58/400 [12:22<1:13:16, 12.86s/it] 15%|█▍        | 59/400 [12:34<1:12:30, 12.76s/it] 15%|█▌        | 60/400 [12:47<1:11:57, 12.70s/it] 15%|█▌        | 61/400 [12:59<1:11:31, 12.66s/it] 16%|█▌        | 62/400 [13:12<1:11:44, 12.73s/it] 16%|█▌        | 63/400 [13:25<1:11:43, 12.77s/it] 16%|█▌        | 64/400 [13:38<1:11:36, 12.79s/it] 16%|█▋        | 65/400 [13:51<1:11:59, 12.89s/it] 16%|█▋        | 66/400 [14:04<1:11:48, 12.90s/it] 17%|█▋        | 67/400 [14:17<1:11:30, 12.88s/it] 17%|█▋        | 68/400 [14:29<1:11:09, 12.86s/it] 17%|█▋        | 69/400 [14:42<1:10:53, 12.85s/it] 18%|█▊        | 70/400 [14:55<1:10:43, 12.86s/it] 18%|█▊        | 71/400 [15:08<1:10:01, 12.77s/it] 18%|█▊        | 72/400 [15:20<1:09:25, 12.70s/it] 18%|█▊        | 73/400 [15:32<1:08:26, 12.56s/it] 18%|█▊        | 74/400 [15:45<1:08:39, 12.64s/it] 19%|█▉        | 75/400 [15:58<1:08:47, 12.70s/it] 19%|█▉        | 76/400 [16:11<1:08:50, 12.75s/it] 19%|█▉        | 77/400 [16:24<1:08:52, 12.79s/it] 20%|█▉        | 78/400 [16:37<1:09:15, 12.91s/it] 20%|█▉        | 79/400 [16:50<1:09:30, 12.99s/it] 20%|██        | 80/400 [17:03<1:09:00, 12.94s/it] 20%|██        | 81/400 [17:16<1:08:10, 12.82s/it] 20%|██        | 82/400 [17:29<1:08:28, 12.92s/it]/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py:1365: UserWarning: Input length of input_ids is 143, but `max_length` is set to 128. This can lead to unexpected behavior. You should consider increasing `max_new_tokens`.
+  warnings.warn(
+ 20%|██        | 82/400 [17:32<1:08:02, 12.84s/it]
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/Tk-Instruct/src/run_bloom_both.py", line 74, in <module>
+    response = model.generate(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py", line 1759, in generate
+    return self.greedy_search(
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/generation/utils.py", line 2622, in greedy_search
+    outputs = self(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 873, in forward
+    transformer_outputs = self.transformer(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 722, in forward
+    outputs = block(
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 434, in forward
+    output = self.mlp(layernorm_output, residual)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/dtu/p1/johlau/LMOps/minillm/transformers/src/transformers/models/bloom/modeling_bloom.py", line 355, in forward
+    hidden_states = self.gelu_impl(self.dense_h_to_4h(hidden_states))
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+KeyboardInterrupt
+usage: compute_metrics.py [-h] --predictions PREDICTIONS
+                          [--track {default,xlingual}]
+                          [--compute_per_category_metrics]
+                          [--compute_per_task_metrics]
+compute_metrics.py: error: argument --track: invalid choice: 'english' (choose from 'default', 'xlingual')
+/dtu/p1/johlau/Tk-Instruct/scripts/run_bloom_both.sh: line 23: syntax error near unexpected token `done'
+/dtu/p1/johlau/Tk-Instruct/scripts/run_bloom_both.sh: line 23: `done'

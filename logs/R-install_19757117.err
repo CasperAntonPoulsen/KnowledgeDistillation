@@ -1,0 +1,137 @@
+Loaded module: cuda/12.1
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+ERROR: transformers/ is not a valid editable requirement. It should either be a path to a local project or a VCS URL (beginning with bzr+http, bzr+https, bzr+ssh, bzr+sftp, bzr+ftp, bzr+lp, bzr+file, git+http, git+https, git+ssh, git+git, git+file, hg+file, hg+http, hg+https, hg+ssh, hg+static-http, svn+ssh, svn+http, svn+https, svn+svn, svn+file).
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+    WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+  WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+  distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+  sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+  WARNING: Additional context:
+  user = True
+  home = None
+  root = None
+  prefix = None
+    WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+  ERROR: Failed to restore /zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/jit/
+  ERROR: Failed to restore /zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/lib/
+  ERROR: Failed to restore /zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/onnx/
+  ERROR: Failed to restore /zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/special/
+  ERROR: Failed to restore /zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/utils/
+ERROR: Could not install packages due to an OSError: [Errno 2] No such file or directory: '/zhome/4e/b/208805/.local/lib/python3.9/site-packages/torch/ao/nn/intrinsic/qat/modules/__init__.py'
+
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -orch (/zhome/4e/b/208805/.local/lib/python3.9/site-packages)
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+  WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+  distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+  sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+  WARNING: Additional context:
+  user = True
+  home = None
+  root = None
+  prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None
+WARNING: Value for scheme.platlib does not match. Please report this to <https://github.com/pypa/pip/issues/10151>
+distutils: /zhome/4e/b/208805/.local/lib/python3.9/site-packages
+sysconfig: /zhome/4e/b/208805/.local/lib64/python3.9/site-packages
+WARNING: Additional context:
+user = True
+home = None
+root = None
+prefix = None

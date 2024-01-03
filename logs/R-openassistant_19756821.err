@@ -1,0 +1,79 @@
+Loaded module: cuda/12.1
+/usr/lib64/python3.9/site-packages/scipy/__init__.py:138: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.2)
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion} is required for this version of "
+/zhome/4e/b/208805/.local/lib/python3.9/site-packages/pydantic/_internal/_config.py:321: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'populate_by_name'
+* 'validate_all' has been renamed to 'validate_default'
+  warnings.warn(message, UserWarning)
+/zhome/4e/b/208805/.local/lib/python3.9/site-packages/pydantic/_internal/_fields.py:149: UserWarning: Field "model_persistence_threshold" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/tools/process_data_dolly.py", line 11, in <module>
+    from arguments import get_args
+  File "/dtu/p1/johlau/LMOps/minillm/arguments.py", line 18, in <module>
+    import deepspeed
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/__init__.py", line 16, in <module>
+    from . import module_inject
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/module_inject/__init__.py", line 6, in <module>
+    from .replace_module import replace_transformer_layer, revert_transformer_layer, ReplaceWithTensorSlicing, GroupQuantizer, generic_injection
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/module_inject/replace_module.py", line 732, in <module>
+    from ..pipe import PipelineModule
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/pipe/__init__.py", line 6, in <module>
+    from ..runtime.pipe import PipelineModule, LayerSpec, TiedLayerSpec
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/pipe/__init__.py", line 6, in <module>
+    from .module import PipelineModule, LayerSpec, TiedLayerSpec
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/pipe/module.py", line 19, in <module>
+    from ..activation_checkpointing import checkpointing
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/activation_checkpointing/checkpointing.py", line 25, in <module>
+    from deepspeed.runtime.config import DeepSpeedConfig
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 28, in <module>
+    from .zero.config import get_zero_config, ZeroStageEnum
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/zero/__init__.py", line 6, in <module>
+    from .partition_parameters import ZeroParamType
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/zero/partition_parameters.py", line 569, in <module>
+    class Init(InsertPostInitMethodToModuleSubClasses):
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/zero/partition_parameters.py", line 571, in Init
+    param_persistence_threshold = get_config_default(DeepSpeedZeroConfig, "param_persistence_threshold")
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/config_utils.py", line 115, in get_config_default
+    assert not config.__fields__.get(
+AttributeError: 'FieldInfo' object has no attribute 'required'
+/zhome/4e/b/208805/.local/lib/python3.9/site-packages/pydantic/_internal/_config.py:321: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'populate_by_name'
+* 'validate_all' has been renamed to 'validate_default'
+  warnings.warn(message, UserWarning)
+/zhome/4e/b/208805/.local/lib/python3.9/site-packages/pydantic/_internal/_fields.py:149: UserWarning: Field "model_persistence_threshold" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/dtu/p1/johlau/LMOps/minillm/tools/process_data_dolly.py", line 11, in <module>
+    from arguments import get_args
+  File "/dtu/p1/johlau/LMOps/minillm/arguments.py", line 18, in <module>
+    import deepspeed
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/__init__.py", line 16, in <module>
+    from . import module_inject
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/module_inject/__init__.py", line 6, in <module>
+    from .replace_module import replace_transformer_layer, revert_transformer_layer, ReplaceWithTensorSlicing, GroupQuantizer, generic_injection
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/module_inject/replace_module.py", line 732, in <module>
+    from ..pipe import PipelineModule
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/pipe/__init__.py", line 6, in <module>
+    from ..runtime.pipe import PipelineModule, LayerSpec, TiedLayerSpec
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/pipe/__init__.py", line 6, in <module>
+    from .module import PipelineModule, LayerSpec, TiedLayerSpec
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/pipe/module.py", line 19, in <module>
+    from ..activation_checkpointing import checkpointing
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/activation_checkpointing/checkpointing.py", line 25, in <module>
+    from deepspeed.runtime.config import DeepSpeedConfig
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/config.py", line 28, in <module>
+    from .zero.config import get_zero_config, ZeroStageEnum
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/zero/__init__.py", line 6, in <module>
+    from .partition_parameters import ZeroParamType
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/zero/partition_parameters.py", line 569, in <module>
+    class Init(InsertPostInitMethodToModuleSubClasses):
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/zero/partition_parameters.py", line 571, in Init
+    param_persistence_threshold = get_config_default(DeepSpeedZeroConfig, "param_persistence_threshold")
+  File "/zhome/4e/b/208805/.local/lib/python3.9/site-packages/deepspeed/runtime/config_utils.py", line 115, in get_config_default
+    assert not config.__fields__.get(
+AttributeError: 'FieldInfo' object has no attribute 'required'

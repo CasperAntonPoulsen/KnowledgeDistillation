@@ -1,0 +1,55 @@
+Tue Dec 19 15:33:34 2023       
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.104.12             Driver Version: 535.104.12   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  NVIDIA H100 PCIe               On  | 00000000:41:00.0 Off |                    0 |
+| N/A   31C    P0              47W / 350W |      4MiB / 81559MiB |      0%   E. Process |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+                                                                                         
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
+llama_both_1000it
+Passed argument batch_size = auto:1. Detecting largest batch size
+Determined largest batch size: 64
+bootstrapping for stddev: perplexity
+bootstrapping for stddev: perplexity
+hf (pretrained=/dtu/p1/johlau/LMOps/minillm/results/llama/train/minillm_both/bs2-lr5e-06-G2-N1-NN1-lm1-len256/pe4_rs0.5_nr64_ln_sr_tm0.2/1000), gen_kwargs: (None), limit: None, num_fewshot: 0, batch_size: auto (64)
+|         Tasks         |Version|Filter|n-shot|  Metric  | Value |   | Stderr |
+|-----------------------|-------|------|-----:|----------|------:|---|-------:|
+|know_dist              |N/A    |none  |     0|acc       | 0.4885|±  |  0.1132|
+|                       |       |none  |     0|acc_norm  | 0.3683|±  |  0.0003|
+|                       |       |none  |     0|perplexity|19.1854|±  |248.3053|
+| - headqa_en           |Yaml   |none  |     0|acc       | 0.3538|±  |  0.0091|
+|                       |       |none  |     0|acc_norm  | 0.3975|±  |  0.0093|
+| - headqa_es           |Yaml   |none  |     0|acc       | 0.2947|±  |  0.0087|
+|                       |       |none  |     0|acc_norm  | 0.3392|±  |  0.0090|
+| - lambada_openai_mt_en|Yaml   |none  |     0|perplexity| 3.0185|±  |  0.0629|
+|                       |       |none  |     0|acc       | 0.7438|±  |  0.0061|
+| - lambada_openai_mt_es|Yaml   |none  |     0|perplexity|52.5577|±  |  3.2488|
+|                       |       |none  |     0|acc       | 0.3978|±  |  0.0068|
+| - paws_en             |Yaml   |none  |     0|acc       | 0.3560|±  |  0.0107|
+| - paws_es             |Yaml   |none  |     0|acc       | 0.4480|±  |  0.0111|
+| - paws_zh             |Yaml   |none  |     0|acc       | 0.4850|±  |  0.0112|
+| - xnli_en             |Yaml   |none  |     0|acc       | 0.5594|±  |  0.0100|
+| - xnli_es             |Yaml   |none  |     0|acc       | 0.3980|±  |  0.0098|
+| - xnli_zh             |Yaml   |none  |     0|acc       | 0.3402|±  |  0.0095|
+| - xstorycloze_en      |Yaml   |none  |     0|acc       | 0.7862|±  |  0.0106|
+| - xstorycloze_es      |Yaml   |none  |     0|acc       | 0.6717|±  |  0.0121|
+| - xstorycloze_zh      |Yaml   |none  |     0|acc       | 0.5526|±  |  0.0128|
+
+| Groups  |Version|Filter|n-shot|  Metric  | Value |   | Stderr |
+|---------|-------|------|-----:|----------|------:|---|-------:|
+|know_dist|N/A    |none  |     0|acc       | 0.4885|±  |  0.1132|
+|         |       |none  |     0|acc_norm  | 0.3683|±  |  0.0003|
+|         |       |none  |     0|perplexity|19.1854|±  |248.3053|
+
