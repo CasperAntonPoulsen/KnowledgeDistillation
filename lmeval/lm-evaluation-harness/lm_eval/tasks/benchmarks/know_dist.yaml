@@ -1,0 +1,15 @@
+group: know_dist
+task:
+  - headqa_en
+  - headqa_es
+  - paws_en
+  - paws_es
+  - paws_zh
+  - xnli_en
+  - xnli_es
+  - xnli_zh
+  - xstorycloze_en
+  - xstorycloze_es
+  - xstorycloze_zh
+  - lambada_openai_mt_en
+  - lambada_openai_mt_es
