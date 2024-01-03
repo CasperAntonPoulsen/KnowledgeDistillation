@@ -1,0 +1,40 @@
+/var/spool/slurm/d/job161618/slurm_script: line 18: activate: No such file or directory
+2023-12-14:10:55:40,839 INFO     [utils.py:145] Note: detected 96 virtual cores but NumExpr set to maximum of 64, check "NUMEXPR_MAX_THREADS" environment variable.
+2023-12-14:10:55:40,839 INFO     [utils.py:148] Note: NumExpr detected 96 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-12-14:10:55:40,839 INFO     [utils.py:160] NumExpr defaulting to 8 threads.
+2023-12-14:10:55:57,831 INFO     [instantiator.py:21] Created a temporary directory at /tmp/tmpkchevacy
+2023-12-14:10:55:57,831 INFO     [instantiator.py:76] Writing /tmp/tmpkchevacy/_remote_module_non_scriptable.py
+2023-12-14:10:56:27,166 WARNING  [logging.py:60] Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2023-12-14:10:56:27,166 INFO     [huggingface.py:120] Using device 'cuda'
+Traceback (most recent call last):
+  File "/home/jocl/lmeval/eval_single.py", line 54, in <module>
+    eval_model(model_name, model_path)
+  File "/home/jocl/lmeval/eval_single.py", line 18, in eval_model
+    lm = get_model("hf")(
+         ^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/models/huggingface.py", line 242, in __init__
+    self.model.to(self.device)
+  File "/home/jocl/LMOps/minillm/transformers/src/transformers/modeling_utils.py", line 2271, in to
+    return super().to(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/.conda/envs/lmeval/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1145, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/.conda/envs/lmeval/lib/python3.11/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  File "/home/jocl/.conda/envs/lmeval/lib/python3.11/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  File "/home/jocl/.conda/envs/lmeval/lib/python3.11/site-packages/torch/nn/modules/module.py", line 797, in _apply
+    module._apply(fn)
+  [Previous line repeated 2 more times]
+  File "/home/jocl/.conda/envs/lmeval/lib/python3.11/site-packages/torch/nn/modules/module.py", line 820, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/home/jocl/.conda/envs/lmeval/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1143, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 136.00 MiB (GPU 0; 23.53 GiB total capacity; 22.77 GiB already allocated; 89.38 MiB free; 22.78 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+
+real	10m24.837s
+user	0m13.656s
+sys	0m24.936s

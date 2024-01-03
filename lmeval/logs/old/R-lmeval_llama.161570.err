@@ -1,0 +1,26 @@
+/var/spool/slurm/d/job161570/slurm_script: line 16: activate: No such file or directory
+2023-12-13:16:49:24,544 INFO     [utils.py:148] Note: NumExpr detected 48 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-12-13:16:49:24,544 INFO     [utils.py:160] NumExpr defaulting to 8 threads.
+2023-12-13:16:49:27,464 INFO     [instantiator.py:21] Created a temporary directory at /tmp/tmprp0e8gza
+2023-12-13:16:49:27,465 INFO     [instantiator.py:76] Writing /tmp/tmprp0e8gza/_remote_module_non_scriptable.py
+2023-12-13:16:49:47,692 WARNING  [logging.py:60] Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2023-12-13:16:49:47,693 INFO     [huggingface.py:120] Using device 'cuda'
+Traceback (most recent call last):
+  File "/home/jocl/lmeval/eval_single.py", line 44, in <module>
+    eval_model(model_name, model_path)
+  File "/home/jocl/lmeval/eval_single.py", line 17, in eval_model
+    lm = get_model("hf")(
+         ^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/models/huggingface.py", line 200, in __init__
+    self._model = self.AUTO_MODEL_CLASS.from_pretrained(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/.conda/envs/lmeval/lib/python3.11/site-packages/transformers/models/auto/auto_factory.py", line 566, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/.conda/envs/lmeval/lib/python3.11/site-packages/transformers/modeling_utils.py", line 2992, in from_pretrained
+    raise EnvironmentError(
+OSError: Error no file named pytorch_model.bin, tf_model.h5, model.ckpt.index or flax_model.msgpack found in directory /home/data_shares/mapillary/llama/train/sft/llama-13B.
+
+real	0m27.246s
+user	0m9.848s
+sys	0m2.494s

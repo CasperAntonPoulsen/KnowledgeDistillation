@@ -1,0 +1,109 @@
+Tue Nov 28 23:17:33 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.89.02    Driver Version: 525.89.02    CUDA Version: 12.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla V100-PCIE...  Off  | 00000000:40:00.0 Off |                    0 |
+| N/A   31C    P0    37W / 250W |      0MiB / 32768MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Task: headqa_en; number of docs: 2742
+Task: headqa_en; document 0; context prompt (starting on next line):
+Question: The yellow fever virus is a:
+Answer:
+(end of prompt on previous line)
+Requests: [Req_loglikelihood('Question: The yellow fever virus is a:\nAnswer:', ' Flavivirus.')[0]
+, Req_loglikelihood('Question: The yellow fever virus is a:\nAnswer:', ' Alfavirus.')[0]
+, Req_loglikelihood('Question: The yellow fever virus is a:\nAnswer:', ' Bornavirus.')[0]
+, Req_loglikelihood('Question: The yellow fever virus is a:\nAnswer:', ' Arenavirus.')[0]
+]
+Task: headqa_es; number of docs: 2742
+Task: headqa_es; document 0; context prompt (starting on next line):
+Question: El virus de la fiebre amarilla es un:
+Answer:
+(end of prompt on previous line)
+Requests: [Req_loglikelihood('Question: El virus de la fiebre amarilla es un:\nAnswer:', ' Flavivirus.')[0]
+, Req_loglikelihood('Question: El virus de la fiebre amarilla es un:\nAnswer:', ' Alfavirus.')[0]
+, Req_loglikelihood('Question: El virus de la fiebre amarilla es un:\nAnswer:', ' Bornavirus.')[0]
+, Req_loglikelihood('Question: El virus de la fiebre amarilla es un:\nAnswer:', ' Arenavirus.')[0]
+]
+Task: pawsx_en; number of docs: 2000
+Task: pawsx_en; document 0; context prompt (starting on next line):
+The first category is monovalent verbs , where there is only one semantic argument and it consists of both unergative verbs and unaccusative verbs ., right? [MASK], The first category is unergative verbs , where there is only one unaccountable argument and consists of both semantic verbs and monovalent verbs .
+(end of prompt on previous line)
+Requests: (Req_loglikelihood_rolling('The first category is monovalent verbs , where there is only one semantic argument and it consists of both unergative verbs and unaccusative verbs ., right? Yes, The first category is unergative verbs , where there is only one unaccountable argument and consists of both semantic verbs and monovalent verbs .',)[None]
+, Req_loglikelihood_rolling('The first category is monovalent verbs , where there is only one semantic argument and it consists of both unergative verbs and unaccusative verbs ., right? No, The first category is unergative verbs , where there is only one unaccountable argument and consists of both semantic verbs and monovalent verbs .',)[None]
+)
+Task: pawsx_es; number of docs: 2000
+Task: pawsx_es; document 0; context prompt (starting on next line):
+La primera categoría es la de verbos monovalentes, donde solo hay un argumento semántico y consiste de verbos inergativos y verbos inacusativos., verdad? [MASK], La primera categoría son los verbos inergativos, donde solo hay un argumento inacusativo y está compuesto por verbos semánticos y monovalentes.
+(end of prompt on previous line)
+Requests: (Req_loglikelihood_rolling('La primera categoría es la de verbos monovalentes, donde solo hay un argumento semántico y consiste de verbos inergativos y verbos inacusativos., verdad? Sí, La primera categoría son los verbos inergativos, donde solo hay un argumento inacusativo y está compuesto por verbos semánticos y monovalentes.',)[None]
+, Req_loglikelihood_rolling('La primera categoría es la de verbos monovalentes, donde solo hay un argumento semántico y consiste de verbos inergativos y verbos inacusativos., verdad? No, La primera categoría son los verbos inergativos, donde solo hay un argumento inacusativo y está compuesto por verbos semánticos y monovalentes.',)[None]
+)
+Task: pawsx_zh; number of docs: 2000
+Task: pawsx_zh; document 0; context prompt (starting on next line):
+第一类是单价动词，该类动词仅有一个语义参数，包括非作格动词和非宾格动词。, 对吧? [MASK], 第一类为非作格动词，其中仅有一个难以理解的参数且由语义动词和一价动词组成。
+(end of prompt on previous line)
+Requests: (Req_loglikelihood_rolling('第一类是单价动词，该类动词仅有一个语义参数，包括非作格动词和非宾格动词。, 对吧? 是, 第一类为非作格动词，其中仅有一个难以理解的参数且由语义动词和一价动词组成。',)[None]
+, Req_loglikelihood_rolling('第一类是单价动词，该类动词仅有一个语义参数，包括非作格动词和非宾格动词。, 对吧? 不是, 第一类为非作格动词，其中仅有一个难以理解的参数且由语义动词和一价动词组成。',)[None]
+)
+Task: xnli_en; number of docs: 5010
+Task: xnli_en; document 0; context prompt (starting on next line):
+Using these eight simple techniques, you can fabricate a news story in the comfort of your own home., right? [MASK], Only news reporters in a newsroom can write a news story, and it takes 20 steps to do it.
+(end of prompt on previous line)
+Requests: (Req_loglikelihood_rolling('Using these eight simple techniques, you can fabricate a news story in the comfort of your own home., right? Yes, Only news reporters in a newsroom can write a news story, and it takes 20 steps to do it.',)[None]
+, Req_loglikelihood_rolling('Using these eight simple techniques, you can fabricate a news story in the comfort of your own home., right? Also, Only news reporters in a newsroom can write a news story, and it takes 20 steps to do it.',)[None]
+, Req_loglikelihood_rolling('Using these eight simple techniques, you can fabricate a news story in the comfort of your own home., right? No, Only news reporters in a newsroom can write a news story, and it takes 20 steps to do it.',)[None]
+)
+Task: xnli_es; number of docs: 5010
+Task: xnli_es; document 0; context prompt (starting on next line):
+Usando estas ocho técnicas simples, puede fabricar una noticia en la comodidad de su propio hogar., correcto? [MASK], Solo los periodistas en una sala de redacción pueden escribir una noticia, y se necesitan 20 pasos para hacerlo.
+(end of prompt on previous line)
+Requests: (Req_loglikelihood_rolling('Usando estas ocho técnicas simples, puede fabricar una noticia en la comodidad de su propio hogar., correcto? Sí, Solo los periodistas en una sala de redacción pueden escribir una noticia, y se necesitan 20 pasos para hacerlo.',)[None]
+, Req_loglikelihood_rolling('Usando estas ocho técnicas simples, puede fabricar una noticia en la comodidad de su propio hogar., correcto? Asi que, Solo los periodistas en una sala de redacción pueden escribir una noticia, y se necesitan 20 pasos para hacerlo.',)[None]
+, Req_loglikelihood_rolling('Usando estas ocho técnicas simples, puede fabricar una noticia en la comodidad de su propio hogar., correcto? No, Solo los periodistas en una sala de redacción pueden escribir una noticia, y se necesitan 20 pasos para hacerlo.',)[None]
+)
+Task: xnli_zh; number of docs: 5010
+Task: xnli_zh; document 0; context prompt (starting on next line):
+使用这八种简单的技巧，您可以在舒适的家中制作新闻故事。, 正确? [MASK], 只有新闻编辑部的新闻记者才能撰写新闻报道，并且需要20个步骤才能完成。
+(end of prompt on previous line)
+Requests: (Req_loglikelihood_rolling('使用这八种简单的技巧，您可以在舒适的家中制作新闻故事。, 正确? 是的, 只有新闻编辑部的新闻记者才能撰写新闻报道，并且需要20个步骤才能完成。',)[None]
+, Req_loglikelihood_rolling('使用这八种简单的技巧，您可以在舒适的家中制作新闻故事。, 正确? 所以, 只有新闻编辑部的新闻记者才能撰写新闻报道，并且需要20个步骤才能完成。',)[None]
+, Req_loglikelihood_rolling('使用这八种简单的技巧，您可以在舒适的家中制作新闻故事。, 正确? 不是的, 只有新闻编辑部的新闻记者才能撰写新闻报道，并且需要20个步骤才能完成。',)[None]
+)
+Task: xstory_cloze_en; number of docs: 1511
+Task: xstory_cloze_en; document 0; context prompt (starting on next line):
+Johnson has never liked being outdoors very much. His girlfriend teases him that he could never go on a camping trip. Johnson decides to prove her wrong. He packs up a tent and goes camping for a long weekend.
+(end of prompt on previous line)
+Requests: [Req_loglikelihood('Johnson has never liked being outdoors very much. His girlfriend teases him that he could never go on a camping trip. Johnson decides to prove her wrong. He packs up a tent and goes camping for a long weekend.', ' He had a miserable weekend, but told his girlfriend it was great.')[0]
+, Req_loglikelihood('Johnson has never liked being outdoors very much. His girlfriend teases him that he could never go on a camping trip. Johnson decides to prove her wrong. He packs up a tent and goes camping for a long weekend.', ' Johnson was an avid outdoorsman and hiked often.')[0]
+]
+Task: xstory_cloze_es; number of docs: 1511
+Task: xstory_cloze_es; document 0; context prompt (starting on next line):
+A Johnson nunca le ha gustado mucho estar al aire libre. Su novia se burla de él diciendo que nunca podría ir de acampada. Johnson decide demostrar que está equivocada. Coge una tienda de campaña y se va de acampada durante todo el fin de semana.
+(end of prompt on previous line)
+Requests: [Req_loglikelihood('A Johnson nunca le ha gustado mucho estar al aire libre. Su novia se burla de él diciendo que nunca podría ir de acampada. Johnson decide demostrar que está equivocada. Coge una tienda de campaña y se va de acampada durante todo el fin de semana.', ' Pasó un fin de semana lamentable, pero le dijo a su novia que fue genial.')[0]
+, Req_loglikelihood('A Johnson nunca le ha gustado mucho estar al aire libre. Su novia se burla de él diciendo que nunca podría ir de acampada. Johnson decide demostrar que está equivocada. Coge una tienda de campaña y se va de acampada durante todo el fin de semana.', ' Johnson era un gran aficionado a las actividades al aire libre y practicaba el senderismo con frecuencia.')[0]
+]
+Task: xstory_cloze_zh; number of docs: 1511
+Task: xstory_cloze_zh; document 0; context prompt (starting on next line):
+约翰逊一向不太喜欢户外活动。 他的女朋友调侃说他永远不会去露营旅行。 约翰逊决心要证明她是错的。 他带了一个帐篷，在长周末去露营。
+(end of prompt on previous line)
+Requests: [Req_loglikelihood('约翰逊一向不太喜欢户外活动。 他的女朋友调侃说他永远不会去露营旅行。 约翰逊决心要证明她是错的。 他带了一个帐篷，在长周末去露营。', ' 他度过了一个糟糕的周末，但却告诉他的女朋友一切都很棒。')[0]
+, Req_loglikelihood('约翰逊一向不太喜欢户外活动。 他的女朋友调侃说他永远不会去露营旅行。 约翰逊决心要证明她是错的。 他带了一个帐篷，在长周末去露营。', ' 约翰逊是一个狂热的户外活动爱好者，经常去远足。')[0]
+]
+Running loglikelihood requests
+Running loglikelihood_rolling requests
+GPT2-774M_all_tasks   {'results': {'headqa_en': {'acc': 0.24945295404814005, 'acc_stderr': 0.008264731858357683, 'acc_norm': 0.28191101385849743, 'acc_norm_stderr': 0.008593906746745194}, 'headqa_es': {'acc': 0.2097009482129832, 'acc_stderr': 0.007775734257541658, 'acc_norm': 0.25309992706053974, 'acc_norm_stderr': 0.008304676949891693}, 'xstory_cloze_en': {'acc': 0.6360026472534746, 'acc_stderr': 0.012381980068788363}, 'xstory_cloze_es': {'acc': 0.4943745863666446, 'acc_stderr': 0.012866310923072511}, 'xstory_cloze_zh': {'acc': 0.49040370615486434, 'acc_stderr': 0.01286475526040896}, 'pawsx_en': {'acc': 0.5575, 'acc_stderr': 0.011108941411747612}, 'pawsx_es': {'acc': 0.548, 'acc_stderr': 0.011131484850525779}, 'pawsx_zh': {'acc': 0.45, 'acc_stderr': 0.011127079848413735}, 'xnli_en': {'acc': 0.5231536926147704, 'acc_stderr': 0.007057133671645287}, 'xnli_es': {'acc': 0.3345309381237525, 'acc_stderr': 0.006666633236850025}, 'xnli_zh': {'acc': 0.3327345309381238, 'acc_stderr': 0.006657677385484852}}, 'versions': {'headqa_en': 0, 'headqa_es': 0, 'pawsx_en': 0, 'pawsx_es': 0, 'pawsx_zh': 0, 'xnli_en': 0, 'xnli_es': 0, 'xnli_zh': 0, 'xstory_cloze_en': 0, 'xstory_cloze_es': 0, 'xstory_cloze_zh': 0}, 'config': {'model': None, 'model_args': '', 'num_fewshot': 0, 'batch_size': 1, 'batch_sizes': [], 'device': 'cuda:0', 'no_cache': False, 'limit': None, 'bootstrap_iters': 100000, 'description_dict': None}}

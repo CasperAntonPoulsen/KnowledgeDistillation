@@ -1,0 +1,13 @@
+/var/spool/slurm/d/job161538/slurm_script: line 16: activate: No such file or directory
+2023-12-13:14:25:37,507 INFO     [utils.py:148] Note: NumExpr detected 32 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-12-13:14:25:37,507 INFO     [utils.py:160] NumExpr defaulting to 8 threads.
+2023-12-13:14:25:46,514 INFO     [instantiator.py:21] Created a temporary directory at /tmp/tmpad952s3z
+2023-12-13:14:25:46,514 INFO     [instantiator.py:76] Writing /tmp/tmpad952s3z/_remote_module_non_scriptable.py
+Traceback (most recent call last):
+  File "/home/jocl/lmeval/eval_single.py", line 2, in <module>
+    from lm_eval.models.huggingface import AutoCausalLM
+ImportError: cannot import name 'AutoCausalLM' from 'lm_eval.models.huggingface' (/home/jocl/lmeval/lm-evaluation-harness/lm_eval/models/huggingface.py)
+
+real	0m42.330s
+user	0m5.930s
+sys	0m1.943s

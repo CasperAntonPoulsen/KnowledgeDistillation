@@ -1,0 +1,54 @@
+Thu Dec 14 12:10:52 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.89.02    Driver Version: 525.89.02    CUDA Version: 12.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla V100-PCIE...  Off  | 00000000:3F:00.0 Off |                    0 |
+| N/A   29C    P0    35W / 250W |      0MiB / 32768MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+llama_train_sft_13b
+Using cache at lm_cache/llama_train_sft_13b_rank0.db
+bootstrapping for stddev: perplexity
+bootstrapping for stddev: perplexity
+hf (pretrained=/home/data_shares/mapillary/lmeval_models/sft/llama-13B), gen_kwargs: (), limit: None, num_fewshot: None, batch_size: auto
+|         Tasks         |Version|Filter|n-shot|  Metric  | Value |   | Stderr |
+|-----------------------|-------|------|-----:|----------|------:|---|-------:|
+|know_dist              |N/A    |none  |     0|acc       | 0.4895|±  |  0.1166|
+|                       |       |none  |     0|acc_norm  | 0.3919|±  |  0.0003|
+|                       |       |none  |     0|perplexity|15.3259|±  |138.2474|
+| - headqa_en           |Yaml   |none  |     0|acc       | 0.3735|±  |  0.0092|
+|                       |       |none  |     0|acc_norm  | 0.4176|±  |  0.0094|
+| - headqa_es           |Yaml   |none  |     0|acc       | 0.3242|±  |  0.0089|
+|                       |       |none  |     0|acc_norm  | 0.3662|±  |  0.0092|
+| - lambada_openai_mt_en|Yaml   |none  |     0|perplexity| 3.2782|±  |  0.0994|
+|                       |       |none  |     0|acc       | 0.7163|±  |  0.0063|
+| - lambada_openai_mt_es|Yaml   |none  |     0|perplexity|40.1952|±  |  2.6330|
+|                       |       |none  |     0|acc       | 0.4366|±  |  0.0069|
+| - paws_en             |Yaml   |none  |     0|acc       | 0.4725|±  |  0.0112|
+| - paws_es             |Yaml   |none  |     0|acc       | 0.4550|±  |  0.0111|
+| - paws_zh             |Yaml   |none  |     0|acc       | 0.5430|±  |  0.0111|
+| - xnli_en             |Yaml   |none  |     0|acc       | 0.3570|±  |  0.0096|
+| - xnli_es             |Yaml   |none  |     0|acc       | 0.3345|±  |  0.0095|
+| - xnli_zh             |Yaml   |none  |     0|acc       | 0.3430|±  |  0.0095|
+| - xstorycloze_en      |Yaml   |none  |     0|acc       | 0.7915|±  |  0.0105|
+| - xstorycloze_es      |Yaml   |none  |     0|acc       | 0.7141|±  |  0.0116|
+| - xstorycloze_zh      |Yaml   |none  |     0|acc       | 0.5917|±  |  0.0126|
+
+| Groups  |Version|Filter|n-shot|  Metric  | Value |   | Stderr |
+|---------|-------|------|-----:|----------|------:|---|-------:|
+|know_dist|N/A    |none  |     0|acc       | 0.4895|±  |  0.1166|
+|         |       |none  |     0|acc_norm  | 0.3919|±  |  0.0003|
+|         |       |none  |     0|perplexity|15.3259|±  |138.2474|
+

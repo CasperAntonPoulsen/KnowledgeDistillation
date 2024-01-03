@@ -1,0 +1,56 @@
+
+CommandNotFoundError: Your shell has not been properly configured to use 'conda activate'.
+To initialize your shell, run
+
+    $ conda init <SHELL_NAME>
+
+Currently supported shells are:
+  - bash
+  - fish
+  - tcsh
+  - xonsh
+  - zsh
+  - powershell
+
+See 'conda init --help' for more information and options.
+
+IMPORTANT: You may need to close and restart your shell after running 'conda init'.
+
+
+Generating train split:   0%|          | 0/2657 [00:00<?, ? examples/s]Generating train split:  38%|███▊      | 1000/2657 [00:00<00:00, 6922.33 examples/s]Generating train split: 100%|██████████| 2657/2657 [00:00<00:00, 8982.40 examples/s]
+Generating test split:   0%|          | 0/2742 [00:00<?, ? examples/s]Generating test split:  35%|███▌      | 961/2742 [00:00<00:00, 8893.92 examples/s]Generating test split:  93%|█████████▎| 2537/2742 [00:00<00:00, 12800.85 examples/s]Generating test split: 100%|██████████| 2742/2742 [00:00<00:00, 10968.26 examples/s]
+Generating validation split:   0%|          | 0/1366 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 1366/1366 [00:00<00:00, 11040.39 examples/s]
+Generating train split:   0%|          | 0/2657 [00:00<?, ? examples/s]Generating train split:   0%|          | 1/2657 [00:00<04:52,  9.08 examples/s]Generating train split:  46%|████▌     | 1226/2657 [00:00<00:00, 6919.72 examples/s]Generating train split: 100%|██████████| 2657/2657 [00:00<00:00, 7753.96 examples/s]
+Generating test split:   0%|          | 0/2742 [00:00<?, ? examples/s]Generating test split:  36%|███▋      | 1000/2742 [00:00<00:00, 8627.72 examples/s]Generating test split: 100%|██████████| 2742/2742 [00:00<00:00, 11472.68 examples/s]
+Generating validation split:   0%|          | 0/1366 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 1366/1366 [00:00<00:00, 10438.50 examples/s]
+  0%|          | 0/21913 [00:00<?, ?it/s]  0%|          | 0/21913 [00:03<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/jocl/lmeval/eval.py", line 87, in <module>
+    utils.save_results("GPT2-774M", eval(model, task_list, device))
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/eval.py", line 72, in eval
+    results = evaluator.simple_evaluate(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/utils.py", line 243, in _wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/evaluator.py", line 110, in simple_evaluate
+    results = evaluate(
+              ^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/utils.py", line 243, in _wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/evaluator.py", line 312, in evaluate
+    resps = getattr(lm, reqtype)([req.args for req in reqs])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/base.py", line 224, in loglikelihood
+    return self._loglikelihood_tokens(new_reqs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/base.py", line 395, in _loglikelihood_tokens
+    logits = torch.gather(logits, 2, cont_toks.unsqueeze(-1)).squeeze(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: index 4294 is out of bounds for dimension 2 with size 1280
+
+real	0m32.040s
+user	1m14.355s
+sys	0m8.443s

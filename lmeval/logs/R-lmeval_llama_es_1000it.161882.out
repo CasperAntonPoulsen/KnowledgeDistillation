@@ -1,0 +1,55 @@
+Fri Dec 15 20:16:00 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.89.02    Driver Version: 525.89.02    CUDA Version: 12.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Quadro RTX 8000     Off  | 00000000:3B:00.0 Off |                  Off |
+| 33%   37C    P0    46W / 260W |      0MiB / 49152MiB |      4%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+llama_7b_13b_spanish_1000it
+Passed argument batch_size = auto:1. Detecting largest batch size
+Determined largest batch size: 64
+bootstrapping for stddev: perplexity
+bootstrapping for stddev: perplexity
+hf (pretrained=/home/data_shares/mapillary/llama_7b_13b_spanish_1000it), gen_kwargs: (), limit: None, num_fewshot: 0, batch_size: auto (64)
+|         Tasks         |Version|Filter|n-shot|  Metric  | Value |   | Stderr |
+|-----------------------|-------|------|-----:|----------|------:|---|-------:|
+|know_dist              |N/A    |none  |     0|acc       | 0.4930|±  |  0.1086|
+|                       |       |none  |     0|acc_norm  | 0.3713|±  |  0.0004|
+|                       |       |none  |     0|perplexity|16.0251|±  |157.0573|
+| - headqa_en           |Yaml   |none  |     0|acc       | 0.3501|±  |  0.0091|
+|                       |       |none  |     0|acc_norm  | 0.4081|±  |  0.0094|
+| - headqa_es           |Yaml   |none  |     0|acc       | 0.2950|±  |  0.0087|
+|                       |       |none  |     0|acc_norm  | 0.3344|±  |  0.0090|
+| - lambada_openai_mt_en|Yaml   |none  |     0|perplexity| 3.1530|±  |  0.0642|
+|                       |       |none  |     0|acc       | 0.7390|±  |  0.0061|
+| - lambada_openai_mt_es|Yaml   |none  |     0|perplexity|42.5960|±  |  2.3694|
+|                       |       |none  |     0|acc       | 0.4250|±  |  0.0069|
+| - paws_en             |Yaml   |none  |     0|acc       | 0.3375|±  |  0.0106|
+| - paws_es             |Yaml   |none  |     0|acc       | 0.3980|±  |  0.0109|
+| - paws_zh             |Yaml   |none  |     0|acc       | 0.4840|±  |  0.0112|
+| - xnli_en             |Yaml   |none  |     0|acc       | 0.5398|±  |  0.0100|
+| - xnli_es             |Yaml   |none  |     0|acc       | 0.4839|±  |  0.0100|
+| - xnli_zh             |Yaml   |none  |     0|acc       | 0.3546|±  |  0.0096|
+| - xstorycloze_en      |Yaml   |none  |     0|acc       | 0.7776|±  |  0.0107|
+| - xstorycloze_es      |Yaml   |none  |     0|acc       | 0.6671|±  |  0.0121|
+| - xstorycloze_zh      |Yaml   |none  |     0|acc       | 0.5559|±  |  0.0128|
+
+| Groups  |Version|Filter|n-shot|  Metric  | Value |   | Stderr |
+|---------|-------|------|-----:|----------|------:|---|-------:|
+|know_dist|N/A    |none  |     0|acc       | 0.4930|±  |  0.1086|
+|         |       |none  |     0|acc_norm  | 0.3713|±  |  0.0004|
+|         |       |none  |     0|perplexity|16.0251|±  |157.0573|
+

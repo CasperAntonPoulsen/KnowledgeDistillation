@@ -1,0 +1,55 @@
+/var/spool/slurm/d/job161637/slurm_script: line 18: activate: No such file or directory
+/var/spool/slurm/d/job161637/slurm_script: line 22: model_name: command not found
+/var/spool/slurm/d/job161637/slurm_script: line 23: model_path: command not found
+2023-12-14:12:05:53,289 INFO     [utils.py:148] Note: NumExpr detected 48 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-12-14:12:05:53,290 INFO     [utils.py:160] NumExpr defaulting to 8 threads.
+2023-12-14:12:06:07,156 INFO     [instantiator.py:21] Created a temporary directory at /tmp/tmp4asdm61i
+2023-12-14:12:06:07,157 INFO     [instantiator.py:76] Writing /tmp/tmp4asdm61i/_remote_module_non_scriptable.py
+2023-12-14:12:06:20,625 INFO     [__main__.py:132] Verbosity set to INFO
+2023-12-14:12:06:39,067 INFO     [__main__.py:205] Selected Tasks: ['know_dist']
+2023-12-14:12:06:39,125 WARNING  [evaluator.py:93] generation_kwargs specified through cli, these settings will be used over set parameters in yaml tasks.
+2023-12-14:12:06:39,225 WARNING  [logging.py:60] Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2023-12-14:12:06:39,225 INFO     [huggingface.py:120] Using device 'cuda:0'
+Traceback (most recent call last):
+  File "/home/jocl/LMOps/minillm/transformers/src/transformers/utils/hub.py", line 431, in cached_file
+    resolved_file = hf_hub_download(
+                    ^^^^^^^^^^^^^^^^
+  File "/home/jocl/.conda/envs/lmeval/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 110, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/home/jocl/.conda/envs/lmeval/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 164, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.utils._validators.HFValidationError: Repo id must use alphanumeric chars or '-', '_', '.', '--' and '..' are forbidden, '-' and '.' cannot start or end the name, max length is 96: '{}'.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jocl/.conda/envs/lmeval/bin/lm_eval", line 8, in <module>
+    sys.exit(cli_evaluate())
+             ^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/__main__.py", line 207, in cli_evaluate
+    results = evaluator.simple_evaluate(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/utils.py", line 404, in _wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/evaluator.py", line 102, in simple_evaluate
+    lm = lm_eval.api.registry.get_model(model).create_from_arg_string(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/api/model.py", line 136, in create_from_arg_string
+    return cls(**args, **args2)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/lmeval/lm-evaluation-harness/lm_eval/models/huggingface.py", line 155, in __init__
+    self._config = transformers.AutoConfig.from_pretrained(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/LMOps/minillm/transformers/src/transformers/models/auto/configuration_auto.py", line 1054, in from_pretrained
+    config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/LMOps/minillm/transformers/src/transformers/configuration_utils.py", line 622, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jocl/LMOps/minillm/transformers/src/transformers/configuration_utils.py", line 677, in _get_config_dict
+    resolved_config_file = cached_file(
+                           ^^^^^^^^^^^^
+  File "/home/jocl/LMOps/minillm/transformers/src/transformers/utils/hub.py", line 496, in cached_file
+    raise EnvironmentError(
+OSError: Incorrect path_or_model_id: '{}'. Please provide either the path to a local folder or the repo_id of a model on the Hub.

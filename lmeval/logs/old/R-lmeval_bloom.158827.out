@@ -1,0 +1,42 @@
+Wed Nov 29 13:37:47 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.89.02    Driver Version: 525.89.02    CUDA Version: 12.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla V100-PCIE...  Off  | 00000000:3F:00.0 Off |                    0 |
+| N/A   32C    P0    36W / 250W |      0MiB / 32768MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+Task: headqa_en; number of docs: 2742
+Task: headqa_en; document 0; context prompt (starting on next line):
+Question: The yellow fever virus is a:
+Answer:
+(end of prompt on previous line)
+Requests: [Req_loglikelihood('Question: The yellow fever virus is a:\nAnswer:', ' Flavivirus.')[0]
+, Req_loglikelihood('Question: The yellow fever virus is a:\nAnswer:', ' Alfavirus.')[0]
+, Req_loglikelihood('Question: The yellow fever virus is a:\nAnswer:', ' Bornavirus.')[0]
+, Req_loglikelihood('Question: The yellow fever virus is a:\nAnswer:', ' Arenavirus.')[0]
+]
+Task: headqa_es; number of docs: 2742
+Task: headqa_es; document 0; context prompt (starting on next line):
+Question: El virus de la fiebre amarilla es un:
+Answer:
+(end of prompt on previous line)
+Requests: [Req_loglikelihood('Question: El virus de la fiebre amarilla es un:\nAnswer:', ' Flavivirus.')[0]
+, Req_loglikelihood('Question: El virus de la fiebre amarilla es un:\nAnswer:', ' Alfavirus.')[0]
+, Req_loglikelihood('Question: El virus de la fiebre amarilla es un:\nAnswer:', ' Bornavirus.')[0]
+, Req_loglikelihood('Question: El virus de la fiebre amarilla es un:\nAnswer:', ' Arenavirus.')[0]
+]
+Running loglikelihood requests
+bigscience/bloom-3B   {'results': {'headqa_en': {'acc': 0.2840991976659373, 'acc_stderr': 0.008614040521644994, 'acc_norm': 0.3336980306345733, 'acc_norm_stderr': 0.009006537310888562}, 'headqa_es': {'acc': 0.26440554339897887, 'acc_stderr': 0.008423643607316284, 'acc_norm': 0.3099927060539752, 'acc_norm_stderr': 0.008833810133604958}}, 'versions': {'headqa_en': 0, 'headqa_es': 0}, 'config': {'model': None, 'model_args': '', 'num_fewshot': 0, 'batch_size': 1, 'batch_sizes': [], 'device': 'cuda:0', 'no_cache': False, 'limit': None, 'bootstrap_iters': 100000, 'description_dict': None}}

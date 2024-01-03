@@ -1,0 +1,55 @@
+Fri Dec 15 19:59:09 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.89.02    Driver Version: 525.89.02    CUDA Version: 12.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-PCI...  Off  | 00000000:25:00.0 Off |                    0 |
+| N/A   30C    P0    34W / 250W |      0MiB / 40960MiB |     40%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+bloom_3b_7b_spanish_1000it
+Passed argument batch_size = auto:1. Detecting largest batch size
+Determined largest batch size: 64
+bootstrapping for stddev: perplexity
+bootstrapping for stddev: perplexity
+hf (pretrained=/home/data_shares/mapillary/bloom_3b_7b_spanish_1000it), gen_kwargs: (), limit: None, num_fewshot: 0, batch_size: auto (64)
+|         Tasks         |Version|Filter|n-shot|  Metric  | Value |   | Stderr |
+|-----------------------|-------|------|-----:|----------|------:|---|-------:|
+|know_dist              |N/A    |none  |     0|acc       | 0.4473|±  |  0.0938|
+|                       |       |none  |     0|acc_norm  | 0.3209|±  |  0.0001|
+|                       |       |none  |     0|perplexity|28.3555|±  |345.7964|
+| - headqa_en           |Yaml   |none  |     0|acc       | 0.2856|±  |  0.0086|
+|                       |       |none  |     0|acc_norm  | 0.3337|±  |  0.0090|
+| - headqa_es           |Yaml   |none  |     0|acc       | 0.2622|±  |  0.0084|
+|                       |       |none  |     0|acc_norm  | 0.3082|±  |  0.0088|
+| - lambada_openai_mt_en|Yaml   |none  |     0|perplexity| 9.2653|±  |  0.2780|
+|                       |       |none  |     0|acc       | 0.5141|±  |  0.0070|
+| - lambada_openai_mt_es|Yaml   |none  |     0|perplexity|67.7622|±  |  3.6426|
+|                       |       |none  |     0|acc       | 0.3458|±  |  0.0066|
+| - paws_en             |Yaml   |none  |     0|acc       | 0.3935|±  |  0.0109|
+| - paws_es             |Yaml   |none  |     0|acc       | 0.4680|±  |  0.0112|
+| - paws_zh             |Yaml   |none  |     0|acc       | 0.5440|±  |  0.0111|
+| - xnli_en             |Yaml   |none  |     0|acc       | 0.5373|±  |  0.0100|
+| - xnli_es             |Yaml   |none  |     0|acc       | 0.4940|±  |  0.0100|
+| - xnli_zh             |Yaml   |none  |     0|acc       | 0.3896|±  |  0.0098|
+| - xstorycloze_en      |Yaml   |none  |     0|acc       | 0.6638|±  |  0.0122|
+| - xstorycloze_es      |Yaml   |none  |     0|acc       | 0.6254|±  |  0.0125|
+| - xstorycloze_zh      |Yaml   |none  |     0|acc       | 0.5850|±  |  0.0127|
+
+| Groups  |Version|Filter|n-shot|  Metric  | Value |   | Stderr |
+|---------|-------|------|-----:|----------|------:|---|-------:|
+|know_dist|N/A    |none  |     0|acc       | 0.4473|±  |  0.0938|
+|         |       |none  |     0|acc_norm  | 0.3209|±  |  0.0001|
+|         |       |none  |     0|perplexity|28.3555|±  |345.7964|
+

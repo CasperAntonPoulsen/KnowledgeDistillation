@@ -1,0 +1,2 @@
+/var/spool/slurm/d/job161233/slurm_script: line 16: activate: No such file or directory
+slurmstepd: error: *** JOB 161233 ON cn3 CANCELLED AT 2023-12-11T10:47:50 ***

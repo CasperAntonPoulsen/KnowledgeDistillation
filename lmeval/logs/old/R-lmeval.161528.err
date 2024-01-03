@@ -1,0 +1,10 @@
+2023-12-13:13:15:24,672 INFO     [utils.py:148] Note: NumExpr detected 48 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2023-12-13:13:15:24,672 INFO     [utils.py:160] NumExpr defaulting to 8 threads.
+2023-12-13:13:15:26,450 INFO     [instantiator.py:21] Created a temporary directory at /tmp/tmpx5e5rehn
+2023-12-13:13:15:26,450 INFO     [instantiator.py:76] Writing /tmp/tmpx5e5rehn/_remote_module_non_scriptable.py
+2023-12-13:13:15:28,853 WARNING  [logging.py:60] Detected kernel version 3.10.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+2023-12-13:13:15:28,853 INFO     [huggingface.py:120] Using device 'cuda'
+
+real	0m34.414s
+user	0m10.459s
+sys	0m19.300s
