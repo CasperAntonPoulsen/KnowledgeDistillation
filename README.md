@@ -1,6 +1,8 @@
 # KnowledgeDistillation
 
-This repository is a composite of multiple repos used during the project.
+This repository is a composite of multiple repos used during the project. All jobs scripts are written for LSF 10 HPC schedular but are relatively simple to port to systems like Slurm
+
+All jobs and configs assume that you are using a single H100 and a 32 core cpu with 5 gigs of memory per core 
 
 ## Minillm
 
